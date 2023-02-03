@@ -4,93 +4,79 @@
 	<title>Administradores</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" href="/css/admin.css">
+	<link rel="stylesheet" href="{{url_for("static", filename='/css/admin.css')}}">
 </head>
 <body>
-
-		<!-- SideBar -->
-		<section class="full-box cover dashboard-sideBar">
-			<div class="full-box dashboard-sideBar-bg btn-menu-dashboard"></div>
-			<div class="full-box dashboard-sideBar-ct">
-				<!--SideBar Title -->
-				<div class="full-box text-uppercase text-center text-titles dashboard-sideBar-title">
-					FarmaClick <i class="zmdi zmdi-close btn-menu-dashboard visible-xs"></i>
-				</div>
-				<!-- SideBar User info -->
-				<div class="full-box dashboard-sideBar-UserInfo">
-					<figure class="full-box">
-						<img src="/assets/img/avatar.jpg" alt="UserIcon">
-						<figcaption class="text-center text-titles">Juan Gonzales</figcaption>
-					</figure>
-					<ul class="full-box list-unstyled text-center">
-
-						<li>
-							<a href="#!" class="btn-exit-system">
-								<i class="zmdi zmdi-power"></i>
-							</a>
-						</li>
-					</ul>
-				</div>
-				<!-- SideBar Menu -->
-				<ul class="list-unstyled full-box dashboard-sideBar-Menu">
+	<!-- SideBar -->
+	<section class="full-box cover dashboard-sideBar">
+		<div class="full-box dashboard-sideBar-bg btn-menu-dashboard"></div>
+		<div class="full-box dashboard-sideBar-ct">
+			<!--SideBar Title -->
+			<div class="full-box text-uppercase text-center text-titles dashboard-sideBar-title">
+				FarmaClick <i class="zmdi zmdi-close btn-menu-dashboard visible-xs"></i>
+			</div>
+			<!-- SideBar User info -->
+			<div class="full-box dashboard-sideBar-UserInfo">
+				<figure class="full-box">
+					<img src="/static/img/avatar.jpg" alt="UserIcon">
+					<figcaption class="text-center text-titles">Juan Gonzales</figcaption>
+				</figure>
+				<ul class="full-box list-unstyled text-center">
 					<li>
-						<a href="home.html">
-							<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Panel de control
+						<a href="#!" class="btn-exit-system">
+							<i class="zmdi zmdi-power"></i>
 						</a>
 					</li>
-					<li>
-						<a href="#!" class="btn-sideBar-SubMenu">
-							<i class="zmdi zmdi-case zmdi-hc-fw"></i>  Gestión productos <i class="zmdi zmdi-caret-down pull-right"></i>
-						</a>
-						<ul class="list-unstyled full-box">
-							<li> 
-								<a href="cuidadopersonal.html"><i class="glyphicon glyphicon-tint zmdi-hc-fw"></i>Cuidado personal</a>
-							</li>
-							<li>
-								<a href="dermacos.html"><i class="glyphicon glyphicon-ok zmdi-hc-fw"></i>Dermacosmeticos</a>
-							</li>
-							<li> 
-								<a href="nutricional.html"><i class="glyphicon glyphicon-grain zmdi-hc-fw"></i>Nutricionales</a>
-							</li>
-							<li> 
-								<a href="bebe.html"><i class="glyphicon glyphicon-baby-formula zmdi-hc-fw"></i>Bebé</a>
-							</li>
-							<li>
-								<a href="medicamento.html"><i class="glyphicon glyphicon-minus zmdi-hc-fw"></i>Medicamentos</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#!" class="btn-sideBar-SubMenu">
-							<i class="zmdi zmdi-account-add zmdi-hc-fw"></i> Gestíon usuarios <i class="zmdi zmdi-caret-down pull-right"></i>
-						</a>
-						<ul class="list-unstyled full-box">
-							<li>
-								<a href="gestionadmin.html"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Administrador</a>
-							</li>
-							<li>
-								<a href="gestioncliente.html"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Cliente</a>
-							</li>
-			
-						</ul>
-					</li>
-					<li>
-						<a href="#!" class="btn-sideBar-SubMenu">
-							<i class="glyphicon glyphicon-file"></i> Reportes <i class="zmdi zmdi-caret-down pull-right"></i>
-						</a>
-						<ul class="list-unstyled full-box">
-							<li>
-								<a href="reporteventa.html"><i class="zmdi zmdi-money zmdi-hc-fw"></i>Ventas</a>
-							</li>
-							<li>
-								<a href="reportecliente.html"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i>Clientes</a>
-							</li>
-						</ul>
-					</li>
-	
 				</ul>
 			</div>
-		</section>
+			<!-- SideBar Menu -->
+			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
+				<li>
+					<a href="{{ url_for('home_admin') }}">
+						<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Panel de control
+					</a>
+				</li>
+				<li>
+					<a href="#!" class="btn-sideBar-SubMenu">
+						<i class="zmdi zmdi-case zmdi-hc-fw"></i>  Gestión productos <i class="zmdi zmdi-caret-down pull-right"></i>
+					</a>
+					<ul class="list-unstyled full-box">
+						<li> 
+							<a href="{{ url_for('cuidado_personal') }}"><i class="glyphicon glyphicon-tint zmdi-hc-fw"></i>Cuidado personal</a>
+						</li>
+						<li>
+							<a href="{{ url_for('dermacosmetico') }}"><i class="glyphicon glyphicon-ok zmdi-hc-fw"></i>Dermacosmeticos</a>
+						</li>
+						<li> 
+							<a href="{{ url_for('nutricional') }}"><i class="glyphicon glyphicon-grain zmdi-hc-fw"></i>Nutricionales</a>
+						</li>
+						<li> 
+							<a href="{{ url_for('bebe') }}"><i class="glyphicon glyphicon-baby-formula zmdi-hc-fw"></i>Bebé</a>
+						</li>
+						<li>
+							<a href="{{ url_for('medicamento') }}"><i class="glyphicon glyphicon-minus zmdi-hc-fw"></i>Medicamentos</a>
+						</li>
+					</ul>
+				</li>
+				
+				<li>
+					<a href="#!" class="btn-sideBar-SubMenu">
+						<i class="zmdi zmdi-account-add zmdi-hc-fw"></i> Gestíon usuarios <i class="zmdi zmdi-caret-down pull-right"></i>
+					</a>
+					<ul class="list-unstyled full-box">
+						<li>
+							<a href="{{ url_for('gestionadmin') }}"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Administrador</a>
+						</li>
+						<li>
+							<a href="{{ url_for('gestioncliente') }}"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Cliente</a>
+						</li>
+		
+					</ul>
+				</li>
+
+			</ul>
+		</div>
+	</section>
 
 	<!-- Content page-->
 	<section class="full-box dashboard-contentPage">
@@ -393,13 +379,13 @@
 		</div>
   </div>
 	<!--====== Scripts -->
-	<script src="/js/jquery-3.1.1.min.js"></script>
-	<script src="/js/sweetalert2.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/material.min.js"></script>
-	<script src="/js/ripples.min.js"></script>
-	<script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script src="/js/admin.js"></script>
+	<script src="/static/js/jquery-3.1.1.min.js"></script>
+	<script src="/static/js/sweetalert2.min.js"></script>
+	<script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/material.min.js"></script>
+	<script src="/static/js/ripples.min.js"></script>
+	<script src="/static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="/static/js/admin.js"></script>
 	<script>
 		$.material.init();
 	</script>
