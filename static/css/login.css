@@ -5,7 +5,7 @@
 	box-sizing: border-box;
 }
 
-body {
+bodyy {
 	background: #f6f5f7;
 	display: flex;
 	justify-content: center;
@@ -236,14 +236,4 @@ input,select {
 	height: 40px;
 	width: 40px;
 }
-.iframee{
-	width: 100%;
-	height: 33rem;
-	border-radius: none;
-}
-.footerr{
-    width: 100%;
-    height: 200px;
-}
-
 
