@@ -1,0 +1,283 @@
+{% extends './base.html' %}
+
+<head>
+  <link rel="stylesheet" href="{{url_for(" static", filename='css/cliente.css' )}}">
+
+  {% block title %}Medicamentos{% endblock %}
+</head>
+{% block footerp %}
+
+<!--Header-->
+<div>
+  <header class="p-3 mb-3 border-bottom">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+        <div class="dropdown">
+          <a href="{{ url_for('homecliente') }}"
+            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <img src="/static/icons/pharmacy.png" width="50" height="50" alt="">
+            <span class="fs-5">FARMACLICK</span>
+          </a>
+        </div>
+
+        <form class="mx-auto" role="search">
+          <form class="d-flex" role="search">
+            <input type="search" class="form-control" placeholder="Buscar Medicamento" aria-label="Search">
+
+          </form>
+
+
+          <div class="dropdown">
+
+            <div class="dropdown me-auto">
+              <a href="#" class=" link-dark  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
+                style="margin: 50px;">
+                <img src="/static/icons/user.png" alt="icon user" width="40" height="40" class="rounded-circle">
+              </a>
+              <ul class="dropdown-menu text-small">
+                <li><a class="dropdown-item" href="{{ url_for('datoscliente') }}">Mi Cuenta</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="{{ url_for('login') }}">Cerrar sesión</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <a href="#" class=" link-dark" aria-expanded="false">
+              <img src="/static/icons/shoppingCar.png" alt="icon user" width="40" height="40" class="rounded-circle">
+            </a>
+          </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<!-- Clasificación Productos -->
+<div class="container">
+  <div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-between ">
+      <a class="p-2 link-secondary text-decoration-none" href="{{ url_for('medicamentoscliente') }}">Medicamentos</a>
+      <a class=" p-2 link-secondary text-decoration-none" href="{{ url_for('cuidadopersonal') }}">Cuidado
+        Personal</a>
+      <a class=" p-2 link-secondary text-decoration-none" href="{{ url_for('dermacosmetica') }}">Dermacosmética</a>
+      <a class=" p-2 link-secondary text-decoration-none" href="{{ url_for('nutricionales') }}">Nutricionales</a>
+      <a class=" p-2 link-secondary text-decoration-none" href="{{ url_for('bebe02') }}">Bebé</a>
+    </nav>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+    <div class="col">
+      <div class="card h-100">
+        <img src="/static/img/cuidado personal/cureband.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">CUREBAND PREMIUN GASA CAJA CON 24 SOBRES</h5>
+          <p class="card-text">Presentación caja por 24 sobres
+
+            Contiene Gasa antiadherente estéril
+
+            Vía de administración uso externo
+
+            Dosis consulte a su médico</p>
+          <h4 class="precios">$38.750</h4>
+          <div class="centrarButton">
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <img src="/static/img/cuidado personal/headshoulders.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">SHAMPOO HEAD & SHOULDERS MEN 1 FRASCO CON 375 ML</h5>
+          <p class="card-text">REMUEVE IMPUREZAS Y DEJA TU CABELLO HASTA 100% LIBRE DE CASPA, CON UNA SENSACIÓN DE
+            FRESCURA QUE TE ACOMPAÑA DURANTE EL
+            DÍA.</p>
+          <h4 class="precios">$24.950</h4>
+          <div class="centrarButton">
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <img src="/static/img/cuidado personal/hidrofugal.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">HIDRO FUGAL CAJA CON 1 FRASCO - ANTITRANSPIRANTE</h5>
+          <p class="card-text">ANTITRANSPIRANTE DERMATOLÓGICO PARA AXILAS. PARA PERSONAS CON SUDORACIÓN EXCESIVA O
+            INTOLERANCIA A OTROS DESODORANTES.</p>
+          <h4 class="precios">$61.100</h4>
+          <div class="centrarButton">
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <img src="/static/img/cuidado personal/neo.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">NEO FUNGINA TALCO FRASCO CON 40 G</h5>
+          <p class="card-text">ES UN MEDICAMENTO. NO EXCEDER SU CONSUMO. LEER INDICACIONES Y
+            CONTRAINDICACIONES. SI LOS SÍNTOMAS PERSISTEN, CONSULTAR AL MÉDICO.</p>
+          <h4 class="precios">$12.450</h4>
+          <div class="centrarButton">
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-4 g-4 py-3">
+    <div class="col">
+      <div class="card h-100">
+        <img src="/static/img/cuidado personal/nosotras.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">TOALLAS NOSOTRAS BUENAS NOCHES EMPAQUE CON 10 UNIDADES</h5>
+          <p class="card-text">NOSOTRAS NATURAL BUENAS NOCHES ZONA DE CUBRIMIENTO TOTAL MÁS ANCHA EN LA PARTE DE ATRÁS
+            PARA MAYOR PROTECCIÓN Y
+            FIJACIÓN.</p>
+          <h4 class="precios">$13.350</h4>
+          <div class="centrarButton">
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <img src="/static/img/cuidado personal/rexona.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">JABÓN REXONA EN BARRA</h5>
+          <p class="card-text">EL NUEVO REXONA OFRECE UNA PROTECCIÓN ANTIBACTERIAL NATURAL PARA UNA PIEL SALUDABLE.
+          </p>
+          <h4 class="precios">$4.200</h4>
+          <div class="centrarButton">
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <img src="/static/img/cuidado personal/savital.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">SHAMPOO SAVITAL ANTICASPA FRASCO CON 550 ML</h5>
+          <p class="card-text">SHAMPOO ANTICASPA CON MENTA, EUCALIPTO Y SÁBILA.</p>
+          <h4 class="precios">$20.300</h4>
+          <div class="centrarButton">
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <img src="/static/img/cuidado personal/sensodyne.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">CREMA DENTAL SENSODYNE BLANQUEADOR EXTRA FRESH TUBO</h5>
+          <p class="card-text">SENSODYNE BLANQUEADOR EXTRA FRESH ES UNA CREMA DENTAL DE USO DIARIO ESPECÍFICAMENTE
+            FORMULADA PARA PERSONAS CON DIENTES
+            SENSIBLES.</p>
+          <h4 class="precios">$22.300</h4>
+          <div class="centrarButton">
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+    <div class="col">
+      <div class="card h-100">
+        <img src="/static/img/cuidado personal/sunaid.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">SUN SCREEN FACE SPF 50+ FREZYDERM FRASCO CON 50 ML</h5>
+          <p class="card-text">INNOVADORA FORMULA CIENTÍFICA DE MANTO PROTECTOR QUE PROVEE UNA EFECTIVA PREVENCIÓN
+            CONTRA EL DAÑO CELULAR CAUSADO POR
+            LOS RAYOS SOLARES.</p>
+          <h4 class="precios">$100.250</h4>
+          <div class="centrarButton">
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <img src="/static/img/cuidado personal/tionacho.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">CHAMPÚ TÍO NACHO ENGROSADOR FRASCO CON 415 ML</h5>
+          <p class="card-text">LA NUEVA LÍNEA ENGROSADOR CON JALEA REAL Y ORTIGA, UNA COMBINACIÓN DE INGREDIENTES DE
+            ORIGEN NATURAL, AUMENTAN EL
+            DIÁMETRO DE CADA PELO, DEJÁNDOLO MÁS FUERTE, MÁS GRUESO Y CON MAYOR VOLUMEN.</p>
+          <h4 class="precios">$31.300</h4>
+          <div class="centrarButton">
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <img src="/static/img/cuidado personal/today.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">TODAY TRIPLE PLACER CAJA CON 3 CONDONES</h5>
+          <p class="card-text">ES DELGADO PARA PLENA SEGURIDAD SON AFECTAR LA RESISTENCIA. POSEE PUNTOS REPUJADOS,
+            ESTRÍAS Y UNA FORMA ANATÓMICA PARA
+            MAYOR SENSACIÓN Y EXCITACIÓN.</p>
+          <h4 class="precios">$32.100</h4>
+          <div class="centrarButton">
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <img src="/static/img/cuidado personal/yodora.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">DESODORANTE YODORA CREMA FRASCO CON 60 G</h5>
+          <p class="card-text">INDICACIONES: DESODORANTE YODORA EN CREMA. APLICAR SUAVEMENTE SOBRE LAS AXILAS EN
+            CANTIDAD SUFICIENTE. PROTEGE DEL MAL
+            OLOR Y LA SUDORACIÓN INCÓMODA CON UNA ACCIÓN EFECTIVA.</p>
+          <h4 class="precios">$13.450</h4>
+          <div class="centrarButton">
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Paginacion -->
+  <div class="py-4">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link">Vista previa</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Siguiente</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <hr>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+{{super()}}
+
+{% endblock %}

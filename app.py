@@ -13,7 +13,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     
-    return render_template("/login/login.html")
+    return render_template("/cliente/inicio.html")
 
  
 def error404(error):
@@ -74,12 +74,52 @@ def gestionadmin():
 
 @app.route('/gestioncliente/')
 def gestioncliente():
-    return render_template("/admin/gestioncliente.html")
+    return render_template("/admin/gestionadmin.html")
 
 # Home cliente
 @app.route('/homecliente/')
 def homecliente():
     return render_template("/cliente/homecliente.html")
+
+# Medicamentos cliente
+@app.route('/medicamentoscliente/')
+def medicamentoscliente():
+    return render_template("/cliente/medicamentos.html")
+
+# Datos cliente
+@app.route('/datoscliente/')
+def datoscliente():
+    return render_template("/cliente/datoscliente.html")
+
+# Comprar producto
+@app.route('/comprarproducto/')
+def comprarproducto():
+    return render_template("/cliente/comprarproducto.html")
+
+# Cuidado personal
+@app.route('/cuidadopersonal/')
+def cuidadopersonal():
+    return render_template("/cliente/cuidadopersonal.html")
+
+# Dermacosmeticos
+@app.route('/dermacosmetica/')
+def dermacosmetica():
+    return render_template("/cliente/dermacosmetica.html")
+
+# Nutricionales
+@app.route('/nutricionales/')
+def nutricionales():
+    return render_template("/cliente/nutricionales.html")
+
+# Bebe
+@app.route('/bebe02/')
+def bebe02():
+    return render_template("/cliente/bebe02.html")
+
+# Inicio cliente
+@app.route('/inicio/')
+def inicio():
+    return render_template("/cliente/inicio.html")
 
 
 if __name__ == '__main__':

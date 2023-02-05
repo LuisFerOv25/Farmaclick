@@ -1,0 +1,138 @@
+{% extends './base.html' %}
+
+<head>
+  <link rel="stylesheet" href="{{url_for(" static", filename='css/cliente.css' )}}">
+
+  {% block title %}Medicamentos{% endblock %}
+</head>
+{% block footerp %}
+
+<!--Header-->
+<div>
+  <header class="p-3 mb-3 border-bottom">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+        <div class="dropdown">
+          <a href="{{ url_for('homecliente') }}"
+            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <img src="/static/icons/pharmacy.png" width="50" height="50" alt="">
+            <span class="fs-5">FARMACLICK</span>
+          </a>
+        </div>
+
+        <form class="mx-auto" role="search">
+          <form class="d-flex" role="search">
+            <input type="search" class="form-control" placeholder="Buscar Medicamento" aria-label="Search">
+
+          </form>
+
+
+          <div class="dropdown">
+
+            <div class="dropdown me-auto">
+              <a href="#" class=" link-dark  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
+                style="margin: 50px;">
+                <img src="/static/icons/user.png" alt="icon user" width="40" height="40" class="rounded-circle">
+              </a>
+              <ul class="dropdown-menu text-small">
+                <li><a class="dropdown-item" href="{{ url_for('datoscliente') }}">Mi Cuenta</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="{{ url_for('login') }}">Cerrar sesión</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <a href="#" class=" link-dark" aria-expanded="false">
+              <img src="/static/icons/shoppingCar.png" alt="icon user" width="40" height="40" class="rounded-circle">
+            </a>
+          </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+
+<!-- Clasificación Productos -->
+<div class="container">
+  <div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-between ">
+      <a class="p-2 link-secondary text-decoration-none" href="{{ url_for('medicamentoscliente') }}">Medicamentos</a>
+      <a class=" p-2 link-secondary text-decoration-none" href="{{ url_for('cuidadopersonal') }}">Cuidado
+        Personal</a>
+      <a class=" p-2 link-secondary text-decoration-none" href="{{ url_for('dermacosmetica') }}">Dermacosmética</a>
+      <a class=" p-2 link-secondary text-decoration-none" href="{{ url_for('nutricionales') }}">Nutricionales</a>
+      <a class=" p-2 link-secondary text-decoration-none" href="{{ url_for('bebe02') }}">Bebé</a>
+    </nav>
+  </div>
+</div>
+
+<!-- COMPRAS -->
+
+<div class="container centrarCard">
+  <div class="card mb-3" style="max-width: 1300px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="/static/img/home/acetaminofen.png" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2 class="card-title">NOMBRE DEL PRODUCTO</h2>
+          <h1 class="precios">$00.00</h1>
+          <h5>Referencia: 123456789</h5>
+          <p class="card-text">
+          <h5>DETALLES DEL PRODUCTO
+          </h5>
+          </p>
+          <p class="card-text"><small class="text-muted">
+              <h5>Cantidad y vía de administración.</h5>
+            </small></p>
+
+          <div class="py-1">
+            <button type="submit" class="btn btn-primary"
+              style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+              -
+            </button>
+
+            <input class="form-control-sm" type="text" style="width: 130px; height: 35px;">
+
+            <button type="submit" class="btn btn-primary"
+              style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+              +
+            </button>
+
+            <button type="submit" class="btn btn-primary"
+              style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+              Comprar
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="card">
+    <h5 class="card-header">Descripción del producto</h5>
+    <div class="card-body">
+      <h5 class="card-title">Nombre del producto.</h5>
+      <p class="card-text">Indicaciones:
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea id commodi, nam natus, debitis minima doloremque
+        adipisci atque praesentium vel accusantium, error ad laborum iste quisquam fugit qui veniam a.
+      </p>
+    </div>
+  </div>
+  <hr>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+{{super()}}
+
+{% endblock %}
