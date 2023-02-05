@@ -5,6 +5,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="{{url_for("static", filename='/css/admin.css')}}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 	
 </head>
 <body>
@@ -25,7 +28,7 @@
 				<ul class="full-box list-unstyled text-center">
 					<li>
 						<a href="#!" class="btn-exit-system">
-							<i class="zmdi zmdi-power"></i>
+							<i class="glyphicon glyphicon-off"></i>
 						</a>
 					</li>
 				</ul>
@@ -34,12 +37,12 @@
 			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 				<li>
 					<a href="{{ url_for('home_admin') }}">
-						<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Panel de control
+						<i class="glyphicon glyphicon-th"></i> Panel de control
 					</a>
 				</li>
 				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">
-						<i class="zmdi zmdi-case zmdi-hc-fw"></i>  Gestión productos <i class="zmdi zmdi-caret-down pull-right"></i>
+						<i class="glyphicon glyphicon-list-alt"></i>  Gestión productos <i class="zmdi zmdi-caret-down pull-right"></i>
 					</a>
 					<ul class="list-unstyled full-box">
 						<li> 
@@ -62,14 +65,14 @@
 				
 				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">
-						<i class="zmdi zmdi-account-add zmdi-hc-fw"></i> Gestíon usuarios <i class="zmdi zmdi-caret-down pull-right"></i>
+						<i class="glyphicon glyphicon-list"></i> Gestíon usuarios <i class="zmdi zmdi-caret-down pull-right"></i>
 					</a>
 					<ul class="list-unstyled full-box">
 						<li>
-							<a href="{{ url_for('gestionadmin') }}"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Administrador</a>
+							<a href="{{ url_for('gestionadmin') }}"><i class="glyphicon glyphicon-user"></i> Administrador</a>
 						</li>
 						<li>
-							<a href="{{ url_for('gestioncliente') }}"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Cliente</a>
+							<a href="{{ url_for('gestioncliente') }}"><i class="glyphicon glyphicon-user"></i> Cliente</a>
 						</li>
 		
 					</ul>
@@ -85,12 +88,12 @@
 		<nav class="full-box dashboard-Navbar">
 			<ul class="full-box list-unstyled text-right">
 				<li class="pull-left">
-					<a href="#!" class="btn-menu-dashboard"><i class="zmdi zmdi-more-vert"></i></a>
+					<a href="#!" class="btn-menu-dashboard"><i class="glyphicon glyphicon-th-list"></i></a>
 				</li>
 
 				<li>
 					<a href="#!" class="btn-modal-help">
-						<i class="zmdi zmdi-help-outline"></i>
+						<i class="glyphicon glyphicon-info-sign"></i>
 					</a>
 				</li>
 			</ul>
@@ -107,7 +110,7 @@
 					Administradores
 				</div>
 				<div class="full-box tile-icon text-center">
-					<i class="zmdi zmdi-account"></i>
+					<i class="glyphicon glyphicon-user"></i>
 				</div>
 				<div class="full-box tile-number text-titles">
 					<p class="full-box">7</p>
@@ -119,7 +122,7 @@
 					Clientes
 				</div>
 				<div class="full-box tile-icon text-center">
-					<i class="zmdi zmdi-male-alt"></i>
+					<i class="glyphicon glyphicon-user"></i>
 				</div>
 				<div class="full-box tile-number text-titles">
 					<p class="full-box">10</p>
@@ -127,67 +130,9 @@
 				</div>
 			</article>
 		</div>
-		<div class="container-fluid">
-			<div class="page-header">
-			  <h1 class="text-titles text-center">Historial de acceso</h1>
-			</div>
-			<section id="cd-timeline" class="cd-container">
-                <div class="cd-timeline-block">
-                    <div class="cd-timeline-img">
-                        <img src="./assets/img/avatar.jpg" alt="user-picture">
-                    </div>
-                    <div class="cd-timeline-content">
-                        <h4 class="text-center text-titles">1 - Name (Admin)</h4>
-                        <p class="text-center">
-                            <i class="zmdi zmdi-timer zmdi-hc-fw"></i> Start: <em>7:00 AM</em> &nbsp;&nbsp;&nbsp; 
-                            <i class="zmdi zmdi-time zmdi-hc-fw"></i> End: <em>7:17 AM</em>
-                        </p>
-                        <span class="cd-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i> 07/07/2016</span>
-                    </div>
-                </div>  
-                <div class="cd-timeline-block">
-                    <div class="cd-timeline-img">
-                        <img src="./assets/img/avatar.jpg" alt="user-picture">
-                    </div>
-                    <div class="cd-timeline-content">
-                        <h4 class="text-center text-titles">2 - Name (Teacher)</h4>
-                        <p class="text-center">
-                            <i class="zmdi zmdi-timer zmdi-hc-fw"></i> Start: <em>7:00 AM</em> &nbsp;&nbsp;&nbsp; 
-                            <i class="zmdi zmdi-time zmdi-hc-fw"></i> End: <em>7:17 AM</em>
-                        </p>
-                        <span class="cd-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i> 07/07/2016</span>
-                    </div>
-                </div>
-                <div class="cd-timeline-block">
-                    <div class="cd-timeline-img">
-                        <img src="./assets/img/avatar.jpg" alt="user-picture">
-                    </div>
-                    <div class="cd-timeline-content">
-                        <h4 class="text-center text-titles">3 - Name (Student)</h4>
-                        <p class="text-center">
-                            <i class="zmdi zmdi-timer zmdi-hc-fw"></i> Start: <em>7:00 AM</em> &nbsp;&nbsp;&nbsp; 
-                            <i class="zmdi zmdi-time zmdi-hc-fw"></i> End: <em>7:17 AM</em>
-                        </p>
-                        <span class="cd-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i> 07/07/2016</span>
-                    </div>
-                </div>
-                <div class="cd-timeline-block">
-                    <div class="cd-timeline-img">
-                        <img src="./assets/img/avatar.jpg" alt="user-picture">
-                    </div>
-                    <div class="cd-timeline-content">
-                        <h4 class="text-center text-titles">4 - Name (Personal Ad.)</h4>
-                        <p class="text-center">
-                            <i class="zmdi zmdi-timer zmdi-hc-fw"></i> Start: <em>7:00 AM</em> &nbsp;&nbsp;&nbsp; 
-                            <i class="zmdi zmdi-time zmdi-hc-fw"></i> End: <em>7:17 AM</em>
-                        </p>
-                        <span class="cd-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i> 07/07/2016</span>
-                    </div>
-                </div>   
-            </section>
 
 
-		</div>
+		
 	</section>
 
 	<!--Ventana dialogo de ayuda -->

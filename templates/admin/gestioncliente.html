@@ -5,6 +5,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="{{url_for("static", filename='/css/admin.css')}}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 </head>
 <body>
 	<!-- SideBar -->
@@ -24,7 +27,7 @@
 				<ul class="full-box list-unstyled text-center">
 					<li>
 						<a href="#!" class="btn-exit-system">
-							<i class="zmdi zmdi-power"></i>
+							<i class="glyphicon glyphicon-off"></i>
 						</a>
 					</li>
 				</ul>
@@ -33,12 +36,12 @@
 			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 				<li>
 					<a href="{{ url_for('home_admin') }}">
-						<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Panel de control
+						<i class="glyphicon glyphicon-th"></i> Panel de control
 					</a>
 				</li>
 				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">
-						<i class="zmdi zmdi-case zmdi-hc-fw"></i>  Gestión productos <i class="zmdi zmdi-caret-down pull-right"></i>
+						<i class="glyphicon glyphicon-list-alt"></i>  Gestión productos <i class="zmdi zmdi-caret-down pull-right"></i>
 					</a>
 					<ul class="list-unstyled full-box">
 						<li> 
@@ -61,14 +64,14 @@
 				
 				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">
-						<i class="zmdi zmdi-account-add zmdi-hc-fw"></i> Gestíon usuarios <i class="zmdi zmdi-caret-down pull-right"></i>
+						<i class="glyphicon glyphicon-list"></i> Gestíon usuarios <i class="zmdi zmdi-caret-down pull-right"></i>
 					</a>
 					<ul class="list-unstyled full-box">
 						<li>
-							<a href="{{ url_for('gestionadmin') }}"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Administrador</a>
+							<a href="{{ url_for('gestionadmin') }}"><i class="glyphicon glyphicon-user"></i> Administrador</a>
 						</li>
 						<li>
-							<a href="{{ url_for('gestioncliente') }}"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Cliente</a>
+							<a href="{{ url_for('gestioncliente') }}"><i class="glyphicon glyphicon-user"></i> Cliente</a>
 						</li>
 		
 					</ul>
@@ -84,12 +87,12 @@
 		<nav class="full-box dashboard-Navbar">
 			<ul class="full-box list-unstyled text-right">
 				<li class="pull-left">
-					<a href="#!" class="btn-menu-dashboard"><i class="zmdi zmdi-more-vert"></i></a>
+					<a href="#!" class="btn-menu-dashboard"><i class="glyphicon glyphicon-th-list"></i></a>
 				</li>
 	
 				<li>
 					<a href="#!" class="btn-modal-help">
-						<i class="zmdi zmdi-help-outline"></i>
+						<i class="glyphicon glyphicon-info-sign"></i>
 					</a>
 				</li>
 			</ul>
@@ -97,9 +100,9 @@
 		<!-- Content page -->
 		<div class="container-fluid">
 			<div class="page-header">
-			  <h1 class="text-titles text-center"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i>Panel de gestión de clientes</h1>
+			  <h1 class="text-titles text-center"><i class="glyphicon glyphicon-user zmdi-hc-fw"></i>Panel de gestión de clientes</h1>
 			</div>
-			<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse voluptas reiciendis tempora voluptatum eius porro ipsa quae voluptates officiis sapiente sunt dolorem, velit quos a qui nobis sed, dignissimos possimus!</p>
+			<p class="lead">En este apartado esta diseñado para visualizar la informacion de los clientes, asi como modificar y eliminar la informacion almacenada</p>
 		</div>
 		<div class="container-fluid">
 			<div class="row">
@@ -136,15 +139,13 @@
 											<td>+50312345678</td>
 											<td>Male</td>
 											<td>
-												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editarcl" data-whatever="@fat"
-												  ><i class="zmdi zmdi-edit"></i
-												></a>
+												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
+												  ><i class="glyphicon glyphicon-edit"></i></a>
 					  
 											  </td>
 											  <td>
-												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarcl"
-												><i class="zmdi zmdi-delete"></i
-											  ></a>
+												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
+												><i class="glyphicon glyphicon-remove-circle"></i></a>
 											  </td>
 										</tr>
 										<tr>
@@ -155,8 +156,15 @@
 											<td>alicia@gmail.com</td>
 											<td>+50312345678</td>
 											<td>Female</td>
-											<td><a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-edit"></i></a></td>
-											<td><a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
+											<td>
+												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
+												  ><i class="glyphicon glyphicon-edit"></i></a>
+					  
+											  </td>
+											  <td>
+												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
+												><i class="glyphicon glyphicon-remove-circle"></i></a>
+											  </td>
 										</tr>
 										<tr>
 											<td>3</td>
@@ -166,8 +174,15 @@
 											<td>sarai@gmail.com</td>
 											<td>+50312345678</td>
 											<td>Female</td>
-											<td><a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-edit"></i></a></td>
-											<td><a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
+											<td>
+												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
+												  ><i class="glyphicon glyphicon-edit"></i></a>
+					  
+											  </td>
+											  <td>
+												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
+												><i class="glyphicon glyphicon-remove-circle"></i></a>
+											  </td>
 										</tr>
 										<tr>
 											<td>4</td>
@@ -177,8 +192,15 @@
 											<td>alba@gmail.com</td>
 											<td>+50312345678</td>
 											<td>Female</td>
-											<td><a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-edit"></i></a></td>
-											<td><a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
+											<td>
+												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
+												  ><i class="glyphicon glyphicon-edit"></i></a>
+					  
+											  </td>
+											  <td>
+												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
+												><i class="glyphicon glyphicon-remove-circle"></i></a>
+											  </td>
 										</tr>
 										<tr>
 											<td>5</td>
@@ -188,8 +210,15 @@
 											<td>claudia@gmail.com</td>
 											<td>+50312345678</td>
 											<td>Female</td>
-											<td><a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-edit"></i></a></td>
-											<td><a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
+											<td>
+												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
+												  ><i class="glyphicon glyphicon-edit"></i></a>
+					  
+											  </td>
+											  <td>
+												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
+												><i class="glyphicon glyphicon-remove-circle"></i></a>
+											  </td>
 										</tr>
 									</tbody>
 								</table>

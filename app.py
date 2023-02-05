@@ -74,7 +74,7 @@ def gestionadmin():
 
 @app.route('/gestioncliente/')
 def gestioncliente():
-    return render_template("/admin/gestionadmin.html")
+    return render_template("/admin/gestioncliente.html")
 
 # Home cliente
 @app.route('/homecliente/')
