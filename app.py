@@ -6,6 +6,7 @@ from flask import url_for
 from flask import render_template
 from os import listdir
 from werkzeug.utils import secure_filename
+from flask import flash
 
 app = Flask(__name__)
 
@@ -13,6 +14,10 @@ app = Flask(__name__)
 def index():
     
     return render_template("/login/login.html")
+
+ 
+def error404(error):
+    return render_template("/estatico/error404.html"),404
 
 
 # Rutas para login y recuperacion de cuenta
@@ -71,7 +76,13 @@ def gestionadmin():
 def gestioncliente():
     return render_template("/admin/gestionadmin.html")
 
+# Home cliente
+@app.route('/homecliente/')
+def homecliente():
+    return render_template("/cliente/homecliente.html")
+
 
 
 if __name__ == '__main__':
+    app.register_error_handler(404,error404 )
     app.run(debug=True,port=5000)
