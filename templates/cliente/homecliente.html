@@ -1,37 +1,229 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends './base.html' %}
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{url_for("static", filename='css/cuenta.css')}}">
+  <link rel="stylesheet" href="{{url_for("static", filename='css/cliente.css')}}">
 
-    <title>Recuperar cuenta</title>
+  {% block title %}Cliente{% endblock %}
 </head>
-<body>
-    <h2 class=" text-center">Recuperacion de contraseña a traves de verificacion de correo electronico</h2>
-    <div class="py-3">
+{% block footerp %}
 
-    </div>
-    <div class="container text-center cont">
-        <div class="form-container">
-            <form action="#">
-                <h4 class="text-center ">Ingresa correo registrado en la cuenta</h4>
-                <div class="py-3">
-                <input  type="email" placeholder="Correo" />
-            
-            </div>
-                <a class="center btn" href="{{ url_for('verificar') }}">Verificar</a>
-                <p class="forget">
-                    Ya tienes una cuenta? <a href="{{ url_for('login') }}">Iniciar sesión</a>
-                </p>
-          
+
+  <!--Header-->
+  <div>
+    <header class="p-3 mb-3 border-bottom">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+          <div class="dropdown">
+            <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+              <img src="" width="50" height="50" alt="">
+              <span class="fs-5">FARMACLICK</span>
+            </a>
+          </div>
+
+          <form class="mx-auto" role="search">
+            <form class="d-flex" role="search">
+              <input type="search" class="form-control" placeholder="Buscar Medicamento" aria-label="Search">
+
             </form>
+
+
+            <div class="dropdown">
+
+              <div class="dropdown me-auto">
+                <a href="#" class=" link-dark  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
+                  style="margin: 50px;">
+                  <img src="" alt="icon user" width="40" height="40" class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu text-small">
+                  <li><a class="dropdown-item" routerLink="./cuentaCliente.htmll">Iniciar sesión</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <a href="#" class=" link-dark" aria-expanded="false">
+                <img src="" alt="icon user" width="40" height="40" class="rounded-circle">
+              </a>
+            </div>
         </div>
-        
+      </div>
+    </header>
+  </div>
+
+  <!-- Clasificación Productos -->
+  <div class="container">
+    <div class="nav-scroller py-1 mb-2">
+      <nav class="nav d-flex justify-content-between ">
+        <a class="p-2 link-secondary text-decoration-none"" href=" ">Medicamentos</a>
+        <a class=" p-2 link-secondary text-decoration-none"" href=" ">Cuidado Personal</a>
+        <a class="p-2 link-secondary text-decoration-none"" href=" ">Dermacosmética</a>
+        <a class=" p-2 link-secondary text-decoration-none"" href=" ">Nutricionales</a>
+        <a class="p-2 link-secondary text-decoration-none"" href=" ">Bebé</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Carrusel -->
+  <div>
+    <div id=" carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+              <img src="" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+              <img src="" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="" class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+    </div>
+  </div>
+
+  <!-- Contenido -->
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <img src="" class="imgTamano" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">ACETAMINOFÉN 500 MG CAJA CON 100 TABLETAS</h5>
+            <p class="card-text">ES UN MEDICAMENTO. NO EXCEDER SU CONSUMO. LEER INDICACIONES Y CONTRAINDICACIONES. SI
+              LOS SÍNTOMAS PERSISTEN, CONSULTAR
+              AL MÉDICO.</p>
+            <h4 class="precios">$20.400</h4>
+            <div class="centrarButton">
+              <a class="btn btn-primary  btn-sm" href="" role="button">Comprar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="" class="imgTamano" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">ALKA-SELTZER CAJA CON 14 TABLETAS EFERVESCENTES</h5>
+            <p class="card-text">ES UN MEDICAMENTO. NO EXCEDER SU CONSUMO. LEER INDICACIONES Y CONTRAINDICACIONES. SI
+              LOS SÍNTOMAS PERSISTEN, CONSULTAR AL MÉDICO.</p>
+            <h4 class="precios">$11.200</h4>
+            <div class="centrarButton">
+              <a class="btn btn-primary  btn-sm" href="" role="button">Comprar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="" class="imgTamano" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">SHAMPOO HEAD & SHOULDERS FRASCO CON 375 ML</h5>
+            <p class="card-text">REMUEVE IMPUREZAS Y DEJA TU CABELLO HASTA 100% LIBRE DE CASPA, CON UNA SENSACIÓN DE
+              FRESCURA QUE TE ACOMPAÑA DURANTE EL
+              DÍA.</p>
+            <h4 class="precios">$24.950</h4>
+            <div class="centrarButton">
+              <a class="btn btn-primary  btn-sm" href="" role="button">Comprar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="" class="imgTamano" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">ENJUAGUE BUCAL LISTERINE COOL MINT CON 1L</h5>
+            <p class="card-text">COMBATE LOS GÉRMENES QUE CAUSAN EL MAL ALIENTO Y LA PLACA BACTERIANA, PROTEGIENDO LAS
+              ENCÍAS.</p>
+            <h4 class="precios">$32.800</h4>
+            <div class="centrarButton">
+              <a class="btn btn-primary  btn-sm" href="" role="button">Comprar</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-</body>
-</html>
+    <div class="row row-cols-1 row-cols-md-4 g-4 py-3">
+      <div class="col">
+        <div class="card h-100">
+          <img src="" class="imgTamano" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">CREMA LUBRIDERM® PROTECCIÓN SOLAR SPF 15 FRASCO CON 400 ML</h5>
+            <p class="card-text">SU FÓRMULA COMBINA UNA CREMA HUMECTANTE CON LA PROTECCIÓN SOLAR UVA Y UVB SPF 15
+              BRINDANDO UN AMPLIO ESPECTRO DE
+              PROTECCIÓN.</p>
+            <h4 class="precios">$39.600</h4>
+            <div class="centrarButton">
+              <a class="btn btn-primary  btn-sm" href="" role="button">Comprar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="" class="imgTamano" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">VICK VAPORUB UNGÜENTO CAJA CON FRASCO CON 50 G</h5>
+            <p class="card-text">ES UN MEDICAMENTO. NO EXCEDER SU CONSUMO. LEER INDICACIONES Y
+              CONTRAINDICACIONES. SI LOS SÍNTOMAS PERSISTEN, CONSULTAR AL MÉDICO.</p>
+            <h4 class="precios">$14.480</h4>
+            <div class="centrarButton">
+              <a class="btn btn-primary  btn-sm" href="" role="button">Comprar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="" class="imgTamano" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">VITA C + ZINC SABOR NARANJA CAJA CON FRASCO CON 10 TABLETAS</h5>
+            <p class="card-text">UPLEMENTO DIETARIO ESTE PRODUCTO ES UN SUPLEMENTO DIETARIO. NO ES UN MEDICAMENTO Y NO
+              SUPLE UNA ALIMENTACIÓN
+              EQUILIBRADA.</p>
+            <h4 class="precios">$17.400</h4>
+            <div class="centrarButton">
+              <a class="btn btn-primary  btn-sm" href="" role="button">Comprar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="" class="imgTamano" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">PAÑALES WINNY ULTRATRIM SEC ETAPA 4 PACA CON 50 UNIDADES</h5>
+            <p class="card-text">MANTIENE LA COLITA DE TU BEBÉ SECA, PARA EVITAR IRRITACIONES O QUEMADURAS.</p>
+            <h4 class="precios">$72.350</h4>
+            <div class="centrarButton">
+              <a class="btn btn-primary btn-sm" href="" role="button">Comprar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- BOTÓN VER MÁS -->
+    <div class="centrarButton">
+
+      <a class="btn btn-primary  btn-sm" href="" role="button">Ver más</a>
+    </div>
+    <hr>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+    {{super()}}
+
+    {% endblock %}

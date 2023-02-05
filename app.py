@@ -82,7 +82,6 @@ def homecliente():
     return render_template("/cliente/homecliente.html")
 
 
-
 if __name__ == '__main__':
     app.register_error_handler(404,error404 )
     app.run(debug=True,port=5000)
