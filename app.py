@@ -12,7 +12,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    
     return render_template("/cliente/inicio.html")
 
  
@@ -74,7 +73,7 @@ def gestionadmin():
 
 @app.route('/gestioncliente/')
 def gestioncliente():
-    return render_template("/admin/gestionadmin.html")
+    return render_template("/admin/gestioncliente.html")
 
 # Home cliente
 @app.route('/homecliente/')
@@ -124,4 +123,4 @@ def inicio():
 
 if __name__ == '__main__':
     app.register_error_handler(404,error404 )
-    app.run(debug=True,port=5000)
+    app.run(debug=True,port=5010)
