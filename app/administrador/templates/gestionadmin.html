@@ -1,0 +1,308 @@
+
+{% extends 'base_admin.html' %}
+  {% block title %}GestionAdmin{% endblock %}
+
+{% block content %}
+
+	<!-- Content page-->
+	<section class="full-box dashboard-contentPage">
+		<!-- NavBar -->
+		<nav class="full-box dashboard-Navbar">
+			<ul class="full-box list-unstyled text-right">
+				<li class="pull-left">
+					<a href="#!" class="btn-menu-dashboard"><i class="glyphicon glyphicon-th-list"></i></a>
+				</li>
+	
+				<li>
+					<a href="#!" class="btn-modal-help">
+						<i class="glyphicon glyphicon-info-sign"></i>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<!-- Content page -->
+		<div class="container-fluid">
+			<div class="page-header"> 
+			  <h1 class="text-titles text-center"><i class="glyphicon glyphicon-user zmdi-hc-fw"></i>Panel de gestión de administradores</h1>
+			</div>
+			<p class="lead">En este apartado esta diseñado para visualizar la informacion de los administrados registrados, asi como modificar y eliminar esta información</p>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12">
+					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
+						<li><a href="#listcli" data-toggle="tab"><i class="glyphicon glyphicon-eye-open"></i> Lista de administradores</a></li>
+						<li><a href="#adicionarAdm" data-toggle="tab"><i class="glyphicon glyphicon-plus"></i> Adicionar administrador</a></li>
+
+					  	
+					</ul>
+					<div id="myTabContent" class="tab-content">
+						<div class="tab-pane fade active in" id="adicionarAdm">
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-xs-12 col-md-10 col-md-offset-1">
+									    <form action="">
+									    	<div class="form-group label-floating">
+											  <label class="control-label">Nombre </label>
+											  <input class="form-control" type="text">
+											</div>
+											<div class="form-group label-floating">
+											  <label class="control-label">Apellido</label>
+											  <input class="form-control" type="text">
+											</div>
+											<div class="form-group label-floating">
+											  <label class="control-label">Direccion</label>
+											  <textarea class="form-control"></textarea>
+											</div>
+											<div class="form-group label-floating">
+											  <label class="control-label">Correo</label>
+											  <input class="form-control" type="email">
+											</div>
+											<div class="form-group label-floating">
+											  <label class="control-label">Telefono</label>
+											  <input class="form-control" type="number">
+											</div>
+											<div class="form-group label-floating">
+											  <label class="control-label">Cargo</label>
+											  <input class="form-control" type="text">
+											</div>
+											<div class="form-group">
+										        <label class="control-label">Genero</label>
+										        <select class="form-control">
+												  <option selected>Seleccione una opcion</option>
+										          <option>Male</option>
+										          <option>Female</option>
+										        </select>
+										    </div>
+											<div class="row">
+												<div class="col">
+													<p class="text-center">
+														<button href="#!" class="btn btn-danger btn-raised btn-sm"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</button>
+														<button href="#!" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Guardar</button>
+
+													</p>
+												</div>
+											</div>
+									    </form>
+									</div>
+								</div>
+							</div>
+						</div>
+					  	<div class="tab-pane fade" id="listcli">
+							<div class="table-responsive">
+								<table class="table table-hover text-center">
+									<thead>
+										<tr>
+											<th class="text-center">#</th>
+											<th class="text-center">Nombre</th>
+											<th class="text-center">Apellido</th>
+											<th class="text-center">Direccion</th>
+											<th class="text-center">Correo</th>
+											<th class="text-center">Telefono</th>
+											<th class="text-center">Cargo</th>
+											<th class="text-center">Genero</th>
+											<th class="text-center">Modificar</th>
+											<th class="text-center">Eliminar</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>Carlos</td>
+											<td>Alfaro</td>
+											<td>El Salvador</td>
+											<td>carlos@gmail.com</td>
+											<td>+50312345678</td>
+											<td>Web Developer</td>
+											<td>Male</td>
+											<td>
+												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
+												  ><i class="glyphicon glyphicon-edit"></i></a>
+					  
+											  </td>
+											  <td>
+												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
+												><i class="glyphicon glyphicon-remove-circle"></i></a>
+											  </td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>Alicia</td>
+											<td>Melendez</td>
+											<td>El Salvador</td>
+											<td>alicia@gmail.com</td>
+											<td>+50312345678</td>
+											<td>Social Work</td>
+											<td>Female</td>
+											<td>
+												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
+												  ><i class="glyphicon glyphicon-edit"></i></a>
+					  
+											  </td>
+											  <td>
+												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
+												><i class="glyphicon glyphicon-remove-circle"></i></a>
+											  </td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>Sarai</td>
+											<td>Mercado</td>
+											<td>El Salvador</td>
+											<td>sarai@gmail.com</td>
+											<td>+50312345678</td>
+											<td>Lawyer</td>
+											<td>Female</td>
+											<td>
+												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
+												  ><i class="glyphicon glyphicon-edit"></i></a>
+					  
+											  </td>
+											  <td>
+												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
+												><i class="glyphicon glyphicon-remove-circle"></i></a>
+											  </td>
+										</tr>
+										<tr>
+											<td>4</td>
+											<td>Alba</td>
+											<td>Bonilla</td>
+											<td>El Salvador</td>
+											<td>alba@gmail.com</td>
+											<td>+50312345678</td>
+											<td>Designer</td>
+											<td>Female</td>
+											<td>
+												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
+												  ><i class="glyphicon glyphicon-edit"></i></a>
+					  
+											  </td>
+											  <td>
+												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
+												><i class="glyphicon glyphicon-remove-circle"></i></a>
+											  </td>
+										</tr>
+										<tr>
+											<td>5</td>
+											<td>Claudia</td>
+											<td>Rodriguez</td>
+											<td>El Salvador</td>
+											<td>claudia@gmail.com</td>
+											<td>+50312345678</td>
+											<td>Lawyer</td>
+											<td>Female</td>
+											<td>
+												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
+												  ><i class="glyphicon glyphicon-edit"></i></a>
+					  
+											  </td>
+											  <td>
+												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
+												><i class="glyphicon glyphicon-remove-circle"></i></a>
+											  </td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="text-center">
+									<ul class="pagination pagination-sm">
+										<li class="disabled"><a href="#!">«</a></li>
+										<li class="active"><a href="#!">1</a></li>
+										<li><a href="#!">2</a></li>
+										<li><a href="#!">3</a></li>
+										<li><a href="#!">4</a></li>
+										<li><a href="#!">5</a></li>
+										<li><a href="#!">»</a></li>
+									</ul>
+								</div>
+							</div>
+					  	</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+   <!-- Modificar admin -->
+   <section>
+	<div class="modal fade" id="editarad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title " id="exampleModalLabel"><h3 class="text-center">Modificar datos de administrador</h3></h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+			  <form>
+				<form  ROLE="FORM" METHOD="POST" ACTION="">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="mb-3 px-5">
+								<input type="text" class="form-control" id="nombread" name="nombread" placeholder="Nombre" required>
+							</div>
+							<div class="mb-3">
+								<input type="number" class="form-control" id="direccionad" name="direccionad" placeholder="Direccion" required>
+							</div>
+							<div class="mb-3">
+								<input type="number" class="form-control" id="telefonoad" name="telefonoad" placeholder="Telefono" required>
+							</div>
+							
+						</div>
+						<div class="col-md-6">
+							<div class="mb-3 px-5">
+								<input type="text" class="form-control" id="apelldioad" name="apelldioad" placeholder="Apellido" required>
+							</div>
+							<div class="mb-3">
+								<input type="number" class="form-control" id="correoad" name="correoad" placeholder="Correo" required>
+							</div>
+							<div class="mb-3">
+								<input type="number" class="form-control" id="cargogen" name="cargogen" placeholder="Cargo" required>
+							</div>
+							
+						</div>
+						<div class="mb-3">
+							
+							<div class="form-group" id="generoad" name="generoad">
+								<label class="control-label">Genero</label>
+								<select class="form-control">
+								  <option selected>Seleccione una opcion</option>
+								  <option>Male</option>
+								  <option>Female</option>
+								</select>
+							</div>						</div>
+
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
+			  <button type="button" class="btn btn-primary">Cambiar</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+</section>
+
+<!-- Cuadro de dialogo Eliminar -->
+<section>
+	<!-- Modal -->
+	<div class="modal fade" id="eliminarp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel"><h3 class="text-center">Eliminacion de producto</h3></h5>
+			</div>
+			<div class="modal-body">
+				<p class="text-center text-white bg-dar">Esta seguro de eliminar el registro?</p>
+			</div>
+			<div class="modal-footer">
+			<button type="button" class="btn btn-warning">Si</button>
+			<button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		</div>
+	</div>
+</section>
+
+  {% endblock %}

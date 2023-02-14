@@ -1,0 +1,249 @@
+
+{% extends 'base_admin.html' %}
+  {% block title %}Medicamentos{% endblock %}
+
+{% block content %}
+
+	<!-- Content page-->
+	<section class="full-box dashboard-contentPage">
+		<!-- NavBar -->
+		<nav class="full-box dashboard-Navbar">
+			<ul class="full-box list-unstyled text-right">
+				<li class="pull-left">
+					<a href="#!" class="btn-menu-dashboard"><i class="glyphicon glyphicon-th-list"></i></a>
+				</li>
+
+				<li>
+					<a href="#!" class="btn-modal-help">
+						<i class="glyphicon glyphicon-info-sign"></i>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<!-- Content page -->
+		<div class="container-fluid">
+			<div class="page-header">
+			  <h1 class="text-titles text-center"><i class="glyphicon glyphicon-minus zmdi-hc-fw"></i> Administracion de medicamentos en general</h1>
+			</div>
+			<p class="lead text-center">Esta sección permite operar sobre medicamentos de diferentes tipos y/o presentaciones
+			</p>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12">
+					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
+						
+						<li><a href="#listprod" data-toggle="tab"><i class="glyphicon glyphicon-eye-open"></i> Lista de productos</a></li>
+						<li><a href="#adicionar" data-toggle="tab"><i class="glyphicon glyphicon-plus"></i> Adicionar producto</a></li>
+				
+					  	
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane fade active in" id="adicionar">
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-12 col-md-10 col-md-offset-1">
+									    <form action="">
+									    	<div class="form-group label-floating">
+											  <label class="control-label">Nombre</label>
+											  <input class="form-control" type="text">
+											</div>
+											<div class="form-group label-floating">
+											  <label class="control-label">Descripcion</label>
+											  <input class="form-control" type="text">
+											</div>
+											<div class="form-group label-floating">
+											  <label class="control-label">Cantidad</label>
+											  <textarea class="form-control"></textarea>
+											</div>
+											<div class="form-group label-floating">
+											  <label class="control-label">Precio</label>
+											  <input class="form-control" type="text">
+											</div>
+											
+											<div class="form-group label-floating">
+											  <label class="control-label">Proveedor</label>
+											  <input class="form-control" type="text">
+											</div>
+											<div class="form-group">
+										        <label class="control-label">Fecha Vencimiento</label>
+										        <input class="form-control" type="date">
+										    </div>
+											<div class="form-group">
+										      <label class="control-label">Imagen</label>
+										      <div>
+										        <input type="text" readonly="" class="form-control" placeholder="Abrir Explorador">
+										        <input type="file" >
+										      </div>
+										    </div>
+												<div class="row">
+													<div class="col">
+														<p class="text-center">
+															<button href="#!" class="btn btn-danger btn-raised btn-sm"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</button>
+															<button href="#!" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Guardar</button>
+
+														</p>
+													</div>
+												</div>
+											
+		
+
+									    </form>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					  	<div class="tab-pane fade" id="listprod">
+							<div class="table-responsive">
+								<table class="table table-hover text-center">
+									<thead>
+										<tr>
+											<th class="text-center">#</th>
+											<th class="text-center">Nombre</th>
+											<th class="text-center">Cantidad disponible</th>
+											<th class="text-center">Precio</th>
+											<th class="text-center">Fecha Vencimiento
+											<th class="text-center">Modificar
+											</th>
+											<th class="text-center">Eliminar</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>Period 1</td>
+											<td>Active</td>
+											<td>23/01/2017</td>
+											<td>23/03/2017</td>
+										
+											<td>
+												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
+												  ><i class="glyphicon glyphicon-edit"></i></a>
+					  
+											  </td>
+											  <td>
+												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
+												><i class="glyphicon glyphicon-remove-circle"></i></a>
+											  </td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>Period 2</td>
+											<td>Active</td>
+											<td>24/03/2017</td>
+											<td>23/06/2017</td>
+									
+											<td>
+												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
+												  ><i class="glyphicon glyphicon-edit"></i></a>
+					  
+											  </td>
+											  <td>
+												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
+												><i class="glyphicon glyphicon-remove-circle"></i></a>
+											  </td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>Period 3</td>
+											<td>Active</td>
+											<td>24/06/2017</td>
+											<td>23/09/2017</td>
+											
+											<td>
+												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
+												  ><i class="glyphicon glyphicon-edit"></i></a>
+					  
+											  </td>
+											  <td>
+												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
+												><i class="glyphicon glyphicon-remove-circle"></i></a>
+											  </td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="text-center">
+									<ul class="pagination pagination-sm">
+										<li class="disabled"><a href="#!">«</a></li>
+										<li class="active"><a href="#!">1</a></li>
+										<li><a href="#!">2</a></li>
+										<li><a href="#!">3</a></li>
+										<li><a href="#!">4</a></li>
+										<li><a href="#!">5</a></li>
+										<li><a href="#!">»</a></li>
+									</ul>
+								</div>
+							</div>
+					  	</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	   <!-- Modificar producto -->
+	   <section>
+		<div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <h5 class="modal-title " id="exampleModalLabel"><h3 class="text-center">Modificar producto</h3></h5>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="modal-body">
+				  <form>
+					<form  ROLE="FORM" METHOD="POST" ENCTYPE="MULTIPART/FORM-DATA" ACTION="">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="mb-3 px-5">
+									<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
+								</div>
+								<div class="mb-3">
+									<input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad disponible" required>
+								</div>
+								<div class="mb-3">
+									<input type="number" class="form-control" id="precio" name="precio" placeholder="Precio" required>
+								</div>
+								<div class="mb-3">
+									<input type="date" class="form-control" id="fechaven" name="fechaven" placeholder="Fecha Vencimiento" required>
+								</div>
+								
+							</div>
+
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
+				  <button type="button" class="btn btn-primary">Cambiar</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+    </section>
+
+	<!-- Cuadro de dialogo Eliminar -->
+	<section>
+		<!-- Modal -->
+		<div class="modal fade" id="eliminarp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel"><h3 class="text-center">Eliminacion de producto</h3></h5>
+				</div>
+				<div class="modal-body">
+					<p class="text-center text-white bg-dar">Esta seguro de eliminar el registro?</p>
+				</div>
+				<div class="modal-footer">
+				<button type="button" class="btn btn-warning">Si</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+				</div>
+			</div>
+			</div>
+		</div>
+	</section>
+
+  {% endblock %}
