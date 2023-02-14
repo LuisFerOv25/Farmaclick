@@ -10,20 +10,26 @@ from flask import flash
 from administrador import administrador
 from cliente import cliente
 from auth import autenticar
-from error import error
+
 
 app = Flask(__name__)
 
 app.register_blueprint(administrador)
 app.register_blueprint(cliente)
 app.register_blueprint(autenticar)
-app.register_blueprint(error)
+
+@app.errorhandler(500)
+def base_error_handler(e):
+    return render_template('error500.html', error="Parece que ha habido un error"), 500
 
 @app.errorhandler(404)
-def page_not_found(error):
-	return render_template("error.html",error="Página no encontrada"), 404
+def error_404_handler(e):
+    return render_template("error404.html", error="Página no encontrada"), 404
+
+@app.errorhandler(401)
+def error_401_handler(e):
+    return render_template('error401.html', error="No tienes permisos de acceso"), 401
 
 
 if __name__ == '__main__':
-    app.register_error_handler(404,error)
-    app.run(debug=True,port=5010)
+    app.run(debug=True, port=5010)
