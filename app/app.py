@@ -1,18 +1,24 @@
 from flask import Flask
-from flask import request
-from flask import abort
-from flask import redirect
-from flask import url_for
 from flask import render_template
-from os import listdir
-from flask import flash
-
+from flask import request,session
 from administrador import administrador
 from cliente import cliente
 from auth import autenticar
-
+from datetime import date
+from flask_mysqldb import MySQL
 
 app = Flask(__name__)
+app.secret_key = '97110c78ae51a45af397be6534caef90ebb9b1dcb3380af008f90b23a5d1616bf19bc29098105da20fe'
+
+
+#Conexion
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'db_farmaclick'
+
+
+mysql = MySQL(app)
 
 app.register_blueprint(administrador)
 app.register_blueprint(cliente)

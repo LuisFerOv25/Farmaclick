@@ -27,140 +27,67 @@
 			</div>
 			<p class="lead">En este apartado esta diseñado para visualizar la informacion de los clientes, asi como modificar y eliminar la informacion almacenada</p>
 		</div>
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-xs-12">
-					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
-						<li><a href="#listcli" data-toggle="tab"><i class="glyphicon glyphicon-eye-open"></i> Lista de clientes</a></li>
+		<div class="tab-content">
 
-					  	
-					</ul>
-					
-					  	<div class="tab-pane fade" id="listcli">
-							<div class="table-responsive">
-								<table class="table table-hover text-center">
-									<thead>
-										<tr>
-											<th class="text-center">#</th>
-											<th class="text-center">Nombre</th>
-											<th class="text-center">Apellido</th>
-											<th class="text-center">Direccion</th>
-											<th class="text-center">Correo</th>
-											<th class="text-center">Telefono</th>
-											<th class="text-center">Genero</th>
-											<th class="text-center">Modificar</th>
-											<th class="text-center">Eliminar</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Carlos</td>
-											<td>Alfaro</td>
-											<td>El Salvador</td>
-											<td>carlos@gmail.com</td>
-											<td>+50312345678</td>
-											<td>Male</td>
-											<td>
-												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
-												  ><i class="glyphicon glyphicon-edit"></i></a>
-					  
-											  </td>
-											  <td>
-												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
-												><i class="glyphicon glyphicon-remove-circle"></i></a>
-											  </td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Alicia</td>
-											<td>Melendez</td>
-											<td>El Salvador</td>
-											<td>alicia@gmail.com</td>
-											<td>+50312345678</td>
-											<td>Female</td>
-											<td>
-												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
-												  ><i class="glyphicon glyphicon-edit"></i></a>
-					  
-											  </td>
-											  <td>
-												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
-												><i class="glyphicon glyphicon-remove-circle"></i></a>
-											  </td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Sarai</td>
-											<td>Mercado</td>
-											<td>El Salvador</td>
-											<td>sarai@gmail.com</td>
-											<td>+50312345678</td>
-											<td>Female</td>
-											<td>
-												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
-												  ><i class="glyphicon glyphicon-edit"></i></a>
-					  
-											  </td>
-											  <td>
-												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
-												><i class="glyphicon glyphicon-remove-circle"></i></a>
-											  </td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>Alba</td>
-											<td>Bonilla</td>
-											<td>El Salvador</td>
-											<td>alba@gmail.com</td>
-											<td>+50312345678</td>
-											<td>Female</td>
-											<td>
-												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
-												  ><i class="glyphicon glyphicon-edit"></i></a>
-					  
-											  </td>
-											  <td>
-												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
-												><i class="glyphicon glyphicon-remove-circle"></i></a>
-											  </td>
-										</tr>
-										<tr>
-											<td>5</td>
-											<td>Claudia</td>
-											<td>Rodriguez</td>
-											<td>El Salvador</td>
-											<td>claudia@gmail.com</td>
-											<td>+50312345678</td>
-											<td>Female</td>
-											<td>
-												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
-												  ><i class="glyphicon glyphicon-edit"></i></a>
-					  
-											  </td>
-											  <td>
-												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
-												><i class="glyphicon glyphicon-remove-circle"></i></a>
-											  </td>
-										</tr>
-									</tbody>
-								</table>
-								<div class="text-center">
-									<ul class="pagination pagination-sm">
-										<li class="disabled"><a href="#!">«</a></li>
-										<li class="active"><a href="#!">1</a></li>
-										<li><a href="#!">2</a></li>
-										<li><a href="#!">3</a></li>
-										<li><a href="#!">4</a></li>
-										<li><a href="#!">5</a></li>
-										<li><a href="#!">»</a></li>
-									</ul>
-								</div>
-							</div>
-					  	</div>
+			  <div class="tab-pane active in" id="listAdm">
+				<div class="table-responsive">
+					<table class="table table-hover text-center">
+						<thead>
+							<tr>
+								<th class="text-center">#</th>
+								<th class="text-center">Nombre</th>
+								<th class="text-center">Apellido</th>
+								<th class="text-center">Direccion</th>
+								<th class="text-center">Correo</th>
+								<th class="text-center">Telefono</th>
+			
+								<th class="text-center">Genero</th>
+								<th class="text-center">Modificar</th>
+								<th class="text-center">Eliminar</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for dato in usuarios %}
+							<tr>
+								<td>{{dato[0]}}</td>
+								<td>{{dato[2]}}</td>
+								<td>{{dato[3]}}</td>
+								<td>{{dato[5]}}</td>
+								<td>{{dato[4]}}</td>
+								<td>{{dato[6]}}</td>
+								<td>{{dato[7]}}</td>
+							
+								<td>
+																{# Pasar el id (lo que hay en juego[0] #}
+								 <a href="{{url_for('administrador.editar_usuario', id=dato[0])}}" class="btn btn-success btn-raised btn-xs""
+									><i class="glyphicon glyphicon-edit"></i></a>
+		  
+								  </td>
+								  <td>
+									<form action="{{url_for('administrador.eliminar_usuario')}}" method="POST">
+										<input type="hidden" name="id" value="{{dato[0]}}">
+										<button class="btn btn-danger btn-raised btn-xs"><i class="glyphicon glyphicon-remove-circle"></i></button>
+									</form>
+
+								  </td>
+							</tr>
+							
+							{% endfor %}
+						</tbody>
+					</table>
+					<div class="text-center">
+						<ul class="pagination pagination-sm">
+							<li class="disabled"><a href="#!">«</a></li>
+							<li class="active"><a href="#!">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#!">3</a></li>
+							<li><a href="#!">4</a></li>
+							<li><a href="#!">5</a></li>
+							<li><a href="#!">»</a></li>
+						</ul>
 					</div>
 				</div>
-			</div>
+			  </div>
 		</div>
 	</section>
 

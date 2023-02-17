@@ -8,7 +8,7 @@
   <h2 class="py-5">Registra tu cuenta y accede a nuestros servicios</h2>
   <div class="container containerr" id="container">
     <div class="form-container sign-up-container">
-      <form action="#">
+      <form action="{{ url_for('autenticar.loginUsser') }}" method="POST" autocomplete="off">
         <h1>Iniciar sesión</h1>
         <div class="social-container">
           <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -16,45 +16,44 @@
           <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
         </div>
         <span>o usa tu cuenta</span>
-        <input type="email" placeholder="Correo" />
-        <input type="password" placeholder="Contraseña" />
+        <input type="email" name="correo" id="correo" placeholder="Correo" />
+        <input type="password" name="password" id="password" placeholder="Contraseña" />
 
 
         <a class="resetpass" href="{{ url_for('autenticar.recuperarc') }}">Olvidaste tu contraseña?</a>
         <!-- <button>Acceder</button> -->
-        <a class="center btn" href="{{ url_for('administrador.home_admin') }}">Iniciar sesión</a>
+        <button type="submit" class="btn btn-primary btn-send">Iniciar Sesión</button>
         <a class="center btn" href="{{ url_for('cliente.homecliente') }}">Iniciar sesión cliente</a>
 
       </form>
     </div>
     <div class="form-container sign-in-container">
-      <form action="#">
-        <h2>Crear una cuenta</h2>
-        <!-- <div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-			</div>
-			<span>or use your email for registration</span> -->
-        <input type="text" placeholder="Nombre" />
-        <input type="text" placeholder="Apellido" />
-        <input type="email" placeholder="Correo" />
-        <input type="text" placeholder="Direccion" />
-        <input type="email" placeholder="Telefono" />
+        <form name="formRegisterClient" id="formRegisterClient" action="{{ url_for('autenticar.registerUser') }}" method="POST" autocomplete="off">
 
-        <select class="form-control">
-          <option selected>Seleccione genero</option>
-          <option>M</option>
-          <option>F</option>
-        </select>
+                    <input type="text" name="nombre" autofocus required placeholder='Nombre'>
+                    <input type="text" name="apellido"  required placeholder='Apellido'>
 
-        <input type="password" placeholder="Contraseña" />
-        <input type="password" placeholder="Confirmar contraseña" />
-        <div class="py-3">
-          <button>Registrar</button>
-        </div>
-
-      </form>
+                    <input type="email" name="correo" required placeholder='Correo'>
+               
+                    <input type="text" name="direccion" required placeholder='Direccion'>
+  
+                    <input type="phone" name="telefono" required placeholder='Telefono'>
+                    <input type="password" name="password" required placeholder='Password'>
+                    <input type="password" name="repite_password" required placeholder ='Repite contraseña'>
+        
+                        <select name="genero" required>
+                            <option value="" selected="selected">--- Seleccione genero---</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                        </select>
+            
+        
+        
+            <div class="d-grid gap-2 mt-3 mb-3">
+                <input type="submit" class="btn btn-primary btn-send" id="sendForm" value="Registrar">
+            </div>
+      
+        </form>
 
     </div>
 

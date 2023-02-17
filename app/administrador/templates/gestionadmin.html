@@ -26,199 +26,136 @@
 			  <h1 class="text-titles text-center"><i class="glyphicon glyphicon-user zmdi-hc-fw"></i>Panel de gestión de administradores</h1>
 			</div>
 			<p class="lead">En este apartado esta diseñado para visualizar la informacion de los administrados registrados, asi como modificar y eliminar esta información</p>
+			<ul class="nav nav-tabs" style="margin-bottom: 15px;">
+				<li><a href="#listAdm" data-toggle="tab"><i class="glyphicon glyphicon-eye-open"></i> Lista de administradores</a></li>
+				<li><a href="#adicionarAdm" data-toggle="tab"><i class="glyphicon glyphicon-plus"></i> Adicionar administrador</a></li>
+
+				  
 		</div>
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-xs-12">
-					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
-						<li><a href="#listcli" data-toggle="tab"><i class="glyphicon glyphicon-eye-open"></i> Lista de administradores</a></li>
-						<li><a href="#adicionarAdm" data-toggle="tab"><i class="glyphicon glyphicon-plus"></i> Adicionar administrador</a></li>
+		<div class="tab-content">
+			<div class="tab-pane fade active in" id="adicionarAdm">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 col-md-10 col-md-offset-1">
+							<form action="{{url_for('administrador.registerUser')}}" method="post">
+								<input type="hidden" name="tipo_user" value="1">
+								<div class="form-group label-floating">
+								  <label class="control-label">Nombre</label>
+								  <input class="form-control" type="text" name="nombre" id="nombre">
+								</div>
+								<div class="form-group label-floating">
+								  <label class="control-label">Apellido</label>
+								  <input class="form-control" type="text" name="apellido" id="apellido">
+								</div>
+								<div class="form-group label-floating">
+								  <label class="control-label">Direccion</label>
+								  <input class="form-control" type="text" name="direccion" id="direccion">
+								</div>
+								<div class="form-group label-floating">
+								  <label class="control-label">Telefono</label>
+								  <input class="form-control" type="phone" name="telefono" id="telefono">
+								</div>
+								
+								<div class="form-group label-floating">
+								  <label class="control-label">Correo</label>
+								  <input class="form-control" type="email" name="correo" id="correo">
+								</div>
+								
+								<div class="form-group"  >
+									<label class="control-label">Genero</label>
+									<select class="form-control" name="genero">
+									  <option selected>Seleccione una opcion</option>
+									  <option>Male</option>
+									  <option>Female</option>
+									</select>
+								</div>
 
-					  	
-					</ul>
-					<div id="myTabContent" class="tab-content">
-						<div class="tab-pane fade active in" id="adicionarAdm">
-							<div class="container-fluid">
-								<div class="row">
-									<div class="col-xs-12 col-md-10 col-md-offset-1">
-									    <form action="">
-									    	<div class="form-group label-floating">
-											  <label class="control-label">Nombre </label>
-											  <input class="form-control" type="text">
-											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Apellido</label>
-											  <input class="form-control" type="text">
-											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Direccion</label>
-											  <textarea class="form-control"></textarea>
-											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Correo</label>
-											  <input class="form-control" type="email">
-											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Telefono</label>
-											  <input class="form-control" type="number">
-											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Cargo</label>
-											  <input class="form-control" type="text">
-											</div>
-											<div class="form-group">
-										        <label class="control-label">Genero</label>
-										        <select class="form-control">
-												  <option selected>Seleccione una opcion</option>
-										          <option>Male</option>
-										          <option>Female</option>
-										        </select>
-										    </div>
-											<div class="row">
-												<div class="col">
-													<p class="text-center">
-														<button href="#!" class="btn btn-danger btn-raised btn-sm"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</button>
-														<button href="#!" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Guardar</button>
+								<div class="form-group label-floating">
+									<label class="control-label">Contraseña</label>
+									<input class="form-control" type="password" name="password" id="password">
+								  </div>
+								  <div class="form-group label-floating">
+									<label class="control-label">Repetir contraseña</label>
+									<input class="form-control" type="password" name="repite_password" id="repite_password">
+								  </div>
+	
+									<div class="row">
+										<div class="col">
+											<p class="text-center">
+												<button href="#!" class="btn btn-danger btn-raised btn-sm"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</button>
+												<button type="submit" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Guardar</button>
 
-													</p>
-												</div>
-											</div>
-									    </form>
+											</p>
+										</div>
 									</div>
-								</div>
-							</div>
+								
+
+
+							</form>
 						</div>
-					  	<div class="tab-pane fade" id="listcli">
-							<div class="table-responsive">
-								<table class="table table-hover text-center">
-									<thead>
-										<tr>
-											<th class="text-center">#</th>
-											<th class="text-center">Nombre</th>
-											<th class="text-center">Apellido</th>
-											<th class="text-center">Direccion</th>
-											<th class="text-center">Correo</th>
-											<th class="text-center">Telefono</th>
-											<th class="text-center">Cargo</th>
-											<th class="text-center">Genero</th>
-											<th class="text-center">Modificar</th>
-											<th class="text-center">Eliminar</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Carlos</td>
-											<td>Alfaro</td>
-											<td>El Salvador</td>
-											<td>carlos@gmail.com</td>
-											<td>+50312345678</td>
-											<td>Web Developer</td>
-											<td>Male</td>
-											<td>
-												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
-												  ><i class="glyphicon glyphicon-edit"></i></a>
-					  
-											  </td>
-											  <td>
-												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
-												><i class="glyphicon glyphicon-remove-circle"></i></a>
-											  </td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Alicia</td>
-											<td>Melendez</td>
-											<td>El Salvador</td>
-											<td>alicia@gmail.com</td>
-											<td>+50312345678</td>
-											<td>Social Work</td>
-											<td>Female</td>
-											<td>
-												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
-												  ><i class="glyphicon glyphicon-edit"></i></a>
-					  
-											  </td>
-											  <td>
-												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
-												><i class="glyphicon glyphicon-remove-circle"></i></a>
-											  </td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Sarai</td>
-											<td>Mercado</td>
-											<td>El Salvador</td>
-											<td>sarai@gmail.com</td>
-											<td>+50312345678</td>
-											<td>Lawyer</td>
-											<td>Female</td>
-											<td>
-												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
-												  ><i class="glyphicon glyphicon-edit"></i></a>
-					  
-											  </td>
-											  <td>
-												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
-												><i class="glyphicon glyphicon-remove-circle"></i></a>
-											  </td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>Alba</td>
-											<td>Bonilla</td>
-											<td>El Salvador</td>
-											<td>alba@gmail.com</td>
-											<td>+50312345678</td>
-											<td>Designer</td>
-											<td>Female</td>
-											<td>
-												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
-												  ><i class="glyphicon glyphicon-edit"></i></a>
-					  
-											  </td>
-											  <td>
-												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
-												><i class="glyphicon glyphicon-remove-circle"></i></a>
-											  </td>
-										</tr>
-										<tr>
-											<td>5</td>
-											<td>Claudia</td>
-											<td>Rodriguez</td>
-											<td>El Salvador</td>
-											<td>claudia@gmail.com</td>
-											<td>+50312345678</td>
-											<td>Lawyer</td>
-											<td>Female</td>
-											<td>
-												<a href="#!" class="btn btn-success btn-raised btn-xs" data-toggle="modal" data-target="#editar" data-whatever="@fat"
-												  ><i class="glyphicon glyphicon-edit"></i></a>
-					  
-											  </td>
-											  <td>
-												<a href="#!" class="btn btn-danger btn-raised btn-xs" data-toggle="modal" data-target="#eliminarp"
-												><i class="glyphicon glyphicon-remove-circle"></i></a>
-											  </td>
-										</tr>
-									</tbody>
-								</table>
-								<div class="text-center">
-									<ul class="pagination pagination-sm">
-										<li class="disabled"><a href="#!">«</a></li>
-										<li class="active"><a href="#!">1</a></li>
-										<li><a href="#!">2</a></li>
-										<li><a href="#!">3</a></li>
-										<li><a href="#!">4</a></li>
-										<li><a href="#!">5</a></li>
-										<li><a href="#!">»</a></li>
-									</ul>
-								</div>
-							</div>
-					  	</div>
 					</div>
 				</div>
 			</div>
+
+			  <div class="tab-pane fade" id="listAdm">
+				<div class="table-responsive">
+					<table class="table table-hover text-center">
+						<thead>
+							<tr>
+								<th class="text-center">#</th>
+								<th class="text-center">Nombre</th>
+								<th class="text-center">Apellido</th>
+								<th class="text-center">Direccion</th>
+								<th class="text-center">Correo</th>
+								<th class="text-center">Telefono</th>
+			
+								<th class="text-center">Genero</th>
+								<th class="text-center">Modificar</th>
+								<th class="text-center">Eliminar</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for dato in usuarios %}
+							<tr>
+								<td>{{dato[0]}}</td>
+								<td>{{dato[2]}}</td>
+								<td>{{dato[3]}}</td>
+								<td>{{dato[5]}}</td>
+								<td>{{dato[4]}}</td>
+								<td>{{dato[6]}}</td>
+								<td>{{dato[7]}}</td>
+							
+								<td>
+																{# Pasar el id (lo que hay en juego[0] #}
+								 <a href="{{url_for('administrador.editar_usuario', id=dato[0])}}" class="btn btn-success btn-raised btn-xs""
+									><i class="glyphicon glyphicon-edit"></i></a>
+		  
+								  </td>
+								  <td>
+									<form action="{{url_for('administrador.eliminar_usuario')}}" method="POST">
+										<input type="hidden" name="id" value="{{dato[0]}}">
+										<button class="btn btn-danger btn-raised btn-xs"><i class="glyphicon glyphicon-remove-circle"></i></button>
+									</form>
+
+								  </td>
+							</tr>
+							
+							{% endfor %}
+						</tbody>
+					</table>
+					<div class="text-center">
+						<ul class="pagination pagination-sm">
+							<li class="disabled"><a href="#!">«</a></li>
+							<li class="active"><a href="#!">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#!">3</a></li>
+							<li><a href="#!">4</a></li>
+							<li><a href="#!">5</a></li>
+							<li><a href="#!">»</a></li>
+						</ul>
+					</div>
+				</div>
+			  </div>
 		</div>
 	</section>
 

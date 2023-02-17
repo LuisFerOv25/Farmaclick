@@ -1,0 +1,97 @@
+
+{% extends 'base_admin.html' %}
+  {% block title %}Bebé{% endblock %}
+
+{% block content %}
+
+	<!-- Content page-->
+	<section class="full-box dashboard-contentPage">
+		<!-- NavBar -->
+		<nav class="full-box dashboard-Navbar">
+			<ul class="full-box list-unstyled text-right">
+				<li class="pull-left">
+					<a href="#!" class="btn-menu-dashboard"><i class="glyphicon glyphicon-th-list"></i></a>
+				</li>
+
+				<li>
+					<a href="#!" class="btn-modal-help">
+						<i class="glyphicon glyphicon-info-sign"></i>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<!-- Content page -->
+		<div class="container-fluid">
+			<div class="page-header">
+			  <h1 class="text-titles text-center"><i class="glyphicon glyphicon-baby-formula zmdi-hc-fw"></i> Administracion de usuarios para bebé</h1>
+			</div>
+			<p class="lead text-center">Esta sección permite operar sobre los usuarios para el cuidado del bebé
+			</p>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12">
+					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
+						
+						<li><a href="#listprod" data-toggle="tab"><i class="glyphicon glyphicon-eye-open"></i> Lista de usuarios</a></li>
+						<li><a href="#adicionar" data-toggle="tab"><i class="glyphicon glyphicon-plus"></i> Adicionar producto</a></li>
+				
+					  	
+					</ul>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-md-10 col-md-offset-1">
+                                <form action="{{url_for('administrador.actualizar_usuario')}}" method="post">
+                                    <input type="hidden" name="id" value="{{usuarios[0]}}">
+
+                                    <div class="form-group label-floating">
+                                      <label class="control-label">Nombre</label>
+                                      <input value="{{usuarios[2]}}" required type="text" class="input" placeholder="Nombre" name="nombre" id="nombre">
+                                    </div>
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Apellido</label>
+                                        <input value="{{usuarios[3]}}" required type="text" class="input" placeholder="Descripcion" name="descripcion" id="descripcion">
+                                      </div>
+                                    <div class="form-group label-floating">
+                                      <label class="control-label">Direccion</label>
+                                      <input value="{{usuarios[5]}}" required type="text" class="input" placeholder="Cantidad" name="cantidad" id="cantidad">
+                                    </div>
+                                    <div class="form-group label-floating">
+                                      <label class="control-label">Correo</label>
+                                      <input value="{{usuarios[4]}}" required type="number" class="input" placeholder="Precio" name="precio" id="precio">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label">Telefono</label>
+                                        <input type="date" value="{{usuarios[6]}}" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" placeholder="Fecha Vencimiento" required>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="control-label">Genero</label>
+                                      <select class="form-control">
+                                        <option selected>Seleccione una opcion</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                      </select>
+                                    </div>
+                                    
+                                        <div class="row">
+                                            <div class="col">
+                                                <p class="text-center">
+                                                    <button href="#!" class="btn btn-danger btn-raised btn-sm"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</button>
+                                                    <button type="submit" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Guardar</button>
+            
+                                                </p>
+                                            </div>
+                                        </div>
+                                    
+            
+            
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+  {% endblock %}
