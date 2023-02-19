@@ -6,7 +6,7 @@ from datetime import date
 from datetime import datetime
 
 from bd import *  #Importando conexion BD
-from controlador_juegos import *  #Importando mis Funciones
+from controller import *  #Importando mis Funciones
 
 import re
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -130,12 +130,14 @@ def loginUsser():
                     session['create_at']        = account['create_at']
 
                     msg = "Ha iniciado sesión correctamente."
-                    return render_template('./home.html', msjAlert = msg, typeAlert=1, dataLogin = dataLoginSesion())                    
+                    if session['tipo_user'] == 1:
+                        render_template('./home.html', msjAlert = msg, typeAlert=1, dataLogin = dataLoginSesion()) 
+                    else:
+                        return render_template('./homecliente.html', msjAlert = msg, typeAlert=1, dataLogin = dataLoginSesion()) 
                 else:
                     msg = 'Datos incorrectos, por favor verfique!'
                     return render_template('login.html', msjAlert = msg, typeAlert=0)
             else:
                 return render_template('login.html', msjAlert = msg, typeAlert=0)
     return render_template('login.html', msjAlert = 'Debe iniciar sesión.', typeAlert=0)
-
 

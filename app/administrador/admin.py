@@ -2,14 +2,14 @@ from flask import render_template
 from datetime import date
 from flask import request,session
 from . import administrador
-import controlador_juegos
+import controller
 from flask import Flask,url_for,redirect
 
 from datetime import date
 
 
 from bd import *  #Importando conexion BD
-from controlador_juegos import *  #Importando mis Funciones
+from controller import *  #Importando mis Funciones
 
 import re
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -31,7 +31,7 @@ def registrar_producto():
     fecha_vencimiento = request.form["fecha_vencimiento"]
     imagen = request.form["imagen"]
     categoria = request.form["categoria"]
-    controlador_juegos.insertar_producto(nombre, descripcion, cantidad,precio,proveedor,fecha_vencimiento,imagen,categoria)
+    controller.insertar_producto(nombre, descripcion, cantidad,precio,proveedor,fecha_vencimiento,imagen,categoria)
     # De cualquier modo, y si todo fue bien, redireccionar
     return render_template("home.html")
 
@@ -39,54 +39,54 @@ def registrar_producto():
 #Gestion de productos
 @administrador.route('/cuidado_personal/')
 def cuidado_personal():
-    productos = controlador_juegos.producto_personal()
+    productos = controller.producto_personal()
     return render_template("cuidadopersonal.html", productos=productos)
 
 @administrador.route('/dermacosmetico/')
 def dermacosmetico():
-    productos = controlador_juegos.producto_dermacosmetico()
+    productos = controller.producto_dermacosmetico()
     return render_template("dermacos.html", productos=productos)
 
 
 @administrador.route('/nutricional/')
 def nutricional():
-    productos = controlador_juegos.producto_nutricional()
+    productos = controller.producto_nutricional()
     return render_template("nutricional.html", productos=productos)
 
 
 @administrador.route('/bebe/')
 def bebe():
-    productos = controlador_juegos.producto_bebe()
+    productos = controller.producto_bebe()
     return render_template("bebe.html", productos=productos)
 
 
 @administrador.route('/medicamento/')
 def medicamento():
-    productos = controlador_juegos.producto_medicamento()
+    productos = controller.producto_medicamento()
     return render_template("medicamento.html", productos=productos)
 
 #Gestion de usuarios
 @administrador.route('/gestionadmin/')
 def gestionadmin():
-    usuarios = controlador_juegos.usuario_admin()
+    usuarios = controller.usuario_admin()
     return render_template("gestionadmin.html", usuarios=usuarios)
 
 @administrador.route('/gestioncliente/')
 def gestioncliente():
-    usuarios = controlador_juegos.usuario_cliente()
+    usuarios = controller.usuario_cliente()
     return render_template("gestioncliente.html", usuarios=usuarios)
 
 @administrador.route("/formulario_editar_producto/<int:id_producto>")
 def editar_producto(id_producto):
     # Obtener el juego por ID
-    productos = controlador_juegos.obtener_producto_por_id(id_producto)
+    productos = controller.obtener_producto_por_id(id_producto)
     return render_template("editar_producto.html", productos=productos)
 
 
 @administrador.route("/formulario_editar_usuario/<int:id>")
 def editar_usuario(id):
     # Obtener el juego por ID
-    usuarios = controlador_juegos.obtener_producto_por_id(id)
+    usuarios = controller.obtener_producto_por_id(id)
     return render_template("editar_usuario.html", usuarios=usuarios)
 
 @administrador.route("/actualizar_producto", methods=["POST"])
@@ -97,7 +97,7 @@ def actualizar_producto():
     descripcion = request.form["descripcion"]
     precio = request.form["precio"]
     fecha_vencimiento = request.form["fecha_vencimiento"]
-    controlador_juegos.actualizar_producto(nombre,descripcion,cantidad ,precio,fecha_vencimiento,id_producto )
+    controller.actualizar_producto(nombre,descripcion,cantidad ,precio,fecha_vencimiento,id_producto )
     return render_template("home.html")
 
 
@@ -110,20 +110,20 @@ def actualizar_usuario():
     direccion = request.form["direccion"]
     telefono = request.form["telefono"]
     genero = request.form["genero"]
-    controlador_juegos.insertar_usuario(nombre, apellido,correo,direccion,telefono,genero)
+    controller.insertar_usuario(nombre, apellido,correo,direccion,telefono,genero)
     return render_template("home.html")
 
 
 @administrador.route("/eliminar_producto", methods=["POST"])
 def eliminar_producto():
-    controlador_juegos.eliminar_producto(request.form["id_producto"])
+    controller.eliminar_producto(request.form["id_producto"])
     return render_template("home.html")
 
 
 
 @administrador.route("/eliminar_usuario", methods=["POST"])
 def eliminar_usuario():
-    controlador_juegos.eliminar_usuario(request.form["id"])
+    controller.eliminar_usuario(request.form["id"])
     return render_template("home.html")
 
 

@@ -151,7 +151,7 @@ def dataPerfilUsuario():
     mycursor       = conexion.cursor()
     idUser         = session['id']
     
-    querySQL  = ("SELECT * FROM ususrio WHERE id='%s'" % (idUser,))
+    queryFSQL  = ("SELECT * FROM ususrio WHERE id='%s'" % (idUser,))
     mycursor.execute(querySQL)
     datosUsuario = mycursor.fetchone() 
     mycursor.close() #cerrrando conexion SQL
