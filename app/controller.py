@@ -1,6 +1,6 @@
 
 from bd import *
-from flask import session
+from flask import session,render_template
 
 def insertar_producto(nombre, descripcion, cantidad,precio,proveedor,fecha_vencimiento,imagen,categoria):
     try:
@@ -87,6 +87,25 @@ def usuario_cliente():
     return usuarios
 
 
+def user_cant_admin():
+    conexion = obtener_conexion()
+    usuarios = []
+    with conexion.cursor() as cursor:
+        cursor.execute("SELECT count(*) FROM usuario where tipo_user = 1")
+        usuarios = cursor.fetchone()[0]
+    conexion.close()
+    return usuarios
+
+def user_cant_client():
+    conexion = obtener_conexion()
+    usuarios = []
+    with conexion.cursor() as cursor:
+        cursor.execute("SELECT count(*) FROM usuario where tipo_user = 2")
+        usuarios = cursor.fetchone()[0]
+    conexion.close()
+    return usuarios
+
+
 def eliminar_producto(id_producto):
     conexion = obtener_conexion()
     with conexion.cursor() as cursor:
@@ -129,6 +148,14 @@ def actualizar_producto(nombre, descripcion,cantidad, precio,fecha_vencimiento,i
     with conexion.cursor() as cursor:
         cursor.execute("UPDATE producto SET nombre = %s, descripcion = %s,cantidad = %s, precio = %s,fecha_vencimiento = %s WHERE id_producto = %s",
                        (nombre,descripcion,cantidad,precio,fecha_vencimiento,id_producto ))
+    conexion.commit()
+    conexion.close()
+    
+def actualizar_usuario(nombre, apellido, correo,direccion,telefono,genero,id ):
+    conexion = obtener_conexion()
+    with conexion.cursor() as cursor:
+        cursor.execute("UPDATE usuario SET nombre = %s, apellido = %s,correo = %s, direccion = %s,telefono = %s,genero = %s WHERE id = %s",
+                       (nombre, apellido, correo,direccion,telefono,genero,id))
     conexion.commit()
     conexion.close()
     

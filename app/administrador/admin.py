@@ -22,7 +22,9 @@ UPLOAD_FOLDER = 'static/uploads/'
 
 @administrador.route('/home_admin/')
 def home_admin():
-    return render_template("home.html")
+    admin = controller.user_cant_admin()
+    cliente = controller.user_cant_client()
+    return render_template("home.html", admin=admin,cliente=cliente,dataLogin= dataLoginSesion())    
 
 
 @administrador.route("/registrar_producto", methods=["POST"])
@@ -40,65 +42,65 @@ def registrar_producto():
 
     controller.insertar_producto(nombre, descripcion, cantidad, precio,proveedor,fecha_vencimiento,filepath,categoria)
     # De cualquier modo, y si todo fue bien, redireccionar
-    return render_template("home.html")
+    return render_template("home.html",dataLogin= dataLoginSesion())
 
 
 # Gestion de productos
 @administrador.route('/cuidado_personal/')
 def cuidado_personal():
     productos = controller.producto_personal()
-    return render_template("cuidadopersonal.html", productos=productos)
+    return render_template("cuidadopersonal.html", productos=productos,dataLogin= dataLoginSesion())
 
 
 @administrador.route('/dermacosmetico/')
 def dermacosmetico():
     productos = controller.producto_dermacosmetico()
-    return render_template("dermacos.html", productos=productos)
+    return render_template("dermacos.html", productos=productos,dataLogin= dataLoginSesion())
 
 
 @administrador.route('/nutricional/')
 def nutricional():
     productos = controller.producto_nutricional()
-    return render_template("nutricional.html", productos=productos)
+    return render_template("nutricional.html", productos=productos,dataLogin= dataLoginSesion())
 
 
 @administrador.route('/bebe/')
 def bebe():
     productos = controller.producto_bebe()
-    return render_template("bebe.html", productos=productos)
+    return render_template("bebe.html", productos=productos,dataLogin= dataLoginSesion())
 
 
 @administrador.route('/medicamento/')
 def medicamento():
     productos = controller.producto_medicamento()
-    return render_template("medicamento.html", productos=productos)
+    return render_template("medicamento.html", productos=productos,dataLogin= dataLoginSesion())
 
 # Gestion de usuarios
 
 @administrador.route('/gestionadmin/')
 def gestionadmin():
     usuarios = controller.usuario_admin()
-    return render_template("gestionadmin.html", usuarios=usuarios)
+    return render_template("gestionadmin.html", usuarios=usuarios,dataLogin= dataLoginSesion())
 
 
 @administrador.route('/gestioncliente/')
 def gestioncliente():
     usuarios = controller.usuario_cliente()
-    return render_template("gestioncliente.html", usuarios=usuarios)
+    return render_template("gestioncliente.html", usuarios=usuarios,dataLogin= dataLoginSesion())
 
 
 @administrador.route("/formulario_editar_producto/<int:id_producto>")
 def editar_producto(id_producto):
     # Obtener el juego por ID
     productos = controller.obtener_producto_por_id(id_producto)
-    return render_template("editar_producto.html", productos=productos)
+    return render_template("editar_producto.html", productos=productos,dataLogin= dataLoginSesion())
 
 
 @administrador.route("/formulario_editar_usuario/<int:id>")
 def editar_usuario(id):
     # Obtener el juego por ID
-    usuarios = controller.obtener_producto_por_id(id)
-    return render_template("editar_usuario.html", usuarios=usuarios)
+    usuarios = controller.obtener_usuario_por_id(id)
+    return render_template("editar_usuario.html", usuarios=usuarios,dataLogin= dataLoginSesion())
 
 
 @administrador.route("/actualizar_producto", methods=["POST"])
@@ -110,7 +112,7 @@ def actualizar_producto():
     precio = request.form["precio"]
     fecha_vencimiento = request.form["fecha_vencimiento"]
     controller.actualizar_producto(nombre, descripcion,cantidad ,precio,fecha_vencimiento,id_producto )
-    return render_template("home.html")
+    return render_template("home.html",dataLogin= dataLoginSesion())
 
 
 @administrador.route("/actualizar_usuario", methods=["POST"])
@@ -122,20 +124,20 @@ def actualizar_usuario():
     direccion = request.form["direccion"]
     telefono = request.form["telefono"]
     genero = request.form["genero"]
-    controller.insertar_usuario(nombre, apellido, correo,direccion,telefono,genero)
-    return render_template("home.html")
+    controller.actualizar_usuario(nombre, apellido, correo,direccion,telefono,genero,id)
+    return render_template("home.html",dataLogin= dataLoginSesion())
 
 
 @administrador.route("/eliminar_producto", methods=["POST"])
 def eliminar_producto():
     controller.eliminar_producto(request.form["id_producto"])
-    return render_template("home.html")
+    return render_template("home.html",dataLogin= dataLoginSesion())
 
 
 @administrador.route("/eliminar_usuario", methods=["POST"])
 def eliminar_usuario():
     controller.eliminar_usuario(request.form["id"])
-    return render_template("home.html")
+    return render_template("home.html",dataLogin= dataLoginSesion())
 
 
 @administrador.route('/registro_admin', methods=['GET', 'POST'])

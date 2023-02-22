@@ -1,6 +1,6 @@
 
 {% extends 'base_admin.html' %}
-  {% block title %}Bebé{% endblock %}
+  {% block title %}Actualizar datos{% endblock %}
 
 {% block content %}
 
@@ -23,10 +23,9 @@
 		<!-- Content page -->
 		<div class="container-fluid">
 			<div class="page-header">
-			  <h1 class="text-titles text-center"><i class="glyphicon glyphicon-baby-formula zmdi-hc-fw"></i> Administracion de usuarios para bebé</h1>
+			  <h1 class="text-titles text-center"><i class="glyphicon glyphicon-user zmdi-hc-fw"></i>Panel de gestión de clientes</h1>
 			</div>
-			<p class="lead text-center">Esta sección permite operar sobre los usuarios para el cuidado del bebé
-			</p>
+			<p class="lead">En este apartado esta diseñado para visualizar la informacion de los clientes, asi como modificar y eliminar la informacion almacenada</p>
 		</div>
 		<div class="container-fluid">
 			<div class="row">
@@ -46,33 +45,34 @@
 
                                     <div class="form-group label-floating">
                                       <label class="control-label">Nombre</label>
-                                      <input value="{{usuarios[2]}}" required type="text" class="input" placeholder="Nombre" name="nombre" id="nombre">
+                                      <input value="{{usuarios[1]}}" class="form-control" required type="text" class="input" placeholder="Nombre" name="nombre" id="nombre">
                                     </div>
                                     <div class="form-group label-floating">
                                         <label class="control-label">Apellido</label>
-                                        <input value="{{usuarios[3]}}" required type="text" class="input" placeholder="Descripcion" name="descripcion" id="descripcion">
+                                        <input value="{{usuarios[2]}}" class="form-control" required type="text" class="input" placeholder="Apellido" name="apellido" id="apellido">
                                       </div>
                                     <div class="form-group label-floating">
                                       <label class="control-label">Direccion</label>
-                                      <input value="{{usuarios[5]}}" required type="text" class="input" placeholder="Cantidad" name="cantidad" id="cantidad">
+                                      <input value="{{usuarios[3]}}" class="form-control" required type="text" class="input" placeholder="Direccion" name="direccion" id="direccion">
                                     </div>
                                     <div class="form-group label-floating">
                                       <label class="control-label">Correo</label>
-                                      <input value="{{usuarios[4]}}" required type="number" class="input" placeholder="Precio" name="precio" id="precio">
+                                      <input value="{{usuarios[4]}}" class="form-control" required type="text" class="input" placeholder="Correo" name="correo" id="correo">
                                     </div>
                                     
                                     <div class="form-group">
                                         <label class="control-label">Telefono</label>
-                                        <input type="date" value="{{usuarios[6]}}" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" placeholder="Fecha Vencimiento" required>
+                                        <input type="phone" value="{{usuarios[5]}}" class="form-control" id="telefono" name="telefono" placeholder="Telefono" required>
                                     </div>
                                     <div class="form-group">
                                       <label class="control-label">Genero</label>
-                                      <select class="form-control">
-                                        <option selected>Seleccione una opcion</option>
-                                        <option>Male</option>
-                                        <option>Female</option>
-                                      </select>
+                                      <select name="genero"   required class="form-control">
+                                        <option value="" selected="selected">--- Seleccione genero---</option>
+                                        <option value="M">Masculino</option>
+                                        <option value="F">Femenino</option>
+                                    </select>
                                     </div>
+                                    
                                     
                                         <div class="row">
                                             <div class="col">
