@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template,abort
 from . import autenticar
 from flask import Flask,request,url_for,redirect
 
@@ -47,7 +47,7 @@ def registerUser():
     if request.method == 'POST':
         tipo_user                   =2
         nombre                      = request.form['nombre']
-        apellido                    = request.form['apellido']
+        apelllido                    = request.form['apellido']
         correo                       = request.form['correo']
         direccion                       = request.form['direccion']
         telefono                       = request.form['telefono']
@@ -56,7 +56,6 @@ def registerUser():
         genero                        = request.form['genero']
         create_at                   = date.today()
         #current_time = datetime.datetime.now()
-
         # Comprobando si ya existe la cuenta de Usuario con respecto al correo
         conexion = obtener_conexion()
         cursor = conexion.cursor(dictionary=True)
@@ -70,7 +69,8 @@ def registerUser():
             msg = 'Disculpa, las clave no coinciden!'
         elif not re.match(r'[^@]+@[^@]+\.[^@]+', correo):
             msg = 'Disculpa, formato de Email incorrecto!'
-        elif not correo or not password or not password or not repite_password:
+        elif not nombre or not apelllido or not correo or not direccion or not telefono or not genero or not password or not repite_password:
+            abort(400)
             msg = 'El formulario no debe estar vacio!'
         else:
             # La cuenta no existe y los datos del formulario son válidos,

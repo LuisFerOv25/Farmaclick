@@ -3,13 +3,15 @@ from bd import *
 from flask import session
 
 def insertar_producto(nombre, descripcion, cantidad,precio,proveedor,fecha_vencimiento,imagen,categoria):
-    conexion = obtener_conexion()
-    
-    with conexion.cursor() as cursor:
-        cursor.execute("INSERT INTO producto(nombre, descripcion,cantidad, precio,proveedor,fecha_vencimiento,imagen,categoria) VALUES (%s, %s, %s,%s, %s, %s, %s, %s)",
-                       (nombre, descripcion, cantidad,precio,proveedor,fecha_vencimiento,imagen,categoria))
-    conexion.commit()
-    conexion.close()
+    try:
+        conexion = obtener_conexion()
+        with conexion.cursor() as cursor:
+            cursor.execute("INSERT INTO producto(nombre, descripcion,cantidad, precio,proveedor,fecha_vencimiento,imagen,categoria) VALUES (%s, %s, %s,%s, %s, %s, %s, %s)",
+                        (nombre, descripcion, cantidad,precio,proveedor,fecha_vencimiento,imagen,categoria))
+        conexion.commit()
+        conexion.close()
+    except Exception as e:
+        print(f'Ha ocurrido el error {e}')
     
 def insertar_usuario(tipo_user,nombre, apellido, direccion,correo,telefono,genero):
     conexion = obtener_conexion()
@@ -151,7 +153,7 @@ def dataPerfilUsuario():
     mycursor       = conexion.cursor()
     idUser         = session['id']
     
-    queryFSQL  = ("SELECT * FROM ususrio WHERE id='%s'" % (idUser,))
+    querySQL  = ("SELECT * FROM ususrio WHERE id='%s'" % (idUser,))
     mycursor.execute(querySQL)
     datosUsuario = mycursor.fetchone() 
     mycursor.close() #cerrrando conexion SQL

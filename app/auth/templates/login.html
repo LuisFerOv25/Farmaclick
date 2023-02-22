@@ -30,18 +30,18 @@
     <div class="form-container sign-in-container">
         <form name="formRegisterClient" id="formRegisterClient" action="{{ url_for('autenticar.registerUser') }}" method="POST" autocomplete="off">
 
-                    <input type="text" name="nombre" autofocus required placeholder='Nombre'>
-                    <input type="text" name="apellido"  required placeholder='Apellido'>
+                    <input type="text" name="nombre" autofocus  placeholder='Nombre'>
+                    <input type="text" name="apellido"   placeholder='Apellido'>
 
-                    <input type="email" name="correo" required placeholder='Correo'>
+                    <input type="email" name="correo"  placeholder='Correo'>
                
-                    <input type="text" name="direccion" required placeholder='Direccion'>
+                    <input type="text" name="direccion"  placeholder='Direccion'>
   
-                    <input type="phone" name="telefono" required placeholder='Telefono'>
-                    <input type="password" name="password" required placeholder='Password'>
-                    <input type="password" name="repite_password" required placeholder ='Repite contraseña'>
+                    <input type="phone" name="telefono"  placeholder='Telefono'>
+                    <input type="password" name="password"  placeholder='Password'>
+                    <input type="password" name="repite_password"  placeholder ='Repite contraseña'>
         
-                        <select name="genero" required>
+                        <select name="genero" >
                             <option value="" selected="selected">--- Seleccione genero---</option>
                             <option value="Masculino">Masculino</option>
                             <option value="Femenino">Femenino</option>

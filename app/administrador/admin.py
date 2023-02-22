@@ -1,46 +1,54 @@
+from controller import *  # Importando mis Funciones
+from bd import *  # Importando conexion BD
+from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
+import re
 from flask import render_template
 from datetime import date
-from flask import request,session
+from flask import request, session
 from . import administrador
 import controller
-from flask import Flask,url_for,redirect
+from flask import Flask, url_for, redirect
+import hashlib
+import os
 
 from datetime import date
 
 
-from bd import *  #Importando conexion BD
-from controller import *  #Importando mis Funciones
+UPLOAD_FOLDER = 'static/uploads/'
 
-import re
-from werkzeug.security import generate_password_hash, check_password_hash
+# Rutas para acceder a las vistas del administrador
 
-#Rutas para acceder a las vistas del administrador 
 
 @administrador.route('/home_admin/')
 def home_admin():
     return render_template("home.html")
 
+
 @administrador.route("/registrar_producto", methods=["POST"])
 def registrar_producto():
-    
+
     nombre = request.form["nombre"]
     descripcion = request.form["descripcion"]
     cantidad = request.form["cantidad"]
     precio = request.form["precio"]
     proveedor = request.form["proveedor"]
     fecha_vencimiento = request.form["fecha_vencimiento"]
-    imagen = request.form["imagen"]
+    imagen = request.files["imagen"]
     categoria = request.form["categoria"]
-    controller.insertar_producto(nombre, descripcion, cantidad,precio,proveedor,fecha_vencimiento,imagen,categoria)
+    
+
+    controller.insertar_producto(nombre, descripcion, cantidad, precio,proveedor,fecha_vencimiento,filepath,categoria)
     # De cualquier modo, y si todo fue bien, redireccionar
     return render_template("home.html")
 
 
-#Gestion de productos
+# Gestion de productos
 @administrador.route('/cuidado_personal/')
 def cuidado_personal():
     productos = controller.producto_personal()
     return render_template("cuidadopersonal.html", productos=productos)
+
 
 @administrador.route('/dermacosmetico/')
 def dermacosmetico():
@@ -65,16 +73,19 @@ def medicamento():
     productos = controller.producto_medicamento()
     return render_template("medicamento.html", productos=productos)
 
-#Gestion de usuarios
+# Gestion de usuarios
+
 @administrador.route('/gestionadmin/')
 def gestionadmin():
     usuarios = controller.usuario_admin()
     return render_template("gestionadmin.html", usuarios=usuarios)
 
+
 @administrador.route('/gestioncliente/')
 def gestioncliente():
     usuarios = controller.usuario_cliente()
     return render_template("gestioncliente.html", usuarios=usuarios)
+
 
 @administrador.route("/formulario_editar_producto/<int:id_producto>")
 def editar_producto(id_producto):
@@ -89,6 +100,7 @@ def editar_usuario(id):
     usuarios = controller.obtener_producto_por_id(id)
     return render_template("editar_usuario.html", usuarios=usuarios)
 
+
 @administrador.route("/actualizar_producto", methods=["POST"])
 def actualizar_producto():
     id_producto = request.form["id_producto"]
@@ -97,20 +109,20 @@ def actualizar_producto():
     descripcion = request.form["descripcion"]
     precio = request.form["precio"]
     fecha_vencimiento = request.form["fecha_vencimiento"]
-    controller.actualizar_producto(nombre,descripcion,cantidad ,precio,fecha_vencimiento,id_producto )
+    controller.actualizar_producto(nombre, descripcion,cantidad ,precio,fecha_vencimiento,id_producto )
     return render_template("home.html")
 
 
 @administrador.route("/actualizar_usuario", methods=["POST"])
 def actualizar_usuario():
-    id= request.form["id"]
+    id = request.form["id"]
     nombre = request.form["nombre"]
     apellido = request.form["apellido"]
     correo = request.form["correo"]
     direccion = request.form["direccion"]
     telefono = request.form["telefono"]
     genero = request.form["genero"]
-    controller.insertar_usuario(nombre, apellido,correo,direccion,telefono,genero)
+    controller.insertar_usuario(nombre, apellido, correo,direccion,telefono,genero)
     return render_template("home.html")
 
 
@@ -118,7 +130,6 @@ def actualizar_usuario():
 def eliminar_producto():
     controller.eliminar_producto(request.form["id_producto"])
     return render_template("home.html")
-
 
 
 @administrador.route("/eliminar_usuario", methods=["POST"])
@@ -132,16 +143,16 @@ def registerUser():
     msg = ''
     conexion = obtener_conexion()
     if request.method == 'POST':
-        tipo_user                   = request.form['tipo_user']
-        nombre                      = request.form['nombre']
-        apellido                    = request.form['apellido']
-        correo                       = request.form['correo']
-        direccion                       = request.form['direccion']
-        telefono                       = request.form['telefono']
-        password                    = request.form['password']
-        repite_password             = request.form['repite_password']
-        genero                        = request.form['genero']
-        create_at                   = date.today()
+        tipo_user = request.form['tipo_user']
+        nombre = request.form['nombre']
+        apellido = request.form['apellido']
+        correo = request.form['correo']
+        direccion = request.form['direccion']
+        telefono = request.form['telefono']
+        password = request.form['password']
+        repite_password = request.form['repite_password']
+        genero = request.form['genero']
+        create_at = date.today()
         #current_time = datetime.datetime.now()
 
         # Comprobando si ya existe la cuenta de Usuario con respecto al correo
@@ -149,8 +160,8 @@ def registerUser():
         cursor = conexion.cursor(dictionary=True)
         cursor.execute('SELECT * FROM usuario WHERE correo = %s', (correo,))
         account = cursor.fetchone()
-        cursor.close() #cerrrando conexion SQL
-          
+        cursor.close()  # cerrrando conexion SQL
+
         if account:
             msg = 'Ya existe el Email!'
         elif password != repite_password:
@@ -161,13 +172,14 @@ def registerUser():
             msg = 'El formulario no debe estar vacio!'
         else:
             # La cuenta no existe y los datos del formulario son válidos,
-            password_encriptada = generate_password_hash(password, method='sha256')
+            password_encriptada = generate_password_hash(
+                password, method='sha256')
             conexion = obtener_conexion()
             cursor = conexion.cursor()
-            cursor.execute('INSERT INTO usuario (tipo_user, nombre, apellido, correo,direccion,telefono, password,genero, create_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)', (tipo_user, nombre, apellido, correo,direccion,telefono, password_encriptada, genero, create_at))
+            cursor.execute('INSERT INTO usuario (tipo_user, nombre, apellido, correo,direccion,telefono, password,genero, create_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)', (tipo_user, nombre, apellido, correo, direccion,telefono, password_encriptada, genero, create_at))
             conexion.commit()
             cursor.close()
             msg = 'Cuenta creada correctamente!'
 
-        return render_template('login.html', msjAlert = msg, typeAlert=1)
-    return render_template('login.html', dataLogin = dataLoginSesion(), msjAlert = msg, typeAlert=0)
+        return render_template('login.html', msjAlert= msg, typeAlert=1)
+    return render_template('login.html', dataLogin= dataLoginSesion(), msjAlert = msg, typeAlert=0)
