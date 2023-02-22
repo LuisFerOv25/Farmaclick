@@ -15,10 +15,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # Rutas para login y recuperacion de cuenta
 @autenticar.route('/login/')
 def login():
-    if 'conectado' in session:
-        return render_template('./home.html', dataLogin = dataLoginSesion())
-    else:
-        return render_template('login.html')
+    return render_template('login.html')
 
 @autenticar.route('/registro/')
 def registro():
@@ -47,7 +44,7 @@ def registerUser():
     if request.method == 'POST':
         tipo_user                   =2
         nombre                      = request.form['nombre']
-        apelllido                    = request.form['apellido']
+        apellido                    = request.form['apellido']
         correo                       = request.form['correo']
         direccion                       = request.form['direccion']
         telefono                       = request.form['telefono']
@@ -69,7 +66,7 @@ def registerUser():
             msg = 'Disculpa, las clave no coinciden!'
         elif not re.match(r'[^@]+@[^@]+\.[^@]+', correo):
             msg = 'Disculpa, formato de Email incorrecto!'
-        elif not nombre or not apelllido or not correo or not direccion or not telefono or not genero or not password or not repite_password:
+        elif not nombre or not apellido or not correo or not direccion or not telefono or not genero or not password or not repite_password:
             abort(400)
             msg = 'El formulario no debe estar vacio!'
         else:
@@ -103,7 +100,11 @@ def logout():
 def loginUsser():
     conexion = obtener_conexion()
     if 'conectado' in session:
-        return render_template('home.html', dataLogin = dataLoginSesion())
+        if session['tipo_user'] == 1:
+            return render_template('./home.html', dataLogin = dataLoginSesion())
+        else:
+            return render_template('./homecliente.html', dataLogin = dataLoginSesion())
+        
     else:
         msg = ''
         if request.method == 'POST' and 'correo' in request.form and 'password' in request.form:
