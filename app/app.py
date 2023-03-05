@@ -24,15 +24,7 @@ sentry_sdk.init(
     ],
     traces_sample_rate=1.0
 )
-@app.route('/debug-sentry')
-def trigger_error():
-    division_by_zero = 1 / 0
-    
-@app.route('/generate-error')
-def generate_error():
-    # Intenta acceder a una variable que no existe
-    variable_inexistente = variable_inexistente + 1
-    return 'Este error es generado a propósito'    
+
 
 #Conexion
 app.config['MYSQL_HOST'] = 'localhost'
@@ -47,44 +39,16 @@ app.register_blueprint(administrador)
 app.register_blueprint(cliente)
 app.register_blueprint(autenticar)
 
-def registrer_error_handlers(app):
-    @app.errorhandler(500)
-    def internal_error(e):
-        if isinstance(e, HTTPException):
-            return render_template('500.html',e=e), 500
-        return e
 
-    @app.errorhandler(404)
-    def page_not_found(e):
-        if isinstance(e, HTTPException):
-            return render_template('404.html',e=e), 404
-        return e
-    
-    @app.errorhandler(400)
-    def error_400_handler(e):
-        if isinstance(e, HTTPException):
-            return render_template('400.html',e=e), 400
-        return e
-
-    @app.errorhandler(401)
-    def error_401_handler(e):
-        if isinstance(e, HTTPException):
-            return render_template('401.html',e=e), 401
-        return e
-    
-@app.route('/500')
-def error500():
-    abort(500)
-    
-@app.route('/401')
-def error401():
-    abort(401)
-    
-@app.route('/400')
-def error400():
-    abort(400)
+error_codes = [
+    400, 401, 403, 404, 405, 406, 408, 409, 410, 411, 412, 413, 414, 415,
+    416, 417, 418, 422, 428, 429, 431, 451, 500, 501, 502, 503, 504, 505
+]
+for code in error_codes:
+    @app.errorhandler(code)
+    def client_error(error):
+        return render_template('error.html', error=error), error.code
 
 
 if __name__ == '__main__':
-    registrer_error_handlers(app)
-    app.run(debug=True, port=5010)
+    app.run(debug=True, port=5210)

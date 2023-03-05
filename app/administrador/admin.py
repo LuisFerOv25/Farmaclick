@@ -15,9 +15,7 @@ import os
 from datetime import date
 
 
-UPLOAD_FOLDER = 'static/uploads/'
-
-# Rutas para acceder a las vistas del administrador
+ruta_carpeta = '/static/uploads'
 
 
 @administrador.route('/home_admin/')
@@ -36,44 +34,196 @@ def registrar_producto():
     precio = request.form["precio"]
     proveedor = request.form["proveedor"]
     fecha_vencimiento = request.form["fecha_vencimiento"]
-    imagen = request.files["imagen"]
     categoria = request.form["categoria"]
     
-
-    controller.insertar_producto(nombre, descripcion, cantidad, precio,proveedor,fecha_vencimiento,filepath,categoria)
+    if 'imagen' not in request.files:
+            flash('No se ha seleccionado ninguna imagen.')
+            return redirect(request.url)
+    imagen = request.files['imagen']
+    if imagen and allowed_file(imagen.filename):
+            # renombrar la imagen para evitar conflictos de nombres
+            nombre_archivo = secure_filename(imagen.filename)
+            # guardar la imagen en la carpeta deseada
+            imagen.save(os.path.join(ruta_carpeta, nombre_archivo))
+            
+    controller.insertar_producto(nombre, descripcion, cantidad, precio,proveedor,fecha_vencimiento,nombre_archivo,categoria)
     # De cualquier modo, y si todo fue bien, redireccionar
     return render_template("home.html",dataLogin= dataLoginSesion())
 
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in {'jpg', 'jpeg', 'png', 'gif'}
 
-# Gestion de productos
 @administrador.route('/cuidado_personal/')
 def cuidado_personal():
     productos = controller.producto_personal()
     return render_template("cuidadopersonal.html", productos=productos,dataLogin= dataLoginSesion())
 
-
+@administrador.route("/cuidado_personal_pag/<number_page>")
+def page_cuidado_p(number_page):
+    conexion = obtener_conexion()
+    cursor = conexion.cursor()
+    if number_page == '1':
+        cursor.execute("SELECT * FROM producto WHERE CATEGORIA = 1 LIMIT 0,10")
+    if number_page == '2':
+        cursor.execute("SELECT * FROM producto WHERE CATEGORIA = 1 LIMIT 10,10")
+    if number_page == '3':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 1 LIMIT 20,10")
+    if number_page == '4':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 1 LIMIT 30,10")
+        
+    if number_page == '5':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 1 LIMIT 40,10")
+    if number_page == '6':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 1 LIMIT 50,10")
+    if number_page == '7':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 1 LIMIT 60,10")
+    if number_page == '8':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 1 LIMIT 70,10")
+    if number_page == '9':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 1 LIMIT 80,10")
+    if number_page == '10':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 1 LIMIT 90,10")
+    productos = cursor.fetchall()
+    conexion.commit()
+    return render_template('cuidadopersonal.html', productos=productos ,dataLogin= dataLoginSesion())   
+  
 @administrador.route('/dermacosmetico/')
 def dermacosmetico():
     productos = controller.producto_dermacosmetico()
     return render_template("dermacos.html", productos=productos,dataLogin= dataLoginSesion())
 
+@administrador.route("/dermacosmetico_pag/<number_pag>")
+def dermacosmetico_pag(number_pag):
+    conexion = obtener_conexion()
+    cursor = conexion.cursor()
+    if number_pag == '1':
+        cursor.execute("SELECT * FROM producto WHERE CATEGORIA = 2 LIMIT 0,10")
+    if number_pag == '2':
+        cursor.execute("SELECT * FROM producto WHERE CATEGORIA = 2 LIMIT 10,10")
+    if number_pag == '3':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 2 LIMIT 20,10")
+    if number_pag == '4':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 2 LIMIT 30,10")
+        
+    if number_pag == '5':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 2 LIMIT 40,10")
+    if number_pag == '6':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 2 LIMIT 50,10")
+    if number_pag == '7':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 2 LIMIT 60,10")
+    if number_pag == '8':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 2 LIMIT 70,10")
+    if number_pag == '9':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 2 LIMIT 80,10")
+    if number_pag == '10':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 2 LIMIT 90,10")
+    productos = cursor.fetchall()
+    conexion.commit()
+    return render_template('dermacos.html', productos=productos ,dataLogin= dataLoginSesion()) 
 
 @administrador.route('/nutricional/')
 def nutricional():
     productos = controller.producto_nutricional()
     return render_template("nutricional.html", productos=productos,dataLogin= dataLoginSesion())
 
-
+@administrador.route("/nutricional_pag/<number_pag>")
+def nutricional_pag(number_pag):
+    conexion = obtener_conexion()
+    cursor = conexion.cursor()
+    if number_pag == '1':
+        cursor.execute("SELECT * FROM producto WHERE CATEGORIA = 3 LIMIT 0,10")
+    if number_pag == '2':
+        cursor.execute("SELECT * FROM producto WHERE CATEGORIA = 3 LIMIT 10,10")
+    if number_pag == '3':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 3 LIMIT 20,10")
+    if number_pag == '4':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 3 LIMIT 30,10")
+        
+    if number_pag == '5':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 3 LIMIT 40,10")
+    if number_pag == '6':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 3 LIMIT 50,10")
+    if number_pag == '7':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 3 LIMIT 60,10")
+    if number_pag == '8':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 3 LIMIT 70,10")
+    if number_pag == '9':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 3 LIMIT 80,10")
+    if number_pag == '10':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 3 LIMIT 90,10")
+    productos = cursor.fetchall()
+    conexion.commit()
+    return render_template('nutricional.html', productos=productos ,dataLogin= dataLoginSesion())
+ 
 @administrador.route('/bebe/')
 def bebe():
     productos = controller.producto_bebe()
     return render_template("bebe.html", productos=productos,dataLogin= dataLoginSesion())
 
+@administrador.route("/bebe_pag/<number_pag>")
+def page_bebe(number_pag):
+    conexion = obtener_conexion()
+    cursor = conexion.cursor()
+    if number_pag == '1':
+        cursor.execute("SELECT * FROM producto WHERE CATEGORIA = 4 LIMIT 0,10")
+    if number_pag == '2':
+        cursor.execute("SELECT * FROM producto WHERE CATEGORIA = 4 LIMIT 10,10")
+    if number_pag == '3':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 4 LIMIT 20,10")
+    if number_pag == '4':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 4 LIMIT 30,10")
+        
+    if number_pag == '5':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 4 LIMIT 40,10")
+    if number_pag == '6':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 4 LIMIT 50,10")
+    if number_pag == '7':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 4 LIMIT 60,10")
+    if number_pag == '8':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 4 LIMIT 70,10")
+    if number_pag == '9':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 4 LIMIT 80,10")
+    if number_pag == '10':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 4 LIMIT 90,10")
+    productos = cursor.fetchall()
+    conexion.commit()
+    return render_template('bebe.html', productos=productos ,dataLogin= dataLoginSesion()) 
 
 @administrador.route('/medicamento/')
 def medicamento():
     productos = controller.producto_medicamento()
     return render_template("medicamento.html", productos=productos,dataLogin= dataLoginSesion())
+
+@administrador.route("/medicamentos_pag/<number_pag>")
+def medicamentos_pag(number_pag):
+    conexion = obtener_conexion()
+    cursor = conexion.cursor()
+    if number_pag == '1':
+        cursor.execute("SELECT * FROM producto WHERE CATEGORIA = 5 LIMIT 0,10")
+    if number_pag == '2':
+        cursor.execute("SELECT * FROM producto WHERE CATEGORIA = 5 LIMIT 10,10")
+    if number_pag == '3':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 5 LIMIT 20,10")
+    if number_pag == '4':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 5 LIMIT 30,10")
+        
+    if number_pag == '5':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 5 LIMIT 40,10")
+    if number_pag == '6':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 5 LIMIT 50,10")
+    if number_pag == '7':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 5 LIMIT 60,10")
+    if number_pag == '8':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 5 LIMIT 70,10")
+    if number_pag == '9':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 5 LIMIT 80,10")
+    if number_pag == '10':
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 5 LIMIT 90,10")
+    productos = cursor.fetchall()
+    conexion.commit()
+    return render_template('medicamento.html', productos=productos ,dataLogin= dataLoginSesion())
+
 
 # Gestion de usuarios
 
@@ -82,11 +232,69 @@ def gestionadmin():
     usuarios = controller.usuario_admin()
     return render_template("gestionadmin.html", usuarios=usuarios,dataLogin= dataLoginSesion())
 
+@administrador.route("/gestionadmin_pag/<number_pag>")
+def gestionadmin_pag(number_pag):
+    conexion = obtener_conexion()
+    cursor = conexion.cursor()
+    if number_pag == '1':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 1 LIMIT 0,10")
+    if number_pag == '2':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 1 LIMIT 10,10")
+    if number_pag == '3':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 1 LIMIT 20,10")
+    if number_pag == '4':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 1 LIMIT 30,10")
+        
+    if number_pag == '5':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 1 LIMIT 40,10")
+    if number_pag == '6':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 1 LIMIT 50,10")
+    if number_pag == '7':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 1 LIMIT 60,10")
+    if number_pag == '8':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 1 LIMIT 70,10")
+    if number_pag == '9':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 1 LIMIT 80,10")
+    if number_pag == '10':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 1 LIMIT 90,10")
+    usuarios = cursor.fetchall()
+    conexion.commit()
+    return render_template('gestionadmin.html', usuarios=usuarios ,dataLogin= dataLoginSesion())
+
 
 @administrador.route('/gestioncliente/')
 def gestioncliente():
     usuarios = controller.usuario_cliente()
     return render_template("gestioncliente.html", usuarios=usuarios,dataLogin= dataLoginSesion())
+
+@administrador.route("/gestioncliente_pag/<number_pag>")
+def gestioncliente_pag(number_pag):
+    conexion = obtener_conexion()
+    cursor = conexion.cursor()
+    if number_pag == '1':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 2 LIMIT 0,10")
+    if number_pag == '2':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 2 LIMIT 10,10")
+    if number_pag == '3':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 2 LIMIT 20,10")
+    if number_pag == '4':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 2 LIMIT 30,10")
+        
+    if number_pag == '5':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 2 LIMIT 40,10")
+    if number_pag == '6':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 2 LIMIT 50,10")
+    if number_pag == '7':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 2 LIMIT 60,10")
+    if number_pag == '8':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 2 LIMIT 70,10")
+    if number_pag == '9':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 2 LIMIT 80,10")
+    if number_pag == '10':
+        cursor.execute("SELECT * FROM usuario where tipo_user = 2 LIMIT 90,10")
+    usuarios = cursor.fetchall()
+    conexion.commit()
+    return render_template('gestioncliente.html', usuarios=usuarios ,dataLogin= dataLoginSesion())
 
 
 @administrador.route("/formulario_editar_producto/<int:id_producto>")

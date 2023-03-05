@@ -27,7 +27,7 @@ def producto_personal():
     conexion = obtener_conexion()
     productos = []
     with conexion.cursor() as cursor:
-        cursor.execute("SELECT * FROM producto where CATEGORIA = 1")
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 1 LIMIT 0,10")
         productos = cursor.fetchall()
     conexion.close()
     return productos
@@ -36,7 +36,7 @@ def producto_dermacosmetico():
     conexion = obtener_conexion()
     productos = []
     with conexion.cursor() as cursor:
-        cursor.execute("SELECT * FROM producto where CATEGORIA = 2")
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 2 LIMIT 0,10")
         productos = cursor.fetchall()
     conexion.close()
     return productos
@@ -45,7 +45,7 @@ def producto_nutricional():
     conexion = obtener_conexion()
     productos = []
     with conexion.cursor() as cursor:
-        cursor.execute("SELECT * FROM producto where CATEGORIA = 3")
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 3 LIMIT 0,10")
         productos = cursor.fetchall()
     conexion.close()
     return productos
@@ -54,7 +54,7 @@ def producto_bebe():
     conexion = obtener_conexion()
     productos = []
     with conexion.cursor() as cursor:
-        cursor.execute("SELECT * FROM producto where CATEGORIA = 4")
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 4 LIMIT 0,10 ")
         productos = cursor.fetchall()
     conexion.close()
     return productos
@@ -63,7 +63,7 @@ def producto_medicamento():
     conexion = obtener_conexion()
     productos = []
     with conexion.cursor() as cursor:
-        cursor.execute("SELECT * FROM producto where CATEGORIA = 5")
+        cursor.execute("SELECT * FROM producto where CATEGORIA = 5 LIMIT 0,10")
         productos = cursor.fetchall()
     conexion.close()
     return productos
@@ -72,7 +72,7 @@ def usuario_admin():
     conexion = obtener_conexion()
     usuarios = []
     with conexion.cursor() as cursor:
-        cursor.execute("SELECT * FROM usuario where tipo_user = 1")
+        cursor.execute("SELECT * FROM usuario where tipo_user = 1 LIMIT 0,10")
         usuarios = cursor.fetchall()
     conexion.close()
     return usuarios
@@ -81,7 +81,7 @@ def usuario_cliente():
     conexion = obtener_conexion()
     usuarios = []
     with conexion.cursor() as cursor:
-        cursor.execute("SELECT * FROM usuario where tipo_user = 2")
+        cursor.execute("SELECT * FROM usuario where tipo_user = 2 LIMIT 0,10")
         usuarios = cursor.fetchall()
     conexion.close()
     return usuarios
