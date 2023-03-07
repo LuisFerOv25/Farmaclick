@@ -14,7 +14,6 @@ import hashlib
 import os
 from app import app
 from datetime import date
-from flask_babel import Babel
 from os import listdir
 from flask import redirect
 from flask import url_for
@@ -22,12 +21,6 @@ from flask import url_for
 from flask import make_response
 from flask import jsonify
 from datetime import timedelta
-
-from babel import numbers, dates
-from datetime import date, datetime, time
-from flask_babel import Babel, gettext, refresh; refresh()
-
-
 
 
 UPLOAD_FOLDER = 'app/static/uploads'
@@ -37,13 +30,10 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @administrador.route('/home_admin/')
 def home_admin():
-    usrreg = gettext('Usuarios registrados')
-    b = dates.format_datetime(datetime.now(), locale=request.accept_languages.best_match(['en', 'es', 'de', 'fr']))
-    results = {'us_date': b}
-    inicio = gettext('INICIO')
+      
     admin = controller.user_cant_admin()
     cliente = controller.user_cant_client()
-    return render_template("home.html", admin=admin,cliente=cliente,dataLogin= dataLoginSesion(),usrreg=usrreg)    
+    return render_template("home.html", admin=admin,cliente=cliente,dataLogin= dataLoginSesion())    
 
 
 @administrador.route("/registrar_producto", methods=["POST"])

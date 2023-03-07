@@ -128,7 +128,8 @@ def loginUsser():
                     session['direccion']        = account['direccion']
                     session['telefono']         = account['telefono']
                     session['genero']           = account['genero']
-                    session['create_at']        = account['create_at']
+                    session['create_at']        = account['create_at'],
+                    session['imagen']           = account['imagen']
 
                     msg = "Ha iniciado sesión correctamente."
                     if session['tipo_user'] == 1:

@@ -171,7 +171,8 @@ def dataLoginSesion():
         "direccion"           :session['direccion'],
         "telefono"            :session['telefono'],
         "genero"              :session['genero'],
-        "create_at"           :session['create_at']
+        "create_at"           :session['create_at'],
+        "imagen"              :session['imagen']
     }
     return inforLogin
 
