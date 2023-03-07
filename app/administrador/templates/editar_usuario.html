@@ -40,7 +40,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-12 col-md-10 col-md-offset-1">
-                                <form action="{{url_for('administrador.actualizar_usuario')}}" method="post">
+                                <form action="{{url_for('administrador.actualizar_usuario')}}" method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="id" value="{{usuarios[0]}}">
 
                                     <div class="form-group label-floating">
@@ -72,7 +72,10 @@
                                         <option value="F">Femenino</option>
                                     </select>
                                     </div>
-                                    
+                                    <div>
+                                      <input type="text" readonly="" class="form-control" placeholder="Abrir Explorador">
+                                      <input type="file" name="imagen" id="imagen">
+                                    </div>
                                     
                                         <div class="row">
                                             <div class="col">

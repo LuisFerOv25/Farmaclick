@@ -3,6 +3,7 @@ from bd import *  # Importando conexion BD
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 import re
+from flask import *
 from flask import render_template
 from datetime import date
 from flask import request, session
@@ -11,18 +12,38 @@ import controller
 from flask import Flask, url_for, redirect
 import hashlib
 import os
-
+from app import app
 from datetime import date
+from flask_babel import Babel
+from os import listdir
+from flask import redirect
+from flask import url_for
+
+from flask import make_response
+from flask import jsonify
+from datetime import timedelta
+
+from babel import numbers, dates
+from datetime import date, datetime, time
+from flask_babel import Babel, gettext, refresh; refresh()
 
 
-ruta_carpeta = '/static/uploads'
+
+
+UPLOAD_FOLDER = 'app/static/uploads'
+ALLOWED_EXTENSIONS = set(['jpeg', 'jpg', 'png', 'gif'])
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 @administrador.route('/home_admin/')
 def home_admin():
+    usrreg = gettext('Usuarios registrados')
+    b = dates.format_datetime(datetime.now(), locale=request.accept_languages.best_match(['en', 'es', 'de', 'fr']))
+    results = {'us_date': b}
+    inicio = gettext('INICIO')
     admin = controller.user_cant_admin()
     cliente = controller.user_cant_client()
-    return render_template("home.html", admin=admin,cliente=cliente,dataLogin= dataLoginSesion())    
+    return render_template("home.html", admin=admin,cliente=cliente,dataLogin= dataLoginSesion(),usrreg=usrreg)    
 
 
 @administrador.route("/registrar_producto", methods=["POST"])
@@ -36,23 +57,20 @@ def registrar_producto():
     fecha_vencimiento = request.form["fecha_vencimiento"]
     categoria = request.form["categoria"]
     
-    if 'imagen' not in request.files:
-            flash('No se ha seleccionado ninguna imagen.')
-            return redirect(request.url)
     imagen = request.files['imagen']
+
     if imagen and allowed_file(imagen.filename):
-            # renombrar la imagen para evitar conflictos de nombres
-            nombre_archivo = secure_filename(imagen.filename)
-            # guardar la imagen en la carpeta deseada
-            imagen.save(os.path.join(ruta_carpeta, nombre_archivo))
-            
-    controller.insertar_producto(nombre, descripcion, cantidad, precio,proveedor,fecha_vencimiento,nombre_archivo,categoria)
+        filename = secure_filename(imagen.filename)
+        
+        imagen.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        imagename = filename
+    controller.insertar_producto(nombre, descripcion, cantidad, precio,proveedor,fecha_vencimiento,imagename,categoria)
     # De cualquier modo, y si todo fue bien, redireccionar
     return render_template("home.html",dataLogin= dataLoginSesion())
 
 def allowed_file(filename):
     return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in {'jpg', 'jpeg', 'png', 'gif'}
+            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 @administrador.route('/cuidado_personal/')
 def cuidado_personal():
@@ -319,7 +337,8 @@ def actualizar_producto():
     descripcion = request.form["descripcion"]
     precio = request.form["precio"]
     fecha_vencimiento = request.form["fecha_vencimiento"]
-    controller.actualizar_producto(nombre, descripcion,cantidad ,precio,fecha_vencimiento,id_producto )
+    imagen = request.files["imagen"]
+    controller.actualizar_producto(nombre, descripcion,cantidad ,precio,fecha_vencimiento,imagen,id_producto )
     return render_template("home.html",dataLogin= dataLoginSesion())
 
 
@@ -332,7 +351,8 @@ def actualizar_usuario():
     direccion = request.form["direccion"]
     telefono = request.form["telefono"]
     genero = request.form["genero"]
-    controller.actualizar_usuario(nombre, apellido, correo,direccion,telefono,genero,id)
+    imagen = request.files["imagen"]
+    controller.actualizar_usuario(nombre, apellido, correo,direccion,telefono,genero,imagen,id)
     return render_template("home.html",dataLogin= dataLoginSesion())
 
 
@@ -363,9 +383,10 @@ def registerUser():
         repite_password = request.form['repite_password']
         genero = request.form['genero']
         create_at = date.today()
+        imagen = request.files['imagen']
+        create_at = date.today()
         #current_time = datetime.datetime.now()
 
-        # Comprobando si ya existe la cuenta de Usuario con respecto al correo
         conexion = obtener_conexion()
         cursor = conexion.cursor(dictionary=True)
         cursor.execute('SELECT * FROM usuario WHERE correo = %s', (correo,))
@@ -386,10 +407,33 @@ def registerUser():
                 password, method='sha256')
             conexion = obtener_conexion()
             cursor = conexion.cursor()
-            cursor.execute('INSERT INTO usuario (tipo_user, nombre, apellido, correo,direccion,telefono, password,genero, create_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)', (tipo_user, nombre, apellido, correo, direccion,telefono, password_encriptada, genero, create_at))
+            if imagen and allowed_file(imagen.filename):
+                filename = secure_filename(imagen.filename)
+                
+                rut= imagen.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                imagename = str(UPLOAD_FOLDER+'/'+filename)           
+            cursor.execute('INSERT INTO usuario (tipo_user, nombre, apellido, correo,direccion,telefono, password,genero, create_at,imagen) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (tipo_user, nombre, apellido, correo, direccion,telefono, password_encriptada, genero, create_at,imagename))
             conexion.commit()
             cursor.close()
             msg = 'Cuenta creada correctamente!'
 
         return render_template('login.html', msjAlert= msg, typeAlert=1)
     return render_template('login.html', dataLogin= dataLoginSesion(), msjAlert = msg, typeAlert=0)
+
+
+
+@app.route('/imagen/<int:id>')
+def mostrar_imagen(id):
+    datalogin=dataLoginSesion
+    conexion = obtener_conexion()
+    cursor = conexion.cursor()
+    query = "SELECT imagen FROM usuario WHERE id = %s"
+    values = (id,)
+    cursor.execute(query, datalogin.id,)
+    resultado = cursor.fetchone()
+    cursor.close()
+    if resultado is not None:
+        ruta = resultado[0]
+        return render_template('base_admin.html', ruta=ruta)
+    else:
+        return 'La imagen no existe'

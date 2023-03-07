@@ -37,7 +37,7 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-12 col-md-10 col-md-offset-1">
-							<form action="{{url_for('administrador.registerUser')}}" method="post">
+							<form action="{{url_for('administrador.registerUser')}}" method="post" enctype="multipart/form-data">
 								<input type="hidden" name="tipo_user" value="1">
 								<div class="form-group label-floating">
 								  <label class="control-label">Nombre</label>
@@ -69,6 +69,13 @@
 									  <option value='F'>Femenino</option>
 									</select>
 								</div>
+								<div class="form-group">
+									<label class="control-label">Imagen</label>
+									<div>
+									  <input type="text" readonly="" class="form-control" placeholder="Abrir Explorador">
+									  <input type="file" name="imagen" id="imagen">
+									</div>
+								  </div>
 
 								<div class="form-group label-floating">
 									<label class="control-label">Contraseña</label>
