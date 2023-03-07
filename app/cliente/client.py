@@ -1,5 +1,7 @@
 from flask import render_template
+from controller import *  # Importando mis Funciones
 from . import cliente
+from bd import *  # Importando conexion BD
 
 
 @cliente.route('/')
@@ -19,7 +21,8 @@ def medicamentoscliente():
 # Datos cliente
 @cliente.route('/datoscliente/')
 def datoscliente():
-    return render_template("datoscliente.html")
+    return render_template('datoscliente.html', dataLogin= dataLoginSesion())
+
 
 # Comprar producto
 @cliente.route('/comprarproducto/')
@@ -27,9 +30,9 @@ def comprarproducto():
     return render_template("comprarproducto.html")
 
 # Cuidado personal
-@cliente.route('/cuidadopersonal/')
-def cuidadopersonal():
-    return render_template("cuidadopersonal.html")
+@cliente.route('/cuidadopersonalclient/')
+def cuidadopersonalclient():
+    return render_template("cuidadopersonalclient.html")
 
 # Dermacosmeticos
 @cliente.route('/dermacosmetica/')

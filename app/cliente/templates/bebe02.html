@@ -1,6 +1,6 @@
-{% extends '/base_cliente.html' %}
-  {% block title %}Bebé{% endblock %}
-  {% block content %}
+{% extends '/base_cliente_registrado.html' %}
+{% block title %}Bebé{% endblock %}
+{% block content %}
 
 <div class="container">
   <div class="row row-cols-1 row-cols-md-4 g-4">
@@ -15,6 +15,7 @@
           <h4 class="precios" style="color: orangered;">$42.900</h4>
           <div class="centrarButton" align="center">
             <a class="btn btn-primary  btn-sm" href="{{ url_for('cliente.comprarproducto') }}" role="button">Comprar</a>
+            <figcaption class="text-center text-titles">{{dataLogin.nombre}}{{' '}}{{dataLogin.apellido}}</figcaption>
           </div>
         </div>
       </div>

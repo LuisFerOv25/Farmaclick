@@ -1,74 +1,6 @@
-{% extends './base.html' %}
-
-<head>
-  <link rel="stylesheet" href="{{url_for(" static", filename='css/cliente.css' )}}">
-
-  {% block title %}Nutricionales{% endblock %}
-</head>
-{% block footerp %}
-
-
-<!--Header-->
-<div>
-  <header class="p-3 mb-3 border-bottom">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-
-        <div class="dropdown">
-          <a href="{{ url_for('homecliente') }}"
-            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-            <img src="/static/icons/pharmacy.png" width="50" height="50" alt="">
-            <span class="fs-5">FARMACLICK</span>
-          </a>
-        </div>
-
-        <form class="mx-auto" role="search">
-          <form class="d-flex" role="search">
-            <input type="search" class="form-control" placeholder="Buscar Medicamento" aria-label="Search">
-
-          </form>
-
-
-          <div class="dropdown">
-
-            <div class="dropdown me-auto">
-              <a href="#" class=" link-dark  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
-                style="margin: 50px;">
-                <img src="/static/icons/user.png" alt="icon user" width="40" height="40" class="rounded-circle">
-              </a>
-              <ul class="dropdown-menu text-small">
-                <li><a class="dropdown-item" href="{{ url_for('datoscliente') }}">Mi Cuenta</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="{{ url_for('login') }}">Cerrar sesión</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div>
-            <a href="#" class=" link-dark" aria-expanded="false">
-              <img src="/static/icons/shoppingCar.png" alt="icon user" width="40" height="40" class="rounded-circle">
-            </a>
-          </div>
-      </div>
-    </div>
-  </header>
-</div>
-
-<!-- Clasificación Productos -->
-<div class="container">
-  <div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-between ">
-      <a class="p-2 link-secondary text-decoration-none" href="{{ url_for('medicamentoscliente') }}">Medicamentos</a>
-      <a class=" p-2 link-secondary text-decoration-none" href="{{ url_for('cuidadopersonal') }}">Cuidado
-        Personal</a>
-      <a class=" p-2 link-secondary text-decoration-none" href="{{ url_for('dermacosmetica') }}">Dermacosmética</a>
-      <a class=" p-2 link-secondary text-decoration-none" href="{{ url_for('nutricionales') }}">Nutricionales</a>
-      <a class=" p-2 link-secondary text-decoration-none" href="{{ url_for('bebe02') }}">Bebé</a>
-    </nav>
-  </div>
-</div>
+{% extends '/base_cliente_registrado.html' %}
+{% block title %}Nutricionales{% endblock %}
+{% block content %}
 
 <div class="container">
   <div class="row row-cols-1 row-cols-md-4 g-4">
@@ -81,7 +13,7 @@
             CONTRAINDICACIONES. SI LOS SÍNTOMAS PERSISTEN, CONSULTAR AL MÉDICO.</p>
           <h4 class="precios" style="color: orangered;">$64.950</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('cliente.comprarproducto') }}" role="button">Comprar</a>
           </div>
         </div>
       </div>
@@ -96,7 +28,7 @@
             EQUILIBRADA. MANTÉNGASE FUERA DEL ALCANCE DE LOS NIÑOS.</p>
           <h4 class="precios" style="color: orangered;">$142.800</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('cliente.comprarproducto') }}" role="button">Comprar</a>
           </div>
         </div>
       </div>
@@ -111,7 +43,7 @@
             AL MÉDICO.</p>
           <h4 class="precios" style="color: orangered;">$98.650</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('cliente.comprarproducto') }}" role="button">Comprar</a>
           </div>
         </div>
       </div>
@@ -127,7 +59,7 @@
             CONSUMO. LEER INDICACIONES Y CONTRAINDICACIONES.</p>
           <h4 class="precios" style="color: orangered;">$48.350</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('cliente.comprarproducto') }}" role="button">Comprar</a>
           </div>
         </div>
       </div>
@@ -146,7 +78,7 @@
             CONSUMO. LEER INDICACIONES Y CONTRAINDICACIONES.</p>
           <h4 class="precios" style="color: orangered;">$115.000</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('cliente.comprarproducto') }}" role="button">Comprar</a>
           </div>
         </div>
       </div>
@@ -162,7 +94,7 @@
             AL MÉDICO.</p>
           <h4 class="precios" style="color: orangered;">$80.300</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('cliente.comprarproducto') }}" role="button">Comprar</a>
           </div>
         </div>
       </div>
@@ -178,7 +110,7 @@
             EQUILIBRADA. MANTÉNGASE FUERA DEL ALCANCE DE LOS NIÑOS.</p>
           <h4 class="precios" style="color: orangered;">$114.300</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('cliente.comprarproducto') }}" role="button">Comprar</a>
           </div>
         </div>
       </div>
@@ -194,7 +126,7 @@
             LA SANGRE Y DE INSUPERABLE EFICACIA EN LA RESTAURACIÓN DEL NERVIO ÓPTICO.</p>
           <h4 class="precios" style="color: orangered;">$39.400</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('cliente.comprarproducto') }}" role="button">Comprar</a>
           </div>
         </div>
       </div>
@@ -213,7 +145,7 @@
           </p>
           <h4 class="precios" style="color: orangered;">$40.150</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('cliente.comprarproducto') }}" role="button">Comprar</a>
           </div>
         </div>
       </div>
@@ -228,7 +160,7 @@
             AL MÉDICO.</p>
           <h4 class="precios" style="color: orangered;">$49.750</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('cliente.comprarproducto') }}" role="button">Comprar</a>
           </div>
         </div>
       </div>
@@ -241,7 +173,7 @@
           <p class="card-text">LIMPIADOR Y ASTRINGENTE PROFUNDO PARA PIELES GRASOSAS Y CON TENDENCIA AL ACNÉ.</p>
           <h4 class="precios" style="color: orangered;">$67.150</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('cliente.comprarproducto') }}" role="button">Comprar</a>
           </div>
         </div>
       </div>
@@ -257,7 +189,7 @@
             LEER INDICACIONES Y CONTRAINDICACIONES. SI LOS SÍNTOMAS PERSISTEN, CONSULTAR AL MÉDICO.</p>
           <h4 class="precios" style="color: orangered;">$101.700</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" href="{{ url_for('comprarproducto') }}" role="button">Comprar</a>
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('cliente.comprarproducto') }}" role="button">Comprar</a>
           </div>
         </div>
       </div>
@@ -281,9 +213,5 @@
   </div>
   <hr>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-{{super()}}
 
 {% endblock %}

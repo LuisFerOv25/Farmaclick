@@ -1,5 +1,5 @@
-{% extends "base_cliente.html"%}
-  {% block title %}Home{% endblock %}
+{% extends "/base_cliente_registrado.html"%}
+{% block title %}Home{% endblock %}
 
 {% block content %}
 
@@ -42,7 +42,7 @@
             AL MÉDICO.</p>
           <h4 class="precios" style="color: orangered;">$20.400</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('cliente.comprarproducto') }}">Comprar</a>
+            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('autenticar.login') }}">Comprar</a>
           </div>
         </div>
       </div>
@@ -56,7 +56,7 @@
             LOS SÍNTOMAS PERSISTEN, CONSULTAR AL MÉDICO.</p>
           <h4 class="precios" style="color: orangered;">$11.200</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('cliente.comprarproducto') }}">Comprar</a>
+            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('autenticar.login') }}">Comprar</a>
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@
             DÍA.</p>
           <h4 class="precios" style="color: orangered;">$24.950</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('cliente.comprarproducto') }}">Comprar</a>
+            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('autenticar.login') }}">Comprar</a>
           </div>
         </div>
       </div>
@@ -85,7 +85,7 @@
             ENCÍAS.</p>
           <h4 class="precios" style="color: orangered;">$32.800</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('cliente.comprarproducto') }}">Comprar</a>
+            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('autenticar.login') }}">Comprar</a>
           </div>
         </div>
       </div>
@@ -103,7 +103,7 @@
             PROTECCIÓN.</p>
           <h4 class="precios" style="color: orangered;">$39.600</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('cliente.comprarproducto') }}">Comprar</a>
+            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('autenticar.login') }}">Comprar</a>
           </div>
         </div>
       </div>
@@ -117,7 +117,7 @@
             CONTRAINDICACIONES. SI LOS SÍNTOMAS PERSISTEN, CONSULTAR AL MÉDICO.</p>
           <h4 class="precios" style="color: orangered;">$14.480</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('cliente.comprarproducto') }}">Comprar</a>
+            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('autenticar.login') }}">Comprar</a>
           </div>
         </div>
       </div>
@@ -132,7 +132,7 @@
             EQUILIBRADA.</p>
           <h4 class="precios" style="color: orangered;">$17.400</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('cliente.comprarproducto') }}">Comprar</a>
+            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('autenticar.login') }}">Comprar</a>
           </div>
         </div>
       </div>
@@ -145,7 +145,7 @@
           <p class="card-text">MANTIENE LA COLITA DE TU BEBÉ SECA, PARA EVITAR IRRITACIONES O QUEMADURAS.</p>
           <h4 class="precios" style="color: orangered;">$72.350</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary btn-sm" role="button" href="{{ url_for('cliente.comprarproducto') }}">Comprar</a>
+            <a class="btn btn-primary btn-sm" role="button" href="{{ url_for('autenticar.login') }}">Comprar</a>
           </div>
         </div>
       </div>
@@ -153,12 +153,9 @@
   </div>
   <!-- BOTÓN VER MÁS -->
   <div align="center">
-    <a class="btn btn-primary  btn-sm" href="{{ url_for('cliente.medicamentoscliente') }}" role=" button">Ver más</a>
+    <a class="btn btn-primary  btn-sm" href="{{ url_for('autenticar.login') }}" role=" button">Ver más</a>
   </div>
   <hr>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 {% endblock %}

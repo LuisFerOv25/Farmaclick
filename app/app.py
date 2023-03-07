@@ -9,10 +9,12 @@ from flask_mysqldb import MySQL
 from werkzeug.utils import secure_filename
 from werkzeug.exceptions import HTTPException
 import sentry_sdk
-from flask_uploads import UploadSet, configure_uploads, IMAGES
 from sentry_sdk.integrations.flask import FlaskIntegration
+
 app = Flask(__name__)
 app.secret_key = '97110c78ae51a45af397be6534caef90ebb9b1dcb3380af008f90b23a5d1616bf19bc29098105da20fe'
+
+    
 
 
 sentry_sdk.init(

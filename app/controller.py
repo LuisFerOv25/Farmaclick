@@ -6,19 +6,19 @@ def insertar_producto(nombre, descripcion, cantidad,precio,proveedor,fecha_venci
     try:
         conexion = obtener_conexion()
         with conexion.cursor() as cursor:
-            cursor.execute("INSERT INTO producto(nombre, descripcion,cantidad, precio,proveedor,fecha_vencimiento,imagen,categoria) VALUES (%s, %s, %s,%s, %s, %s, %s, %s,%s)",
+            cursor.execute("INSERT INTO producto(nombre, descripcion,cantidad, precio,proveedor,fecha_vencimiento,imagen,categoria) VALUES (%s, %s, %s,%s, %s, %s, %s, %s)",
                         (nombre, descripcion, cantidad,precio,proveedor,fecha_vencimiento,imagen,categoria))
         conexion.commit()
         conexion.close()
     except Exception as e:
         print(f'Ha ocurrido el error {e}')
     
-def insertar_usuario(tipo_user,nombre, apellido, direccion,correo,telefono,genero,imagen):
+def insertar_usuario(tipo_user,nombre, apellido, direccion,correo,telefono,genero):
     conexion = obtener_conexion()
     
     with conexion.cursor() as cursor:
-        cursor.execute("INSERT INTO usuario(tipo_user,nombre, apellido,correo,direccion,telefono,genero,imagen) VALUES (%s, %s, %s,%s, %s, %s, %s, %s)",
-                       (tipo_user,nombre, apellido,correo,direccion,telefono,genero,imagen))
+        cursor.execute("INSERT INTO usuario(tipo_user,nombre, apellido,correo,direccion,telefono,genero) VALUES (%s, %s, %s,%s, %s, %s, %s)",
+                       (tipo_user,nombre, apellido,correo,direccion,telefono,genero))
     conexion.commit()
     conexion.close()
 
@@ -143,19 +143,19 @@ def obtener_usuario_por_id(id):
     conexion.close()
     return juego
 
-def actualizar_producto(nombre, descripcion,cantidad, precio,fecha_vencimiento,imagen,id_producto ):
+def actualizar_producto(nombre, descripcion,cantidad, precio,fecha_vencimiento,id_producto ):
     conexion = obtener_conexion()
     with conexion.cursor() as cursor:
-        cursor.execute("UPDATE producto SET nombre = %s, descripcion = %s,cantidad = %s, precio = %s,fecha_vencimiento = %s,imagen = %s WHERE id_producto = %s",
-                       (nombre,descripcion,cantidad,precio,fecha_vencimiento,imagen,id_producto ))
+        cursor.execute("UPDATE producto SET nombre = %s, descripcion = %s,cantidad = %s, precio = %s,fecha_vencimiento = %s WHERE id_producto = %s",
+                       (nombre,descripcion,cantidad,precio,fecha_vencimiento,id_producto ))
     conexion.commit()
     conexion.close()
     
-def actualizar_usuario(nombre, apellido, correo,direccion,telefono,genero,imagen,id ):
+def actualizar_usuario(nombre, apellido, correo,direccion,telefono,genero,id ):
     conexion = obtener_conexion()
     with conexion.cursor() as cursor:
-        cursor.execute("UPDATE usuario SET nombre = %s, apellido = %s,correo = %s, direccion = %s,telefono = %s,genero = %s,imagen = %s WHERE id = %s",
-                       (nombre, apellido, correo,direccion,telefono,genero,imagen,id))
+        cursor.execute("UPDATE usuario SET nombre = %s, apellido = %s,correo = %s, direccion = %s,telefono = %s,genero = %s WHERE id = %s",
+                       (nombre, apellido, correo,direccion,telefono,genero,id))
     conexion.commit()
     conexion.close()
     
