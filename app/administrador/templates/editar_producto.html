@@ -1,6 +1,6 @@
 
 {% extends 'base_admin.html' %}
-  {% block title %}Bebé{% endblock %}
+  {% block title %}{{titedit}}{% endblock %}
 
 {% block content %}
 
@@ -23,21 +23,16 @@
 		<!-- Content page -->
 		<div class="container-fluid">
 			<div class="page-header">
-			  <h1 class="text-titles text-center"><i class="glyphicon glyphicon-baby-formula zmdi-hc-fw"></i> Administracion de productos para bebé</h1>
+			  <h1 class="text-titles text-center">{{titedit}}</h1>
 			</div>
-			<p class="lead text-center">Esta sección permite operar sobre los productos para el cuidado del bebé
+			<p class="lead text-center">{{desedit}}
 			</p>
 		</div>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-12">
-					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
-						
-						<li><a href="#listprod" data-toggle="tab"><i class="glyphicon glyphicon-eye-open"></i> Lista de productos</a></li>
-						<li><a href="#adicionar" data-toggle="tab"><i class="glyphicon glyphicon-plus"></i> Adicionar producto</a></li>
-				
-					  	
-					</ul>
+          <ul class="nav nav-tabs" style="margin-bottom: 15px">
+          </ul>
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-12 col-md-10 col-md-offset-1">
@@ -45,36 +40,37 @@
                                     <input type="hidden" name="id_producto" value="{{productos[0]}}">
 
                                     <div class="form-group label-floating">
-                                      <label class="control-label">Nombre</label>
-                                      <input value="{{productos[1]}}" required type="text" class="input" placeholder="Nombre" name="nombre" id="nombre">
+                                      <label class="control-label">{{adnom}}</label>
+                                      <input  class="form-control" value="{{productos[1]}}" required type="text" class="input" placeholder="Nombre" name="nombre" id="nombre">
                                     </div>
                                     <div class="form-group label-floating">
-                                        <label class="control-label">Descripcion</label>
-                                        <input value="{{productos[2]}}" required type="text" class="input" placeholder="Descripcion" name="descripcion" id="descripcion">
+                                        <label class="control-label">{{addes}}</label>
+                                        <input  class="form-control" value="{{productos[2]}}" required type="text" class="input" placeholder="Descripcion" name="descripcion" id="descripcion">
                                       </div>
                                     <div class="form-group label-floating">
-                                      <label class="control-label">Cantidad</label>
-                                      <input value="{{productos[3]}}" required type="text" class="input" placeholder="Cantidad" name="cantidad" id="cantidad">
+                                      <label class="control-label">{{adcant}}</label>
+                                      <input  class="form-control" value="{{productos[3]}}" required type="text" class="input" placeholder="Cantidad" name="cantidad" id="cantidad">
                                     </div>
                                     <div class="form-group label-floating">
-                                      <label class="control-label">Precio</label>
-                                      <input value="{{productos[4]}}" required type="number" class="input" placeholder="Precio" name="precio" id="precio">
+                                      <label class="control-label">{{adprec}}</label>
+                                      <input  class="form-control" value="{{productos[4]}}" required type="number" class="input" placeholder="Precio" name="precio" id="precio">
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label class="control-label">Fecha Vencimiento</label>
-                                        <input type="date" value="{{productos[6]}}" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" placeholder="Fecha Vencimiento" required>
+                                        <label class="control-label">{{adfech}}</label>
+                                        <input  class="form-control" type="date" value="{{productos[6]}}" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" placeholder="Fecha Vencimiento" required>
                                     </div>
-                                    <div>
-                                      <input type="text" readonly="" class="form-control" placeholder="Abrir Explorador">
+                                    <div class="form-group">
+                                      <label class="control-label">{{adimg}}</label>
+                                      <input type="text" readonly="" class="form-control" placeholder={{expl}}>
                                       <input type="file" name="imagen" id="imagen">
                                     </div>
                                     
                                         <div class="row">
                                             <div class="col">
                                                 <p class="text-center">
-                                                    <button href="#!" class="btn btn-danger btn-raised btn-sm"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</button>
-                                                    <button type="submit" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Guardar</button>
+                                                    <button href="#!" class="btn btn-danger btn-raised btn-sm"><i class="glyphicon glyphicon-remove-circle"></i> {{btncan}}</button>
+                                                    <button type="submit" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> {{btnsav}}</button>
             
                                                 </p>
                                             </div>

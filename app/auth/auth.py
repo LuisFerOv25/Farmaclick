@@ -7,15 +7,58 @@ from datetime import datetime
 
 from bd import *  #Importando conexion BD
 from controller import *  #Importando mis Funciones
+from flask_babel import Babel, gettext, refresh; refresh()
 
 import re
 from werkzeug.security import generate_password_hash, check_password_hash
+from app import *
+import babel.dates
 
 
 # Rutas para login y recuperacion de cuenta
 @autenticar.route('/login/')
 def login():
-    return render_template('login.html')
+    translations = {
+        'titlog': gettext('Registra tu cuenta y accede a nuestros servicios'),
+        'welcome': gettext('Bienvenido de vuelta!'),
+        'descwel': gettext('Para mantenerse conectado con nosotros, inicie sesión con su información personal'),
+        'plhnom': gettext('Nombre'),
+        'plhape': gettext('Apellido'),
+        'plhcorr': gettext('Correo'),
+        'plhdir': gettext('Direccion'),
+        'plhtel': gettext('Telefono'),
+        'plhpass': gettext('Contraseña'),
+        'plhpass2': gettext('Repite contraseña'),
+        'plhgen': gettext('Seleccione genero'),
+        'plhgenm': gettext('Masculino'),
+        'plhgenf': gettext('Femenino'),
+        'sincu': gettext('Aun no tienes cuenta?'),
+        'olvcon': gettext('Olvidaste tu contraseña?'),
+        'txtlogin': gettext('Iniciar Sesión'),
+        'textreg': gettext('Registrate'),
+        'descreg': gettext('Para mantenerse conectado con nosotros, inicie sesión con su información personal'),
+        'footdes': gettext('Descubre la comodidad de cuidar tu salud desde casa con FarmaClick'),
+        'footnos': gettext('Nosotros'),
+        'footqui': gettext('¿Quiénes somos?'),
+        'footpreg': gettext('Preguntas Frecuentes'),
+        'footpol': gettext('Políticas y Términos de Uso'),
+        'footpole': gettext('Políticas de Envíos'),
+        'foottrab': gettext('Trabaja con nosotros'),
+        'footeni': gettext('Enlaces de interés'),
+        'footsuper': gettext('Superintendencia de industria y comercio'),
+        'footsuperf': gettext('Superintendencia financiera'),
+        'footcped': gettext('Cómo hacer un pedido en TDV'),
+        'foottitco': gettext('Contáctenos'),
+        'footdir': gettext('Ipiales Nariño, CALLE 234A'),
+        'footcorr': gettext('farmaclick@farma.com.co'),
+        'footnum1': gettext('+ 57 3217655433'),
+        'footnum2': gettext(' + 57 3146785432'),
+        'footsigred': gettext('Síguenos en nuestras redes sociales'),   
+        'footderech': gettext('Todos los derechos reservados')     
+       
+        }
+
+    return render_template('login.html',**dict(translations.items()))
 
 @autenticar.route('/registro/')
 def registro():
@@ -39,6 +82,47 @@ def validar():
 #Registrando una cuenta de Usuario
 @autenticar.route('/registro-usuario', methods=['GET', 'POST'])
 def registerUser():
+    
+    translations = {
+        'titlog': gettext('Registra tu cuenta y accede a nuestros servicios'),
+        'welcome': gettext('Bienvenido de vuelta!'),
+        'descwel': gettext('Para mantenerse conectado con nosotros, inicie sesión con su información personal'),
+        'plhnom': gettext('Nombre'),
+        'plhape': gettext('Apellido'),
+        'plhcorr': gettext('Correo'),
+        'plhdir': gettext('Direccion'),
+        'plhtel': gettext('Telefono'),
+        'plhpass': gettext('Contraseña'),
+        'plhpass2': gettext('Repite contraseña'),
+        'plhgen': gettext('Seleccione genero'),
+        'plhgenm': gettext('Masculino'),
+        'plhgenf': gettext('Femenino'),
+        'sincu': gettext('Aun no tienes cuenta?'),
+        'olvcon': gettext('Olvidaste tu contraseña?'),
+        'txtlogin': gettext('Iniciar Sesión'),
+        'textreg': gettext('Registrate'),
+        'descreg': gettext('Para mantenerse conectado con nosotros, inicie sesión con su información personal'),
+        'footdes': gettext('Descubre la comodidad de cuidar tu salud desde casa con FarmaClick'),
+        'footnos': gettext('Nosotros'),
+        'footqui': gettext('¿Quiénes somos?'),
+        'footpreg': gettext('Preguntas Frecuentes'),
+        'footpol': gettext('Políticas y Términos de Uso'),
+        'footpole': gettext('Políticas de Envíos'),
+        'foottrab': gettext('Trabaja con nosotros'),
+        'footeni': gettext('Enlaces de interés'),
+        'footsuper': gettext('Superintendencia de industria y comercio'),
+        'footsuperf': gettext('Superintendencia financiera'),
+        'footcped': gettext('Cómo hacer un pedido en TDV'),
+        'foottitco': gettext('Contáctenos'),
+        'footdir': gettext('Ipiales Nariño, CALLE 234A'),
+        'footcorr': gettext('farmaclick@farma.com.co'),
+        'footnum1': gettext('+ 57 3217655433'),
+        'footnum2': gettext(' + 57 3146785432'),
+        'footsigred': gettext('Síguenos en nuestras redes sociales'),   
+        'footderech': gettext('Todos los derechos reservados')    
+       
+        }
+    
     msg = ''
     conexion = obtener_conexion()
     if request.method == 'POST':
@@ -79,29 +163,121 @@ def registerUser():
             cursor.close()
             msg = 'Cuenta creada correctamente!'
 
-        return render_template('login.html', msjAlert = msg, typeAlert=1)
-    return render_template('login.html', dataLogin = dataLoginSesion(), msjAlert = msg, typeAlert=0)
+        return render_template('login.html',**dict(translations.items()))
+        
+    return render_template('login.html',**dict(translations.items()))
 
     
 # Cerrar session del usuario
 @autenticar.route('/logout')
 def logout():
+    translations = {
+        'titlog': gettext('Registra tu cuenta y accede a nuestros servicios'),
+        'welcome': gettext('Bienvenido de vuelta!'),
+        'descwel': gettext('Para mantenerse conectado con nosotros, inicie sesión con su información personal'),
+        'plhnom': gettext('Nombre'),
+        'plhape': gettext('Apellido'),
+        'plhcorr': gettext('Correo'),
+        'plhdir': gettext('Direccion'),
+        'plhtel': gettext('Telefono'),
+        'plhpass': gettext('Contraseña'),
+        'plhpass2': gettext('Repite contraseña'),
+        'plhgen': gettext('Seleccione genero'),
+        'plhgenm': gettext('Masculino'),
+        'plhgenf': gettext('Femenino'),
+        'sincu': gettext('Aun no tienes cuenta?'),
+        'olvcon': gettext('Olvidaste tu contraseña?'),
+        'txtlogin': gettext('Iniciar Sesión'),
+        'textreg': gettext('Registrate'),
+        'descreg': gettext('Para mantenerse conectado con nosotros, inicie sesión con su información personal'),
+        'footdes': gettext('Descubre la comodidad de cuidar tu salud desde casa con FarmaClick'),
+        'footnos': gettext('Nosotros'),
+        'footqui': gettext('¿Quiénes somos?'),
+        'footpreg': gettext('Preguntas Frecuentes'),
+        'footpol': gettext('Políticas y Términos de Uso'),
+        'footpole': gettext('Políticas de Envíos'),
+        'foottrab': gettext('Trabaja con nosotros'),
+        'footeni': gettext('Enlaces de interés'),
+        'footsuper': gettext('Superintendencia de industria y comercio'),
+        'footsuperf': gettext('Superintendencia financiera'),
+        'footcped': gettext('Cómo hacer un pedido en TDV'),
+        'foottitco': gettext('Contáctenos'),
+        'footdir': gettext('Ipiales Nariño, CALLE 234A'),
+        'footcorr': gettext('farmaclick@farma.com.co'),
+        'footsigred': gettext('Síguenos en nuestras redes sociales'),   
+        'footderech': gettext('Todos los derechos reservados')     
+       
+        }
     msgClose = ''
     # Eliminar datos de sesión, esto cerrará la sesión del usuario
     session.pop('conectado', None)
     session.pop('id', None)
     session.pop('correo', None)
     msgClose ="La sesión fue cerrada correctamente"
-    return render_template('./login.html', msjAlert = msgClose, typeAlert=1)
+    return render_template('./login.html', msjAlert = msgClose, typeAlert=1,**dict(translations.items()))
 
 
 
 @autenticar.route('/dashboard', methods=['GET', 'POST'])
 def loginUsser():
+    
+    translations = {
+        'titlog': gettext('Registra tu cuenta y accede a nuestros servicios'),
+        'welcome': gettext('Bienvenido de vuelta!'),
+        'descwel': gettext('Para mantenerse conectado con nosotros, inicie sesión con su información personal'),
+        'plhnom': gettext('Nombre'),
+        'plhape': gettext('Apellido'),
+        'plhcorr': gettext('Correo'),
+        'plhdir': gettext('Direccion'),
+        'plhtel': gettext('Telefono'),
+        'plhpass': gettext('Contraseña'),
+        'plhpass2': gettext('Repite contraseña'),
+        'plhgen': gettext('Seleccione genero'),
+        'plhgenm': gettext('Masculino'),
+        'plhgenf': gettext('Femenino'),
+        'sincu': gettext('Aun no tienes cuenta?'),
+        'olvcon': gettext('Olvidaste tu contraseña?'),
+        'txtlogin': gettext('Iniciar Sesión'),
+        'textreg': gettext('Registrate'),
+        'descreg': gettext('Para mantenerse conectado con nosotros, inicie sesión con su información personal'),
+        'usrreg': gettext('Usuarios Registrados'),
+        'titadm': gettext('Administradores'),
+        'reg': gettext('Registrados'),
+        'titcli': gettext('Clientes'),
+        'footdes': gettext('Descubre la comodidad de cuidar tu salud desde casa con FarmaClick'),
+        'footnos': gettext('Nosotros'),
+        'footqui': gettext('¿Quiénes somos?'),
+        'footpreg': gettext('Preguntas Frecuentes'),
+        'footpol': gettext('Políticas y Términos de Uso'),
+        'footpole': gettext('Políticas de Envíos'),
+        'foottrab': gettext('Trabaja con nosotros'),
+        'footeni': gettext('Enlaces de interés'),
+        'footsuper': gettext('Superintendencia de industria y comercio'),
+        'footsuperf': gettext('Superintendencia financiera'),
+        'footcped': gettext('Cómo hacer un pedido en TDV'),
+        'foottitco': gettext('Contáctenos'),
+        'footdir': gettext('Ipiales Nariño, CALLE 234A'),
+        'footcorr': gettext('farmaclick@farma.com.co'),
+        'footnum1': gettext('+ 57 3217655433'),
+        'footnum2': gettext(' + 57 3146785432'),
+        'footsigred': gettext('Síguenos en nuestras redes sociales'),   
+        'footderech': gettext('Todos los derechos reservados'),  
+        'panel': gettext('Panel de control'),
+        'gesp': gettext('Gestion producto'),
+        'cuidp': gettext('Cuidado personal'),
+        'dermaco': gettext('Dermacosmeticos'),
+        'pnutri': gettext('Nutricionales'),
+        'pbebe': gettext('Bebé'),
+        'medip': gettext('Medicamentos'),
+        'gesusu': gettext('Gestion usuarios'),
+        'adminp': gettext('Administrador'),
+        'clientep': gettext('Cliente'),              
+        }
+    
     conexion = obtener_conexion()
     if 'conectado' in session:
         if session['tipo_user'] == 1:
-            return render_template('./home.html', dataLogin = dataLoginSesion())
+            return render_template('./home.html', dataLogin = dataLoginSesion(),**dict(translations.items()))
         else:
             return render_template('./homecliente.html', dataLogin = dataLoginSesion())
         
@@ -133,13 +309,14 @@ def loginUsser():
 
                     msg = "Ha iniciado sesión correctamente."
                     if session['tipo_user'] == 1:
-                        render_template('./home.html', msjAlert = msg, typeAlert=1, dataLogin = dataLoginSesion()) 
+                        render_template('./home.html', msjAlert = msg, typeAlert=1, dataLogin = dataLoginSesion(),**dict(translations.items())) 
                     else:
                         return render_template('./homecliente.html', msjAlert = msg, typeAlert=1, dataLogin = dataLoginSesion()) 
                 else:
                     msg = 'Datos incorrectos, por favor verfique!'
-                    return render_template('login.html', msjAlert = msg, typeAlert=0)
+                    return render_template('login.html', msjAlert = msg, typeAlert=0,**dict(translations.items()))
             else:
-                return render_template('login.html', msjAlert = msg, typeAlert=0)
-    return render_template('login.html', msjAlert = 'Debe iniciar sesión.', typeAlert=0)
+                return render_template('login.html', msjAlert = msg, typeAlert=0,**dict(translations.items()))
+                
+    return render_template('login.html', msjAlert = 'Debe iniciar sesión.', typeAlert=0,**dict(translations.items()))
 

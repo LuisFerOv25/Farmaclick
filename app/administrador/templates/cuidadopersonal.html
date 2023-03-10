@@ -1,6 +1,6 @@
 
 {% extends 'base_admin.html' %}
-  {% block title %}Cuidado personal{% endblock %}
+  {% block title %}{{cuidp}}{% endblock %}
 
 {% block content %}
   
@@ -27,12 +27,11 @@
       <div class="container-fluid">
         <div class="page-header">
           <h1 class="text-titles text-center">
-            <i class="glyphicon glyphicon-tint zmdi-hc-fw"></i> Administracion
-            de productos de cuidado personal
+            <i class="glyphicon glyphicon-tint zmdi-hc-fw"></i> {{titadm}}
           </h1>
         </div>
         <p class="lead text-center">
-          Esta sección permite operar sobre los productos de cuidado personal
+          {{descper}}
         </p>
       </div>
       <div class="container-fluid">
@@ -41,14 +40,12 @@
             <ul class="nav nav-tabs" style="margin-bottom: 15px">
               <li>
                 <a href="#listprod" data-toggle="tab"
-                  ><i class="glyphicon glyphicon-eye-open"></i> Lista de
-                  productos</a
+                  ><i class="glyphicon glyphicon-eye-open"></i>{{menuprodl}}</a
                 >
               </li>
               <li>
                 <a href="#adicionar" data-toggle="tab"
-                  ><i class="glyphicon glyphicon-plus"></i> Adicionar
-                  producto</a
+                  ><i class="glyphicon glyphicon-plus"></i> {{menuproda}}</a
                 >
               </li>
             </ul>
@@ -87,7 +84,7 @@
                         <div class="form-group">
                             <label class="control-label">Imagen</label>
                             <div>
-                              <input type="text" readonly="" class="form-control" placeholder="Abrir Explorador">
+                              <input type="text" readonly="" class="form-control" placeholder={{expl}}>
                               <input type="file" name="imagen" id="imagen">
                             </div>
                           </div>
@@ -113,13 +110,12 @@
                     <thead>
                       <tr>
                         <th class="text-center">#</th>
-                        <th class="text-center">Nombre</th>
-                        <th class="text-center">Cantidad disponible</th>
-                        <th class="text-center">Precio</th>
-                        <th class="text-center">Fecha Vencimiento
-                        <th class="text-center">Modificar
-                        </th>
-                        <th class="text-center">Eliminar</th>
+                        <th class="text-center">{{tbnomp}}</th>
+                        <th class="text-center">{{tbcan}}</th>
+                        <th class="text-center">{{tbprec}}</th>
+                        <th class="text-center">{{tbfech}}</th>
+                        <th class="text-center">{{tbmod}}</th>
+                        <th class="text-center">{{tbel}}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -168,48 +164,7 @@
         </div>
       </div>
     </section>
-    <!-- Modificar producto -->
-    <section>
-		<div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-			  <div class="modal-content">
-				<div class="modal-header">
-				  <h5 class="modal-title " id="exampleModalLabel"><h3 class="text-center">Modificar producto</h3></h5>
-				  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				  </button>
-				</div>
-				<div class="modal-body">
-				  <form>
-					<form  ROLE="FORM" METHOD="POST" ENCTYPE="MULTIPART/FORM-DATA" ACTION="">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="mb-3 px-5">
-									<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
-								</div>
-								<div class="mb-3">
-									<input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad disponible" required>
-								</div>
-								<div class="mb-3">
-									<input type="number" class="form-control" id="precio" name="precio" placeholder="Precio" required>
-								</div>
-								<div class="mb-3">
-									<input type="date" class="form-control" id="fechaven" name="fechaven" placeholder="Fecha Vencimiento" required>
-								</div>
-								
-							</div>
-
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-				  <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
-				  <button type="button" class="btn btn-primary">Cambiar</button>
-				</div>
-			  </div>
-			</div>
-		  </div>
-    </section>
+   
 
 	<!-- Cuadro de dialogo Eliminar -->
 	<section>

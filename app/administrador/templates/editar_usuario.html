@@ -1,6 +1,6 @@
 
 {% extends 'base_admin.html' %}
-  {% block title %}Actualizar datos{% endblock %}
+  {% block title %}{{titedit}}{% endblock %}
 
 {% block content %}
 
@@ -23,18 +23,15 @@
 		<!-- Content page -->
 		<div class="container-fluid">
 			<div class="page-header">
-			  <h1 class="text-titles text-center"><i class="glyphicon glyphicon-user zmdi-hc-fw"></i>Panel de gestión de clientes</h1>
+			  <h1 class="text-titles text-center"><i class="glyphicon glyphicon-user zmdi-hc-fw"></i>{{titeditusu}}</h1>
 			</div>
-			<p class="lead">En este apartado esta diseñado para visualizar la informacion de los clientes, asi como modificar y eliminar la informacion almacenada</p>
+			<p class="lead text-center">{{deseditusu}}</p>
 		</div>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-12">
 					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
-						
-						<li><a href="#listprod" data-toggle="tab"><i class="glyphicon glyphicon-eye-open"></i> Lista de usuarios</a></li>
-						<li><a href="#adicionar" data-toggle="tab"><i class="glyphicon glyphicon-plus"></i> Adicionar producto</a></li>
-				
+	
 					  	
 					</ul>
                     <div class="container-fluid">
@@ -44,44 +41,46 @@
                                     <input type="hidden" name="id" value="{{usuarios[0]}}">
 
                                     <div class="form-group label-floating">
-                                      <label class="control-label">Nombre</label>
+                                      <label class="control-label">{{adnom}}</label>
                                       <input value="{{usuarios[1]}}" class="form-control" required type="text" class="input" placeholder="Nombre" name="nombre" id="nombre">
                                     </div>
                                     <div class="form-group label-floating">
-                                        <label class="control-label">Apellido</label>
+                                        <label class="control-label">{{adape}}</label>
                                         <input value="{{usuarios[2]}}" class="form-control" required type="text" class="input" placeholder="Apellido" name="apellido" id="apellido">
                                       </div>
                                     <div class="form-group label-floating">
-                                      <label class="control-label">Direccion</label>
+                                      <label class="control-label">{{addire}}</label>
                                       <input value="{{usuarios[3]}}" class="form-control" required type="text" class="input" placeholder="Direccion" name="direccion" id="direccion">
                                     </div>
                                     <div class="form-group label-floating">
-                                      <label class="control-label">Correo</label>
+                                      <label class="control-label">{{adcorreo}}</label>
                                       <input value="{{usuarios[4]}}" class="form-control" required type="text" class="input" placeholder="Correo" name="correo" id="correo">
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label class="control-label">Telefono</label>
+                                        <label class="control-label">{{adtele}}</label>
                                         <input type="phone" value="{{usuarios[5]}}" class="form-control" id="telefono" name="telefono" placeholder="Telefono" required>
                                     </div>
                                     <div class="form-group">
-                                      <label class="control-label">Genero</label>
+                                      <label class="control-label">{{adgener}}</label>
                                       <select name="genero"   required class="form-control">
-                                        <option value="" selected="selected">--- Seleccione genero---</option>
-                                        <option value="M">Masculino</option>
-                                        <option value="F">Femenino</option>
+                                        <option value="" selected="selected">{{adselopc}}</option>
+                                        <option value="M">{{adgenerm}}</option>
+                                        <option value="F">{{adgenefr}}</option>
                                     </select>
                                     </div>
-                                    <div>
-                                      <input type="text" readonly="" class="form-control" placeholder="Abrir Explorador">
+                                    <div class="form-group">
+                                      <label class="control-label">{{adimg}}</label>
+                                
+                                      <input type="text" readonly="" class="form-control" placeholder={{expl}}>
                                       <input type="file" name="imagen" id="imagen">
                                     </div>
                                     
                                         <div class="row">
                                             <div class="col">
                                                 <p class="text-center">
-                                                    <button href="#!" class="btn btn-danger btn-raised btn-sm"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</button>
-                                                    <button type="submit" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Guardar</button>
+                                                    <button href="#!" class="btn btn-danger btn-raised btn-sm"><i class="glyphicon glyphicon-remove-circle"></i> {{btncan}}</button>
+                                                    <button type="submit" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> {{btnsav}}</button>
             
                                                 </p>
                                             </div>

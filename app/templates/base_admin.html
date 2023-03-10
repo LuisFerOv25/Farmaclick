@@ -49,42 +49,42 @@
         <ul class="list-unstyled full-box dashboard-sideBar-Menu">
             <li>
                 <a href="{{ url_for('administrador.home_admin') }}">
-                    <i class="glyphicon glyphicon-th"></i> Panel de control
+                    <i class="glyphicon glyphicon-th"></i> {{panel}}
                 </a>
             </li>
             <li>
                 <a href="#!" class="btn-sideBar-SubMenu">
-                    <i class="glyphicon glyphicon-list-alt"></i>  Gestión productos <i class="zmdi zmdi-caret-down pull-right"></i>
+                    <i class="glyphicon glyphicon-list-alt"></i>  {{gesp}} <i class="zmdi zmdi-caret-down pull-right"></i>
                 </a>
                 <ul class="list-unstyled full-box">
                     <li> 
-                        <a href="{{ url_for('administrador.cuidado_personal') }}"><i class="glyphicon glyphicon-tint zmdi-hc-fw"></i>Cuidado personal</a>
+                        <a href="{{ url_for('administrador.cuidado_personal') }}"><i class="glyphicon glyphicon-tint zmdi-hc-fw"></i>{{cuidp}}</a>
                     </li>
                     <li>
-                        <a href="{{ url_for('administrador.dermacosmetico') }}"><i class="glyphicon glyphicon-ok zmdi-hc-fw"></i>Dermacosmeticos</a>
+                        <a href="{{ url_for('administrador.dermacosmetico') }}"><i class="glyphicon glyphicon-ok zmdi-hc-fw"></i>{{dermaco}}</a>
                     </li>
                     <li> 
-                        <a href="{{ url_for('administrador.nutricional') }}"><i class="glyphicon glyphicon-grain zmdi-hc-fw"></i>Nutricionales</a>
+                        <a href="{{ url_for('administrador.nutricional') }}"><i class="glyphicon glyphicon-grain zmdi-hc-fw"></i>{{pnutri}}</a>
                     </li>
                     <li> 
-                        <a href="{{ url_for('administrador.bebe') }}"><i class="glyphicon glyphicon-baby-formula zmdi-hc-fw"></i>Bebé</a>
+                        <a href="{{ url_for('administrador.bebe') }}"><i class="glyphicon glyphicon-baby-formula zmdi-hc-fw"></i>{{pbebe}}</a>
                     </li>
                     <li>
-                        <a href="{{ url_for('administrador.medicamento') }}"><i class="glyphicon glyphicon-minus zmdi-hc-fw"></i>Medicamentos</a>
+                        <a href="{{ url_for('administrador.medicamento') }}"><i class="glyphicon glyphicon-minus zmdi-hc-fw"></i>{{medip}}</a>
                     </li>
                 </ul>
             </li>
             
             <li>
                 <a href="#!" class="btn-sideBar-SubMenu">
-                    <i class="glyphicon glyphicon-list"></i> Gestíon usuarios <i class="zmdi zmdi-caret-down pull-right"></i>
+                    <i class="glyphicon glyphicon-list"></i> {{gesusu}} <i class="zmdi zmdi-caret-down pull-right"></i>
                 </a>
                 <ul class="list-unstyled full-box">
                     <li>
-                        <a href="{{ url_for('administrador.gestionadmin') }}"><i class="glyphicon glyphicon-user"></i> Administrador</a>
+                        <a href="{{ url_for('administrador.gestionadmin') }}"><i class="glyphicon glyphicon-user"></i> {{adminp}}</a>
                     </li>
                     <li>
-                        <a href="{{ url_for('administrador.gestioncliente') }}"><i class="glyphicon glyphicon-user"></i> Cliente</a>
+                        <a href="{{ url_for('administrador.gestioncliente') }}"><i class="glyphicon glyphicon-user"></i> {{clientep}}</a>
                     </li>
     
                 </ul>
@@ -103,15 +103,11 @@
 		  <div class="modal-content">
 			  <div class="modal-header">
 				  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				  <h4 class="modal-title text-center">Ayuda</h4>
+				  <h4 class="modal-title text-center">{{txthelp}}</h4>
 			  </div>
 			  <div class="modal-body">
 				  <p class="text-justify">
-					  A traves de esta seccion el administrador tiene los permisos
-					  para visualizar la cantidad de clientes y administradores registrados,
-					  asi como realizar operaciones de registro, modificacion y eliminacion
-					  de los productos ofrecidos por la farmacia, adicionalmente es capaz
-					  de generar reportes de ventas
+					  {{infogen}}
 				  </p>
 			  </div>
 				<div class="modal-footer">

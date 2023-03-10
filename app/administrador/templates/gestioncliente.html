@@ -1,6 +1,6 @@
 
 {% extends 'base_admin.html' %}
-  {% block title %}GestionCliente{% endblock %}
+  {% block title %}{{gesusu}}{% endblock %}
 
 {% block content %}
 
@@ -23,9 +23,9 @@
 		<!-- Content page -->
 		<div class="container-fluid">
 			<div class="page-header">
-			  <h1 class="text-titles text-center"><i class="glyphicon glyphicon-user zmdi-hc-fw"></i>Panel de gestión de clientes</h1>
+			  <h1 class="text-titles text-center"><i class="glyphicon glyphicon-user zmdi-hc-fw"></i>{{titgescl}}</h1>
 			</div>
-			<p class="lead">En este apartado esta diseñado para visualizar la informacion de los clientes, asi como modificar y eliminar la informacion almacenada</p>
+			<p class="lead">{{desgescl}}</p>
 		</div>
 		<div class="tab-content">
 
@@ -35,15 +35,15 @@
 						<thead>
 							<tr>
 								<th class="text-center">#</th>
-								<th class="text-center">Nombre</th>
-								<th class="text-center">Apellido</th>
-								<th class="text-center">Direccion</th>
-								<th class="text-center">Correo</th>
-								<th class="text-center">Telefono</th>
+								<th class="text-center">{{adnom}}</th>
+								<th class="text-center">{{adape}}</th>
+								<th class="text-center">{{addire}}</th>
+								<th class="text-center">{{adcorreo}}</th>
+								<th class="text-center">{{adtele}}</th>
 			
-								<th class="text-center">Genero</th>
-								<th class="text-center">Modificar</th>
-								<th class="text-center">Eliminar</th>
+								<th class="text-center">{{adgener}}</th>
+								<th class="text-center">{{tbmod}}</th>
+								<th class="text-center">{{tbel}}</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -92,67 +92,6 @@
 			  </div>
 		</div>
 	</section>
-
-
-   <!-- Modificar cleinte -->
-   <section>
-	<div class="modal fade" id="editarcl" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-		  <div class="modal-content">
-			<div class="modal-header">
-			  <h5 class="modal-title " id="exampleModalLabel"><h3 class="text-center">Modificar datos del cliente</h3></h5>
-			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			  </button>
-			</div>
-			<div class="modal-body">
-			  <form>
-				<form  ROLE="FORM" METHOD="POST" ACTION="">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="mb-3 px-5">
-								<input type="text" class="form-control" id="nombrecl" name="nombrecl" placeholder="Nombre" required>
-							</div>
-							<div class="mb-3">
-								<input type="number" class="form-control" id="direccioncl" name="direccioncl" placeholder="Direccion" required>
-							</div>
-							<div class="mb-3">
-								<input type="number" class="form-control" id="telefonocl" name="telefonocl" placeholder="Telefono" required>
-							</div>
-							
-						</div>
-						<div class="col-md-6">
-							<div class="mb-3 ">
-								<input type="text" class="form-control" id="apelldiocl" name="apelldiocl" placeholder="Apellido" required>
-							</div>
-							<div class="mb-3">
-								<input type="number" class="form-control" id="correocl" name="correocl" placeholder="Correo" required>
-							</div>
-							<div class="mb-3 ">
-								<div class="form-group" id="generoad" name="generoad">
-									<label class="control-label">Genero</label>
-									<select class="form-control">
-									  <option selected>Seleccione una opcion</option>
-									  <option>Male</option>
-									  <option>Female</option>
-									</select>
-								</div>
-							</div>
-	
-						</div>
-
-
-					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
-			  <button type="button" class="btn btn-primary">Cambiar</button>
-			</div>
-		  </div>
-		</div>
-	  </div>
-</section>
 
 <!-- Cuadro de dialogo Eliminar -->
 <section>
