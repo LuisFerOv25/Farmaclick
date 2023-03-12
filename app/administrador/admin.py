@@ -129,6 +129,32 @@ def cuidado_personal():
 
 @administrador.route("/cuidado_personal_pag/<number_page>")
 def page_cuidado_p(number_page):
+    translations = {
+        'titadm': gettext('Administracion de productos de cuidado personal'),
+        'descper': gettext('Esta sección permite operar sobre los productos de cuidado personal'),
+        'panel': gettext('Panel de control'),
+        'gesp': gettext('Gestion producto'),
+        'cuidp': gettext('Cuidado personal'),
+        'dermaco': gettext('Dermacosmeticos'),
+        'pnutri': gettext('Nutricionales'),
+        'pbebe': gettext('Bebé'),
+        'medip': gettext('Medicamentos'),
+        'gesusu': gettext('Gestion usuarios'),
+        'adminp': gettext('Administrador'),
+        'clientep': gettext('Cliente'),
+        'txthelp': gettext('Ayuda'),
+        'tbnomp': gettext('Nombre'),
+        'tbcan': gettext('Cantidad disponible'),
+        'tbprec': gettext('Precio'),
+        'tbfech': gettext('Fecha de Vencimiento'),
+        'tbmod': gettext('Modificar'),
+        'tbel': gettext('Eliminar'),
+        'menuprodl': gettext('Lista de productos'),
+        'menuproda': gettext('Adicionar producto'),
+        'infogen': gettext('A traves de esta seccion el administrador tiene los permisos para visualizar la cantidad de clientes y administradores registrados, asi como realizar operaciones de registro, modificacion y eliminacion de los productos ofrecidos por la farmacia, adicionalmente es capaz de generar reportes de ventas'),
+
+    }
+    
     conexion = obtener_conexion()
     cursor = conexion.cursor()
     if number_page == '1':
@@ -154,7 +180,7 @@ def page_cuidado_p(number_page):
         cursor.execute("SELECT * FROM producto where CATEGORIA = 1 LIMIT 90,10")
     productos = cursor.fetchall()
     conexion.commit()
-    return render_template('cuidadopersonal.html', productos=productos ,dataLogin= dataLoginSesion())   
+    return render_template('cuidadopersonal.html', productos=productos ,dataLogin= dataLoginSesion(),**dict(translations.items()))   
   
 @administrador.route('/dermacosmetico/')
 def dermacosmetico():
@@ -199,6 +225,32 @@ def dermacosmetico():
 
 @administrador.route("/dermacosmetico_pag/<number_pag>")
 def dermacosmetico_pag(number_pag):
+    translations = {
+        'titderm': gettext('Administracion de productos dermacosmeticos'),
+        'desderma': gettext('Esta sección permite operar sobre los productos para el cuidado y tratamiento de la piel'),
+        'panel': gettext('Panel de control'),
+        'gesp': gettext('Gestion producto'),
+        'cuidp': gettext('Cuidado personal'),
+        'dermaco': gettext('Dermacosmeticos'),
+        'pnutri': gettext('Nutricionales'),
+        'pbebe': gettext('Bebé'),
+        'medip': gettext('Medicamentos'),
+        'gesusu': gettext('Gestion usuarios'),
+        'adminp': gettext('Administrador'),
+        'clientep': gettext('Cliente'),
+        'txthelp': gettext('Ayuda'),
+        'tbnomp': gettext('Nombre'),
+        'tbcan': gettext('Cantidad disponible'),
+        'tbprec': gettext('Precio'),
+        'tbfech': gettext('Fecha de Vencimiento'),
+        'tbmod': gettext('Modificar'),
+        'tbel': gettext('Eliminar'),
+        'menuprodl': gettext('Lista de productos'),
+        'menuproda': gettext('Adicionar producto'),
+        'infogen': gettext('A traves de esta seccion el administrador tiene los permisos para visualizar la cantidad de clientes y administradores registrados, asi como realizar operaciones de registro, modificacion y eliminacion de los productos ofrecidos por la farmacia, adicionalmente es capaz de generar reportes de ventas'),
+
+    }
+    
     conexion = obtener_conexion()
     cursor = conexion.cursor()
     if number_pag == '1':
@@ -223,7 +275,7 @@ def dermacosmetico_pag(number_pag):
         cursor.execute("SELECT * FROM producto where CATEGORIA = 2 LIMIT 90,10")
     productos = cursor.fetchall()
     conexion.commit()
-    return render_template('dermacos.html', productos=productos ,dataLogin= dataLoginSesion()) 
+    return render_template('dermacos.html', productos=productos ,dataLogin= dataLoginSesion(),**dict(translations.items())) 
 
 @administrador.route('/nutricional/')
 def nutricional():
@@ -270,6 +322,32 @@ def nutricional():
 
 @administrador.route("/nutricional_pag/<number_pag>")
 def nutricional_pag(number_pag):
+
+    translations = {
+        'titnut': gettext('Administracion de productos nutricionales'),
+        'descnut': gettext('Esta sección permite operar sobre los productos nutricionales'),
+        'panel': gettext('Panel de control'),
+        'gesp': gettext('Gestion producto'),
+        'cuidp': gettext('Cuidado personal'),
+        'dermaco': gettext('Dermacosmeticos'),
+        'pnutri': gettext('Nutricionales'),
+        'pbebe': gettext('Bebé'),
+        'medip': gettext('Medicamentos'),
+        'gesusu': gettext('Gestion usuarios'),
+        'adminp': gettext('Administrador'),
+        'clientep': gettext('Cliente'),
+        'txthelp': gettext('Ayuda'),
+        'tbnomp': gettext('Nombre'),
+        'tbcan': gettext('Cantidad disponible'),
+        'tbprec': gettext('Precio'),
+        'tbfech': gettext('Fecha de Vencimiento'),
+        'tbmod': gettext('Modificar'),
+        'tbel': gettext('Eliminar'),
+        'menuprodl': gettext('Lista de productos'),
+        'menuproda': gettext('Adicionar producto'),
+        'infogen': gettext('A traves de esta seccion el administrador tiene los permisos para visualizar la cantidad de clientes y administradores registrados, asi como realizar operaciones de registro, modificacion y eliminacion de los productos ofrecidos por la farmacia, adicionalmente es capaz de generar reportes de ventas'),
+
+    }
     conexion = obtener_conexion()
     cursor = conexion.cursor()
     if number_pag == '1':
@@ -295,7 +373,7 @@ def nutricional_pag(number_pag):
         cursor.execute("SELECT * FROM producto where CATEGORIA = 3 LIMIT 90,10")
     productos = cursor.fetchall()
     conexion.commit()
-    return render_template('nutricional.html', productos=productos ,dataLogin= dataLoginSesion())
+    return render_template('nutricional.html', productos=productos ,dataLogin= dataLoginSesion(),**dict(translations.items()))
  
 @administrador.route('/bebe/')
 def bebe():
@@ -342,6 +420,32 @@ def bebe():
 
 @administrador.route("/bebe_pag/<number_pag>")
 def page_bebe(number_pag):
+    translations = {
+        'titbeb': gettext('Administracion de productos para bebé'),
+        'descnut': gettext('Esta sección permite operar sobre los productos para el cuidado del bebé'),
+        'panel': gettext('Panel de control'),
+        'gesp': gettext('Gestion producto'),
+        'cuidp': gettext('Cuidado personal'),
+        'dermaco': gettext('Dermacosmeticos'),
+        'pnutri': gettext('Nutricionales'),
+        'pbebe': gettext('Bebé'),
+        'medip': gettext('Medicamentos'),
+        'gesusu': gettext('Gestion usuarios'),
+        'adminp': gettext('Administrador'),
+        'clientep': gettext('Cliente'),
+        'txthelp': gettext('Ayuda'),
+        'tbnomp': gettext('Nombre'),
+        'tbcan': gettext('Cantidad disponible'),
+        'tbprec': gettext('Precio'),
+        'tbfech': gettext('Fecha de Vencimiento'),
+        'tbmod': gettext('Modificar'),
+        'tbel': gettext('Eliminar'),
+        'menuprodl': gettext('Lista de productos'),
+        'menuproda': gettext('Adicionar producto'),
+        'infogen': gettext('A traves de esta seccion el administrador tiene los permisos para visualizar la cantidad de clientes y administradores registrados, asi como realizar operaciones de registro, modificacion y eliminacion de los productos ofrecidos por la farmacia, adicionalmente es capaz de generar reportes de ventas'),
+
+    }
+
     conexion = obtener_conexion()
     cursor = conexion.cursor()
     if number_pag == '1':
@@ -367,7 +471,7 @@ def page_bebe(number_pag):
         cursor.execute("SELECT * FROM producto where CATEGORIA = 4 LIMIT 90,10")
     productos = cursor.fetchall()
     conexion.commit()
-    return render_template('bebe.html', productos=productos ,dataLogin= dataLoginSesion()) 
+    return render_template('bebe.html', productos=productos ,dataLogin= dataLoginSesion(),**dict(translations.items())) 
 
 @administrador.route('/medicamento/')
 def medicamento():
@@ -412,6 +516,31 @@ def medicamento():
 
 @administrador.route("/medicamentos_pag/<number_pag>")
 def medicamentos_pag(number_pag):
+    translations = {
+        'titmed': gettext('Administracion de medicamentos en general'),
+        'descmed': gettext('Esta sección permite operar sobre medicamentos de diferentes tipos y/o presentaciones'),
+        'panel': gettext('Panel de control'),
+        'gesp': gettext('Gestion producto'),
+        'cuidp': gettext('Cuidado personal'),
+        'dermaco': gettext('Dermacosmeticos'),
+        'pnutri': gettext('Nutricionales'),
+        'pbebe': gettext('Bebé'),
+        'medip': gettext('Medicamentos'),
+        'gesusu': gettext('Gestion usuarios'),
+        'adminp': gettext('Administrador'),
+        'clientep': gettext('Cliente'),
+        'txthelp': gettext('Ayuda'),
+        'tbnomp': gettext('Nombre'),
+        'tbcan': gettext('Cantidad disponible'),
+        'tbprec': gettext('Precio'),
+        'tbfech': gettext('Fecha de Vencimiento'),
+        'tbmod': gettext('Modificar'),
+        'tbel': gettext('Eliminar'),
+        'menuprodl': gettext('Lista de productos'),
+        'menuproda': gettext('Adicionar producto'),
+        'infogen': gettext('A traves de esta seccion el administrador tiene los permisos para visualizar la cantidad de clientes y administradores registrados, asi como realizar operaciones de registro, modificacion y eliminacion de los productos ofrecidos por la farmacia, adicionalmente es capaz de generar reportes de ventas'),
+
+    }
     conexion = obtener_conexion()
     cursor = conexion.cursor()
     if number_pag == '1':
@@ -437,7 +566,7 @@ def medicamentos_pag(number_pag):
         cursor.execute("SELECT * FROM producto where CATEGORIA = 5 LIMIT 90,10")
     productos = cursor.fetchall()
     conexion.commit()
-    return render_template('medicamento.html', productos=productos ,dataLogin= dataLoginSesion())
+    return render_template('medicamento.html', productos=productos ,dataLogin= dataLoginSesion(),**dict(translations.items()))
 
 
 # Gestion de usuarios
@@ -485,6 +614,42 @@ def gestionadmin():
 
 @administrador.route("/gestionadmin_pag/<number_pag>")
 def gestionadmin_pag(number_pag):
+    translations = {
+        'titgesadm': gettext('Panel de gestión de administradores'),
+        'desgesadm': gettext('En este apartado esta diseñado para visualizar la informacion de los administrados registrados, asi como modificar y eliminar esta información'),
+        'menuprodl': gettext('Lista de productos'),
+        'menuproda': gettext('Adicionar producto'),
+        'adnom': gettext('Nombre'),
+        'adape': gettext('Apellido'),
+        'addire': gettext('Direccion'),
+        'adtele': gettext('Telefono'),
+        'adcorreo': gettext('Correo'),
+        'adgener': gettext('Genero'),
+        'adgenerm': gettext('Masculino'),
+        'adgenefr': gettext('Femenino'),
+        'adselopc': gettext('Seleccione una opcion'),
+        'adimg': gettext('Imagen'),
+        'adpass': gettext('Contraseña'),
+        'adpass2': gettext('Repetir contraseña'),
+        'btncan': gettext('Cancelar'),
+        'btnsav': gettext('Guardar'),
+        'tbmod': gettext('Modificar'),
+        'tbel': gettext('Eliminar'),
+        'expl': gettext('Abrir Explorador'),
+        'panel': gettext('Panel de control'),
+        'gesp': gettext('Gestion producto'),
+        'cuidp': gettext('Cuidado personal'),
+        'dermaco': gettext('Dermacosmeticos'),
+        'pnutri': gettext('Nutricionales'),
+        'pbebe': gettext('Bebé'),
+        'medip': gettext('Medicamentos'),
+        'gesusu': gettext('Gestion usuarios'),
+        'adminp': gettext('Administrador'),
+        'clientep': gettext('Cliente'),
+        'txthelp': gettext('Ayuda'),
+        'infogen': gettext('A traves de esta seccion el administrador tiene los permisos para visualizar la cantidad de clientes y administradores registrados, asi como realizar operaciones de registro, modificacion y eliminacion de los productos ofrecidos por la farmacia, adicionalmente es capaz de generar reportes de ventas'),
+        
+    } 
     conexion = obtener_conexion()
     cursor = conexion.cursor()
     if number_pag == '1':
@@ -510,7 +675,7 @@ def gestionadmin_pag(number_pag):
         cursor.execute("SELECT * FROM usuario where tipo_user = 1 LIMIT 90,10")
     usuarios = cursor.fetchall()
     conexion.commit()
-    return render_template('gestionadmin.html', usuarios=usuarios ,dataLogin= dataLoginSesion())
+    return render_template('gestionadmin.html', usuarios=usuarios ,dataLogin= dataLoginSesion(),**dict(translations.items()))
 
 
 @administrador.route('/gestioncliente/')
@@ -548,6 +713,33 @@ def gestioncliente():
 
 @administrador.route("/gestioncliente_pag/<number_pag>")
 def gestioncliente_pag(number_pag):
+    translations = {
+        'titgescl': gettext('Panel de gestión de clientes'),
+        'desgescl': gettext('En este apartado esta diseñado para visualizar la informacion de los clientes, asi como modificar y eliminar la informacion almacenada'),
+        'adnom': gettext('Nombre'),
+        'adape': gettext('Apellido'),
+        'addire': gettext('Direccion'),
+        'adtele': gettext('Telefono'),
+        'adcorreo': gettext('Correo'),
+        'adgener': gettext('Genero'),
+        'adimg': gettext('Imagen'),
+        'tbmod': gettext('Modificar'),
+        'tbel': gettext('Eliminar'),
+        'expl': gettext('Abrir Explorador'),
+        'panel': gettext('Panel de control'),
+        'gesp': gettext('Gestion producto'),
+        'cuidp': gettext('Cuidado personal'),
+        'dermaco': gettext('Dermacosmeticos'),
+        'pnutri': gettext('Nutricionales'),
+        'pbebe': gettext('Bebé'),
+        'medip': gettext('Medicamentos'),
+        'gesusu': gettext('Gestion usuarios'),
+        'adminp': gettext('Administrador'),
+        'clientep': gettext('Cliente'),
+        'txthelp': gettext('Ayuda'),
+        'infogen': gettext('A traves de esta seccion el administrador tiene los permisos para visualizar la cantidad de clientes y administradores registrados, asi como realizar operaciones de registro, modificacion y eliminacion de los productos ofrecidos por la farmacia, adicionalmente es capaz de generar reportes de ventas'),
+        
+    }  
     conexion = obtener_conexion()
     cursor = conexion.cursor()
     if number_pag == '1':
@@ -573,7 +765,7 @@ def gestioncliente_pag(number_pag):
         cursor.execute("SELECT * FROM usuario where tipo_user = 2 LIMIT 90,10")
     usuarios = cursor.fetchall()
     conexion.commit()
-    return render_template('gestioncliente.html', usuarios=usuarios ,dataLogin= dataLoginSesion())
+    return render_template('gestioncliente.html', usuarios=usuarios ,dataLogin= dataLoginSesion(),**dict(translations.items()))
 
 
 @administrador.route("/formulario_editar_producto/<int:id_producto>")
