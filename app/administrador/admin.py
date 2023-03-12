@@ -209,7 +209,6 @@ def dermacosmetico_pag(number_pag):
         cursor.execute("SELECT * FROM producto where CATEGORIA = 2 LIMIT 20,10")
     if number_pag == '4':
         cursor.execute("SELECT * FROM producto where CATEGORIA = 2 LIMIT 30,10")
-        
     if number_pag == '5':
         cursor.execute("SELECT * FROM producto where CATEGORIA = 2 LIMIT 40,10")
     if number_pag == '6':

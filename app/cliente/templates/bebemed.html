@@ -1,5 +1,5 @@
 {% extends '/base_cliente_registrado.html' %}
-{% block title %}Medicamentos{% endblock %}
+{% block title %}Bebé{% endblock %}
 {% block content %}
 
 <div class="container">
@@ -21,14 +21,13 @@
     </div>
     {% endfor %}
   </div>
-
   <!-- Paginacion -->
   <div class="py-4">
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
         {% for pag in range(1,11) %}
         <li class="page-item">
-          <a class="page-link" href="/pag_medicamentos/{{pag}}">{{ pag }}</a>
+          <a class="page-link" href="/pag_bebe/{{pag}}">{{ pag }}</a>
         </li>
         {% endfor %}
       </ul>

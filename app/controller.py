@@ -121,7 +121,6 @@ def eliminar_usuario(id):
     conexion.close()    
     
 
-
 def obtener_producto_por_id(id_producto):
     conexion = obtener_conexion()
     juego = None
@@ -187,3 +186,71 @@ def dataPerfilUsuario():
     mycursor.close() #cerrrando conexion SQL
     conexion.close() #cerrando conexion de la BD
     return datosUsuario
+
+
+#DATOS CUIDADO PERSONAL
+def datosCuidadoPersonal():
+    conexion = obtener_conexion()
+    productos = []
+    with conexion.cursor() as cursor:
+        cursor.execute("SELECT * FROM producto WHERE categoria = 1")
+        productos = cursor.fetchall()
+    conexion.close()
+    return productos
+
+
+#DATOS DERMACOSMETICA
+def datosDermacosmetica():
+    conexion = obtener_conexion()
+    productos = []
+    with conexion.cursor() as cursor:
+        cursor.execute("SELECT * FROM producto WHERE categoria = 2")
+        productos = cursor.fetchall()
+    conexion.close()
+    return productos
+
+
+#DATOS NURICIONAL
+def datosNutricional():
+    conexion = obtener_conexion()
+    productos = []
+    with conexion.cursor() as cursor:
+        cursor.execute("SELECT * FROM producto WHERE categoria = 3")
+        productos = cursor.fetchall()
+    conexion.close()
+    return productos
+
+
+#DATOS BEBE
+def datosBebe():
+    conexion = obtener_conexion()
+    productos = []
+    with conexion.cursor() as cursor:
+        cursor.execute("SELECT * FROM producto WHERE categoria = 4")
+        productos = cursor.fetchall()
+    conexion.close()
+    return productos
+
+
+
+#DATOS MEDICAMENTOS
+def datosMedicamentos():
+    conexion = obtener_conexion()
+    productos = []
+    with conexion.cursor() as cursor:
+        cursor.execute("SELECT * FROM producto WHERE categoria = 5")
+        productos = cursor.fetchall()
+    conexion.close()
+    return productos
+
+
+
+#DATOS MEDICAMENTOS HOME
+def datosMedicamentosHome():
+    conexion = obtener_conexion()
+    productos = []
+    with conexion.cursor() as cursor:
+        cursor.execute("SELECT * FROM producto LIMIT 12")
+        productos = cursor.fetchall()
+    conexion.close()
+    return productos

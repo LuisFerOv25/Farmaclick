@@ -30,127 +30,26 @@
 <!-- Contenido -->
 <div class="container">
   <div class="row row-cols-1 row-cols-md-4 g-4">
+    {% for dato in productos %}
     <div class="col">
       <div class="card h-100">
-        <img src="/static/img/home/acetaminofen.png" class="imgTamano" alt="...">
+        <img src="/static/img/medicamentos/amitriptilina.png" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">ACETAMINOFÉN 500 MG CAJA CON 100 TABLETAS</h5>
-          <p class="card-text">ES UN MEDICAMENTO. NO EXCEDER SU CONSUMO. LEER INDICACIONES Y CONTRAINDICACIONES. SI
-            LOS SÍNTOMAS PERSISTEN, CONSULTAR
-            AL MÉDICO.</p>
-          <h4 class="precios" style="color: orangered;">$20.400</h4>
+          <h5 class="card-title">{{dato[1]}}</h5>
+
+          <p class="card-text">{{dato[2]}}</p>
+          <h4 class="precios" style="color: orangered;">{{dato[4]}}</h4>
           <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('cliente.comprarproducto') }}">Comprar</a>
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('cliente.comprarproducto') }}" role="button">Comprar</a>
           </div>
         </div>
       </div>
     </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="/static/img/home/alkaseltzer.png" class="imgTamano" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">ALKA-SELTZER CAJA CON 14 TABLETAS EFERVESCENTES</h5>
-          <p class="card-text">ES UN MEDICAMENTO. NO EXCEDER SU CONSUMO. LEER INDICACIONES Y CONTRAINDICACIONES. SI
-            LOS SÍNTOMAS PERSISTEN, CONSULTAR AL MÉDICO.</p>
-          <h4 class="precios" style="color: orangered;">$11.200</h4>
-          <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('cliente.comprarproducto') }}">Comprar</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="/static/img/home/headandshoulders.png" class="imgTamano" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">SHAMPOO HEAD & SHOULDERS FRASCO CON 375 ML</h5>
-          <p class="card-text">REMUEVE IMPUREZAS Y DEJA TU CABELLO HASTA 100% LIBRE DE CASPA, CON UNA SENSACIÓN DE
-            FRESCURA QUE TE ACOMPAÑA DURANTE EL
-            DÍA.</p>
-          <h4 class="precios" style="color: orangered;">$24.950</h4>
-          <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('cliente.comprarproducto') }}">Comprar</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="/static/img/home/listerine.png" class="imgTamano" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">ENJUAGUE BUCAL LISTERINE COOL MINT CON 1L</h5>
-          <p class="card-text">COMBATE LOS GÉRMENES QUE CAUSAN EL MAL ALIENTO Y LA PLACA BACTERIANA, PROTEGIENDO LAS
-            ENCÍAS.</p>
-          <h4 class="precios" style="color: orangered;">$32.800</h4>
-          <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('cliente.comprarproducto') }}">Comprar</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    {% endfor %}
   </div>
 
-  <div class="row row-cols-1 row-cols-md-4 g-4 py-3">
-    <div class="col">
-      <div class="card h-100">
-        <img src="/static/img/home/lubriderm.png" class="imgTamano" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">CREMA LUBRIDERM® PROTECCIÓN SOLAR SPF 15 FRASCO CON 400 ML</h5>
-          <p class="card-text">SU FÓRMULA COMBINA UNA CREMA HUMECTANTE CON LA PROTECCIÓN SOLAR UVA Y UVB SPF 15
-            BRINDANDO UN AMPLIO ESPECTRO DE
-            PROTECCIÓN.</p>
-          <h4 class="precios" style="color: orangered;">$39.600</h4>
-          <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('cliente.comprarproducto') }}">Comprar</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="/static/img/home/vicbaporu.png" class="imgTamano" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">VICK VAPORUB UNGÜENTO CAJA CON FRASCO CON 50 G</h5>
-          <p class="card-text">ES UN MEDICAMENTO. NO EXCEDER SU CONSUMO. LEER INDICACIONES Y
-            CONTRAINDICACIONES. SI LOS SÍNTOMAS PERSISTEN, CONSULTAR AL MÉDICO.</p>
-          <h4 class="precios" style="color: orangered;">$14.480</h4>
-          <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('cliente.comprarproducto') }}">Comprar</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="/static/img/home/vitaminac.png" class="imgTamano" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">VITA C + ZINC SABOR NARANJA CAJA CON FRASCO CON 10 TABLETAS</h5>
-          <p class="card-text">UPLEMENTO DIETARIO ESTE PRODUCTO ES UN SUPLEMENTO DIETARIO. NO ES UN MEDICAMENTO Y NO
-            SUPLE UNA ALIMENTACIÓN
-            EQUILIBRADA.</p>
-          <h4 class="precios" style="color: orangered;">$17.400</h4>
-          <div class="centrarButton" align="center">
-            <a class="btn btn-primary  btn-sm" role="button" href="{{ url_for('cliente.comprarproducto') }}">Comprar</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="/static/img/home/winny.png" class="imgTamano" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">PAÑALES WINNY ULTRATRIM SEC ETAPA 4 PACA CON 50 UNIDADES</h5>
-          <p class="card-text">MANTIENE LA COLITA DE TU BEBÉ SECA, PARA EVITAR IRRITACIONES O QUEMADURAS.</p>
-          <h4 class="precios" style="color: orangered;">$72.350</h4>
-          <div class="centrarButton" align="center">
-            <a class="btn btn-primary btn-sm" role="button" href="{{ url_for('cliente.comprarproducto') }}">Comprar</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   <!-- BOTÓN VER MÁS -->
-  <div align="center">
+  <div align="center" class="py-3">
     <a class="btn btn-primary  btn-sm" href="{{ url_for('cliente.medicamentoscliente') }}" role=" button">Ver más</a>
   </div>
   <hr>

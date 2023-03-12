@@ -11,16 +11,13 @@
           <div class="row align-items-start">
             <div class="col">
 
-
               <div class="input-group input-group-sm mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-sm">Nombre</span>
                 <input type="text" class="form-control" aria-label="Sizing example input"
                   aria-describedby="inputGroup-sizing-sm" name="txtnombre" value="{{dataLogin.nombre}}" required>
               </div>
-
             </div>
             <div class="col">
-
               <div class="input-group input-group-sm mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-sm">Apellido</span>
                 <input type="text" class="form-control" aria-label="Sizing example input"
@@ -43,7 +40,7 @@
               <div class="input-group input-group-sm mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-sm">Género</span>
                 <input type="text" class="form-control" aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-sm" name="txtnumdoc" value="{{dataLogin.genero}}" required>
+                  aria-describedby="inputGroup-sizing-sm" name="txttipod" value="{{dataLogin.genero}}" required>
               </div>
 
             </div>
@@ -69,25 +66,6 @@
 
             </div>
           </div>
-          <div class="row align-items-start">
-
-            <div class="col">
-              <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Contraseña actual</span>
-                <input type="text" class="form-control" aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-sm" name="txtcodest" value="{{dataLogin.create_at}}" required>
-              </div>
-
-            </div>
-            <div class="col">
-              <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Nueva contraseña</span>
-                <input type="text" class="form-control" aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-sm" name="txtsemes" value="" required>
-              </div>
-
-            </div>
-          </div>
         </div>
         <div>
           <div class="form-check py-3">
@@ -106,6 +84,4 @@
     </div>
     <hr>
   </div>
-
-
   {% endblock %}
