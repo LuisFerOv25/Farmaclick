@@ -226,3 +226,30 @@ def pag_bebe(number_pag):
     productos = cursor.fetchall()
     conexion.commit()
     return render_template('nutricionales.html', productos=productos ,dataLogin= dataLoginSesion()) 
+
+
+@cliente.route('/buscar', methods=['GET', 'POST'])
+def buscar():
+    if request.method == 'POST':
+        # Obtener el término de búsqueda del usuario
+        busqueda = request.form['busqueda']
+        
+        # Crear una consulta para buscar en la base de datos
+        conexion = obtener_conexion()
+        cursor = conexion.cursor()
+        consulta = "SELECT * FROM producto WHERE nombre LIKE '%{}%'".format(busqueda)
+        cursor.execute(consulta)
+        
+        # Obtener los resultados de la consulta
+        resultados = cursor.fetchall()
+        
+        if len(resultados) == 0:
+            # Si no se encontraron resultados, mostrar un mensaje
+            mensaje = "No se encontraron productos para '{}'. Intente con otra búsqueda.".format(busqueda)
+            return render_template('base_cliente_registrado.html', mensaje=mensaje)
+        else:
+            # Si se encontraron resultados, mostrarlos
+            return render_template('base_cliente_registrado.html', resultados=resultados)
+    
+    # Si la solicitud es GET, mostrar la página de búsqueda
+    return render_template('base_cliente_registrado.html')

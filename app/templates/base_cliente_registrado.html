@@ -37,11 +37,13 @@
             </a>
           </div>
 
-          <form class="mx-auto" role="search">
-            <form class="d-flex" role="search">
-              <input type="search" class="form-control" placeholder="Buscar Medicamento" aria-label="Search">
-
+          <div class="mx-auto" role="search">
+            <form class="d-flex" role="search" action="{{ url_for('cliente.buscar') }}" method="post">
+              <input type="text" name="busqueda" class="form-control" placeholder="Buscar Medicamento" aria-label="Search">
+              <button type="submit">Buscar</button>
             </form>
+          </div>
+         
 
             <div class="dropdown">
 
@@ -93,6 +95,37 @@
   </div>
 
   {% block content %}{% endblock %}
+
+<!-- Contenido -->
+{% if mensaje %}
+<br>
+<br>
+<p class='text-center'>{{ mensaje }}</p>
+<br>
+<br>
+{% endif %}
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+    {% for resultado in resultados %}
+    <div class="col">
+      <div class="card h-100">
+        <img src="/static/img/medicamentos/amitriptilina.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{resultado[1]}}</h5>
+
+          <p class="card-text">{{resultado[2]}}</p>
+          <h4 class="precios" style="color: orangered;">{{resultado[4]}}</h4>
+          <div class="centrarButton" align="center">
+            <a class="btn btn-primary  btn-sm" href="{{ url_for('cliente.comprarproducto') }}" role="button">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+
+
 
 
   <footer class="text-center text-lg-start bg-white text-muted">
