@@ -21,7 +21,8 @@ $(document).ready(function(){
 		  	confirmButtonText: '<i class="glyphicon glyphicon-ok-circle"></i> Yes, Salir!',
 		  	cancelButtonText: '<i class="glyphicon glyphicon-remove-circle"></i> No, Cancelar!'
 		}).then(function () {
-			window.location.href="index.html";
+			
+			window.location.href="/logout";
 		});
 	});
 	$('.btn-menu-dashboard').on('click', function(){
@@ -56,3 +57,23 @@ $(document).ready(function(){
         });
     });
 })(jQuery);
+
+function confirmarBorrar() {
+	if (confirm("¿Estás seguro de que deseas borrar este dato?")) {
+		// aquí llamas a la función para borrar el dato
+		borrarDato();
+	}
+}
+
+function borrarDato() {
+	
+	fetch('/eliminar_producto', {
+		method: 'POST'
+	}).then(function(response) {
+		return response.json();
+	}).then(function(data) {
+		alert(data.message);
+	}).catch(function(error) {
+		console.error(error);
+	});
+}

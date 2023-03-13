@@ -12,13 +12,39 @@ import controller
 
 @cliente.route('/')
 def index():
-    return render_template("inicio.html")
+  productos = controller.datosMedicamentosHomeNoLogin()
+  return render_template("inicio.html", productos=productos)
+
+
+
+# ACTUALIZAR DATOS CLIENTE
+@cliente.route("/actualizarDatosCliente", methods=["POST"])
+def actualizarDatosCliente():
+    id = request.form["id"]
+    nombre = request.form["nombre"]
+    apellido = request.form["apellido"]
+    correo = request.form["correo"]
+    direccion = request.form["direccion"]
+    telefono = request.form["telefono"]
+    genero = request.form["genero"]
+    controller.actualizarDatosCliente(nombre, apellido, correo, direccion, telefono, genero, id)
+    return render_template("homecliente.html",dataLogin= dataLoginSesion())
+
 
 # Home cliente
 @cliente.route('/homecliente/')
 def homecliente():
-  productos = controller.datosMedicamentosHome()
-  return render_template("homecliente.html", productos=productos,dataLogin= dataLoginSesion())
+    noOfItems = 0
+    conexion = obtener_conexion()
+    correo = session['correo']
+    cursor = conexion.cursor()
+    cursor.execute("SELECT id FROM usuario WHERE correo = %s", (correo,))
+    userId = cursor.fetchone()[0]
+    cursor.fetchall()
+    cursor.execute("SELECT count(id_producto) FROM carrito WHERE id = %s", (userId, ))
+    noOfItems = cursor.fetchone()[0]    
+    productos = controller.datosMedicamentosHome()
+    return render_template("homecliente.html", productos=productos,dataLogin= dataLoginSesion(),noOfItems=noOfItems)
 
 
 # Medicamentos cliente
@@ -37,7 +63,22 @@ def datoscliente():
 # Comprar producto
 @cliente.route('/comprarproducto/')
 def comprarproducto():
-    return render_template("comprarproducto.html")
+    noOfItems = 0
+    conexion = obtener_conexion()
+    correo = session['correo']
+    cursor = conexion.cursor()
+    cursor.execute("SELECT id FROM usuario WHERE correo = %s", (correo,))
+    userId = cursor.fetchone()[0]
+    cursor.fetchall()
+    cursor.execute("SELECT count(id_producto) FROM carrito WHERE id = %s", (userId, ))
+    noOfItems = cursor.fetchone()[0] 
+
+    productId = request.args.get('id_producto')
+    with conexion.cursor() as cursor:
+        cursor.execute('SELECT id_producto, nombre, descripcion,cantidad, precio, proveedor,fecha_vencimiento, imagen, categoria stock FROM producto WHERE id_producto = %s', (productId, ))
+        productData = cursor.fetchone() 
+    conexion.close()
+    return render_template("comprarproducto.html",noOfItems=noOfItems,productData=productData,productId=productId)
 
 # Cuidado personal
 @cliente.route('/cuidadopersonalclient/')

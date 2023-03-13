@@ -1,86 +1,82 @@
 {% extends '/base_datos_cliente.html' %}
-{% block title %}Datos Personales{% endblock %}
+{% block title %}Datos cliente{% endblock %}
 {% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styleDatosCliente.css' ) }}">
+
 
 <div class="container">
   <div class="inicio_adm">
     <div class="card">
-      <h3 class="card-header text-center">MIS DATOS PERSONALES</h3>
-      <div class="card-body">
-        <div class="container text-right">
-          <div class="row align-items-start">
-            <div class="col">
+      <form action="{{url_for('cliente.actualizarDatosCliente')}}" method="post" enctype="multipart/form-data">
+        <h3 class="card-header text-center">MIS DATOS PERSONALES</h3>
+        <div class="card-body">
+          <div class="container text-right">
+            <input type="hidden" name="id" value="{{dataLogin.id}}">
+            <div class="row align-items-start">
+            </div>
+            <div class="row align-items-start">
+              <div class="col">
+                <div class="input-group input-group-sm mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Nombre</span>
+                  <input type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" name="nombre" id="nombre" value="{{dataLogin.nombre}}"
+                    required>
+                </div>
+              </div>
+              <div class="col">
+                <div class="input-group input-group-sm mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Apellido</span>
+                  <input type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" name="apellido" id="apellido" value="{{dataLogin.apellido}}"
+                    required>
+                </div>
 
-              <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Nombre</span>
-                <input type="text" class="form-control" aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-sm" name="txtnombre" value="{{dataLogin.nombre}}" required>
               </div>
             </div>
-            <div class="col">
-              <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Apellido</span>
-                <input type="text" class="form-control" aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-sm" name="txtapellido" value="{{dataLogin.apellido}}" required>
+            <div class="row align-items-start">
+              <div class="col">
+                <div class="input-group input-group-sm mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Correo electrónico</span>
+                  <input type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" name="correo" id="correo" value="{{dataLogin.emailLogin}}"
+                    required>
+                </div>
               </div>
-
+              <div class="col">
+                <div class="input-group input-group-sm mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Dirección</span>
+                  <input type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" name="direccion" id="direccion"
+                    value="{{dataLogin.direccion}}" required>
+                </div>
+              </div>
+            </div>
+            <div class="row align-items-start">
+              <div class="col">
+                <div class="input-group input-group-sm mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Celular</span>
+                  <input type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" id="telefono" name="telefono" value="{{dataLogin.telefono}}"
+                    required>
+                </div>
+              </div>
+              <div class="col">
+                <div class="input-group input-group-sm mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Género</span>
+                  <input type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" id="genero" name="genero" value="{{dataLogin.genero}}"
+                    required>
+                </div>
+              </div>
             </div>
           </div>
-
-          <div class="row align-items-start">
-            <div class="col">
-              <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Dirección</span>
-                <input type="text" class="form-control" aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-sm" name="txttipod" value="{{dataLogin.direccion}}" required>
-              </div>
-
-            </div>
-            <div class="col">
-              <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Género</span>
-                <input type="text" class="form-control" aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-sm" name="txttipod" value="{{dataLogin.genero}}" required>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="row align-items-start">
-
-
-            <div class="col">
-              <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Celular</span>
-                <input type="text" class="form-control" aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-sm" name="txtcel" value="{{dataLogin.telefono}}" required>
-              </div>
-
-            </div>
-            <div class="col">
-              <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Correo electrónico</span>
-                <input type="text" class="form-control" aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-sm" name="txtcorreo" value="{{dataLogin.emailLogin}}" required>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="form-check py-3">
-            <input type="checkbox" class="form-check-input" id="same-address">
-            <label class="form-check-label" for="same-address">Confirmo que soy mayor de edad y acepto los Términos y
-              Condiciones, y la Autorizacion para tratamiento de
-              datos
-              personales e inscripción al programa Vive Consentido.</label>
+          <div class=" py-3 text-center">
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <a class="btn btn-danger" role="button" href="{{ url_for('cliente.homecliente') }}">Volver</a>
           </div>
         </div>
-        <div class="centrarButton py-3">
-          <a class="btn btn-success" role="button">Guardar</a>
-          <a class="btn btn-danger" role="button">Volver a tu cuenta</a>
-        </div>
-      </div>
+      </form>
     </div>
     <hr>
   </div>

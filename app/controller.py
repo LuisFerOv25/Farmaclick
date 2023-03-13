@@ -87,6 +87,16 @@ def usuario_cliente():
     return usuarios
 
 
+def gestion_pedido():
+    conexion = obtener_conexion()
+    pedidos = []
+    with conexion.cursor() as cursor:
+        cursor.execute("SELECT * FROM pedido LIMIT 0,10")
+        pedidos = cursor.fetchall()
+    conexion.close()
+    return pedidos
+
+
 def user_cant_admin():
     conexion = obtener_conexion()
     usuarios = []
@@ -243,7 +253,27 @@ def datosMedicamentos():
     conexion.close()
     return productos
 
+# ACTUALIZAR DATOS USUARIO DESDE CLIENTE
+def actualizarDatosCliente(nombre, apellido, correo, direccion, telefono, genero, id ):
+    conexion = obtener_conexion()
+    with conexion.cursor() as cursor:
+        cursor.execute("UPDATE usuario SET nombre = %s, apellido = %s,correo = %s, direccion = %s,telefono = %s,genero = %s WHERE id = %s",
+                       (nombre, apellido, correo, direccion, telefono, genero, id))
+    conexion.commit()
+    conexion.close()
 
+
+
+
+#DATOS MEDICAMENTOS HOME NO REGISTRO
+def datosMedicamentosHomeNoLogin():
+    conexion = obtener_conexion()
+    productos = []
+    with conexion.cursor() as cursor:
+        cursor.execute("SELECT * FROM producto LIMIT 20")
+        productos = cursor.fetchall()
+    conexion.close()
+    return productos
 
 #DATOS MEDICAMENTOS HOME
 def datosMedicamentosHome():

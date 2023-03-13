@@ -68,6 +68,8 @@ def registro():
 def recuperarc():
     return render_template("cuenta.html")
 
+
+
 @autenticar.route('/verificar/')
 def verificar():
     return render_template("cuenta2.html")
@@ -220,7 +222,8 @@ def logout():
 
 @autenticar.route('/dashboard', methods=['GET', 'POST'])
 def loginUsser():
-    
+    conexion = obtener_conexion()
+    noOfItems = 0
     translations = {
         'titlog': gettext('Registra tu cuenta y accede a nuestros servicios'),
         'welcome': gettext('Bienvenido de vuelta!'),
@@ -271,15 +274,28 @@ def loginUsser():
         'medip': gettext('Medicamentos'),
         'gesusu': gettext('Gestion usuarios'),
         'adminp': gettext('Administrador'),
-        'clientep': gettext('Cliente'),              
+        'clientep': gettext('Cliente'),
+        'pedidosp': gettext('Pedidos'),
+        'revisarp': gettext('Revisar pedidos'),              
         }
-    
-    conexion = obtener_conexion()
+ 
+     
     if 'conectado' in session:
+        
+        
+        
+        correo = session['correo']
+        cursor = conexion.cursor()
+        cursor.execute("SELECT id FROM usuario WHERE correo = %s", (correo,))
+        userId = cursor.fetchone()[0]
+        cursor.fetchall()
+        cursor.execute("SELECT count(id_producto) FROM carrito WHERE id = %s", (userId, ))
+        noOfItems = cursor.fetchone()[0]  
+    
         if session['tipo_user'] == 1:
             return render_template('./home.html', dataLogin = dataLoginSesion(),**dict(translations.items()))
         else:
-            return render_template('./homecliente.html', dataLogin = dataLoginSesion())
+            return render_template('./homecliente.html', dataLogin = dataLoginSesion(),noOfItems=noOfItems)
         
     else:
         msg = ''
@@ -309,9 +325,9 @@ def loginUsser():
 
                     msg = "Ha iniciado sesión correctamente."
                     if session['tipo_user'] == 1:
-                        render_template('./home.html', msjAlert = msg, typeAlert=1, dataLogin = dataLoginSesion(),**dict(translations.items())) 
+                        render_template('./home.html', msjAlert = msg, typeAlert=1, dataLogin = dataLoginSesion(),noOfItems=noOfItems,**dict(translations.items()))
                     else:
-                        return render_template('./homecliente.html', msjAlert = msg, typeAlert=1, dataLogin = dataLoginSesion()) 
+                        return render_template('./homecliente.html', msjAlert = msg, typeAlert=1, dataLogin = dataLoginSesion(),noOfItems=noOfItems) 
                 else:
                     msg = 'Datos incorrectos, por favor verfique!'
                     return render_template('login.html', msjAlert = msg, typeAlert=0,**dict(translations.items()))

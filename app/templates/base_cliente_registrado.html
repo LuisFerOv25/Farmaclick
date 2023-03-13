@@ -43,33 +43,34 @@
               <button type="submit">Buscar</button>
             </form>
           </div>
-         
 
-            <div class="dropdown">
 
+          <div class="dropdown">
+
+            <div class="dropdown me-auto">
               <div class="dropdown me-auto">
-                <div class="dropdown me-auto">
-                  <a href="#" class=" link-dark  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
-                    style="margin: 50px;">
-                    <img src="/static/icons/user.png" alt="icon user" width="40" height="40" class="rounded-circle">
-                  </a>
-                  <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item" href="{{ url_for('cliente.datoscliente') }}">Mi Cuenta</a></li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="{{ url_for('autenticar.logout') }}">Cerrar sesión</a></li>
-                  </ul>
-                </div>
+                <a href="#" class=" link-dark  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
+                  style="margin: 50px;">
+                  <img src="/static/icons/user.png" alt="icon user" width="40" height="40" class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu text-small">
+                  <li><a class="dropdown-item" href="{{ url_for('cliente.datoscliente') }}">Mi Cuenta</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="{{ url_for('autenticar.logout') }}">Cerrar sesión</a></li>
+                </ul>
               </div>
             </div>
+          </div>
 
+          <div id="carrito" >
+            <a href="/carrito" class=" link-dark" aria-expanded="false">
+              <img src={{url_for('static', filename='icons/shoppingCar.png')}} id="cartIcon" width="40" height="40" class="rounded-circle"/>
+              CART {{noOfItems}}
+            </a>
+          </div>
 
-            <div>
-              <a href="#" class=" link-dark" aria-expanded="false">
-                <img src="/static/icons/shoppingCar.png" alt="icon user" width="40" height="40" class="rounded-circle">
-              </a>
-            </div>
         </div>
         </form>
       </div>
@@ -123,10 +124,6 @@
     </div>
     {% endfor %}
   </div>
-
-
-
-
 
   <footer class="text-center text-lg-start bg-white text-muted">
 

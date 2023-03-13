@@ -118,6 +118,34 @@ msgstr "Customer"
 msgid "Ayuda"
 msgstr "Help"
 
+#: administrador/admin.py:52 administrador/admin.py:82
+#: administrador/admin.py:144 administrador/admin.py:169
+#: administrador/admin.py:244 administrador/admin.py:269
+#: administrador/admin.py:344 administrador/admin.py:371
+#: administrador/admin.py:446 administrador/admin.py:472
+#: administrador/admin.py:547 administrador/admin.py:572
+#: administrador/admin.py:651 administrador/admin.py:693
+#: administrador/admin.py:752 administrador/admin.py:787
+#: administrador/admin.py:854 administrador/admin.py:900
+#: administrador/admin.py:941 administrador/admin.py:982
+#: administrador/admin.py:1094 administrador/admin.py:1132 auth/auth.py:278
+msgid "Pedidos"
+msgstr "Orders"
+
+#: administrador/admin.py:53 administrador/admin.py:83
+#: administrador/admin.py:145 administrador/admin.py:170
+#: administrador/admin.py:245 administrador/admin.py:270
+#: administrador/admin.py:345 administrador/admin.py:372
+#: administrador/admin.py:447 administrador/admin.py:473
+#: administrador/admin.py:548 administrador/admin.py:573
+#: administrador/admin.py:652 administrador/admin.py:694
+#: administrador/admin.py:753 administrador/admin.py:788
+#: administrador/admin.py:855 administrador/admin.py:901
+#: administrador/admin.py:942 administrador/admin.py:983
+#: administrador/admin.py:1095 administrador/admin.py:1133 auth/auth.py:279
+msgid "Revisar pedidos"
+msgstr Rreview orders"
+
 #: administrador/admin.py:52 administrador/admin.py:123
 #: administrador/admin.py:193 administrador/admin.py:264
 #: administrador/admin.py:336 administrador/admin.py:407
@@ -326,6 +354,14 @@ msgstr ""
 "This section is designed to display the information of the "
 "registered administrators, as well as modify and delete this information"
 
+#: administrador/admin.py:597
+msgid "Lista de administradores"
+msgstr Admin List""
+
+#: administrador/admin.py:598
+msgid "Adicionar administrador"
+msgstr "Add administrator"
+
 #: administrador/admin.py:455 administrador/admin.py:523
 #: administrador/admin.py:631 auth/auth.py:26 auth/auth.py:91 auth/auth.py:179
 #: auth/auth.py:229
@@ -378,6 +414,14 @@ msgstr "Password"
 msgid "Repetir contraseña"
 msgstr "Repeat password"
 
+#: administrador/admin.py:637
+msgid "Lista de clientes"
+msgstr "Client list"
+
+#: administrador/admin.py:638
+msgid "Adicionar cliente"
+msgstr "Add customer"
+
 #: administrador/admin.py:520
 msgid "Panel de gestión de clientes"
 msgstr "Customer management panel"
@@ -398,6 +442,33 @@ msgstr ""
 "This section is designed to modify the stored information"
 "of the users"
 
+#: administrador/admin.py:1070 administrador/admin.py:1108
+msgid "Administracion de pedidos"
+msgstr "Order management"
+
+#: administrador/admin.py:1071 administrador/admin.py:1109
+msgid ""
+"A traves de esta seccion se visualiza la informacion de los pedidos "
+"realizados por los clientes"
+msgstr ""
+"Through this section the information of the orders is displayed"
+"made by customers"
+
+#: administrador/admin.py:1078 administrador/admin.py:1116
+msgid "Ciudad"
+msgstr "City"
+
+#: administrador/admin.py:1079 administrador/admin.py:1117
+msgid "Departamento"
+msgstr "Department"
+
+#: administrador/admin.py:1080 administrador/admin.py:1118
+msgid "Pais"
+msgstr "Country"
+
+#: administrador/admin.py:1081 administrador/admin.py:1119
+msgid "Estado"
+msgstr "State"
 # English translations for PROJECT.
 # Copyright (C) 2023 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.

@@ -1,0 +1,52 @@
+{% extends '/base_carrito.html' %}
+{% block title %}Carrito{% endblock %}
+{% block content %}
+
+
+
+
+<div id="cartItems">
+	<h2 class='text-center'>Carrito de compras</h2>
+	<div id="tableItems">
+		{% for row in productos %}
+		<div>
+			<hr id="seperator">
+			<div id="itemImage">
+				<img src={{url_for('static', filename='uploads/'+row[5])}} id="image"/>
+			</div>
+			<div id="itemName">
+				<span id="itemNameTag">{{row[1]}}</span><br>
+				In stock<br>
+				{% if row[5] == 0%}
+					<a href="/eliminar?productId={{row[2]}}">Descartar</a>
+				{% elif row[5] != 0%}	
+					<a href="/eliminar?productId={{row[2]}}">Disminuir</a>
+				{% elif row[2] == None%}	
+					<p class='text-center'> Aun no has añadido productos al carrito</p>
+						
+				{% endif %}
+				<div id="stock">
+					cantidad {{row[6]}}
+				</div>
+			</div>
+			<div id="itemPrice">
+				${{row[4]}}
+			</div>
+
+		</div>
+		{% endfor %}
+		<hr id="seperator">
+		<div id="total">
+			<span id="subtotal">Subtotal</span> : ${{totalPrice}}
+		</div>
+		
+	</div>
+</div>
+
+<div id="agregar"  class="btn btn-success">
+	<a href="/checkout" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Proceder a la compra</a>
+  </div>
+
+
+
+{% endblock %}

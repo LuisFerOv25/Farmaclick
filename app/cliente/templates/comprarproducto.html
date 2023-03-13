@@ -5,6 +5,7 @@
 <!-- COMPRAS -->
 
 <div class="container centrarCard">
+  <form action="{{url_for('carro.agregar')}}" method="post" enctype="multipart/form-data">
   <div class="card mb-3" style="max-width: 1300px;">
     <div class="row g-0">
       <div class="col-md-4">
@@ -29,23 +30,23 @@
               -
             </button>
 
-            <input class="form-control-sm" type="text" style="width: 130px; height: 35px;">
+            <input class="form-control-sm" name = 'cantidad' id = 'cantidad' type="text" style="width: 130px; height: 35px;">
 
             <button type="submit" class="btn btn-primary"
               style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
               +
             </button>
-
-            <button type="submit" class="btn btn-success"
-              style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-              Comprar
-            </button>
+            <div id="agregar"  class="btn btn-success">
+              <a type='submit' href="/agregar?productId={{request.args.get('productId')}}" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Comprar</a>
+            </div>
+            
           </div>
 
         </div>
       </div>
     </div>
   </div>
+</form>
 </div>
 
 
