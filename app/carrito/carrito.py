@@ -23,20 +23,19 @@ def agregar():
             if result:
                 # Si el producto ya está en el carrito, aumentar la cantidad en 1
                 cantidad = result[0] + 1
+                cursor.fetchall()
                 cursor.execute("UPDATE carrito SET cantidad = %s WHERE id = %s AND id_producto = %s", (cantidad, usuario, productId))
             else:
                 # Si el producto no está en el carrito, agregarlo con cantidad 1
-                cantidad = 1
-    conexion = obtener_conexion()
-    
-    with conexion.cursor() as cursor:
+                cursor.fetchall()
+                cursor.execute("INSERT INTO carrito (id, id_producto, cantidad) VALUES (%s, %s, %s)", (usuario, productId, 1))
+ 
 
-        cursor.execute("INSERT INTO carrito (id, id_producto, cantidad) VALUES (%s, %s, %s)", (usuario, productId,cantidad))
-        conexion.commit() 
-        msg = "Added successfully"
-        # Reducir el stock del producto en la base de datos
-        cursor.execute('''UPDATE producto SET cantidad = cantidad - 1 WHERE id_producto = %s''', (productId,))                
-        conexion.commit()         
+            conexion.commit() 
+            msg = "Added successfully"
+            # Reducir el stock del producto en la base de datos
+            cursor.execute('''UPDATE producto SET cantidad = cantidad - 1 WHERE id_producto = %s''', (productId,))                
+            conexion.commit()         
             
     conexion.close()
     return redirect(url_for('cliente.homecliente'))
@@ -61,13 +60,13 @@ def carrito():
         cursor.execute("SELECT id FROM usuario WHERE correo = %s", (correo, ))
         usuario = cursor.fetchone()[0]
         cursor.fetchall()
-        cursor.execute("SELECT carrito.id_carrito,carrito.id,producto.id_producto, producto.nombre, producto.precio, producto.imagen, carrito.cantidad FROM producto, carrito WHERE producto.id_producto = carrito.id_producto AND carrito.id = %s", (usuario, ))
+        cursor.execute("SELECT carrito.id,producto.id_producto, producto.nombre, producto.precio, producto.imagen, carrito.cantidad FROM producto, carrito WHERE producto.id_producto = carrito.id_producto AND carrito.id = %s", (usuario, ))
         
         productos = cursor.fetchall()
         
     totalPrice = 0
     for row in productos:
-        totalPrice += row[4] * row[6]
+        totalPrice += row[3] * row[5]
     return render_template("cart.html", productos = productos, totalPrice=totalPrice, noOfItems=noOfItems)
 
 @carro.route("/eliminar")
