@@ -11,7 +11,7 @@ from flask_babel import Babel, gettext, refresh; refresh()
 
 import re
 from werkzeug.security import generate_password_hash, check_password_hash
-from app import *
+from flask_app import *
 import babel.dates
 
 

@@ -69,3 +69,18 @@ for code in error_codes:
 
 if __name__ == '__main__':
     app.run(debug=True, port=5203)
+
+
+from flask import render_template,abort
+import mysql.connector
+
+def obtener_conexion():
+
+    mydb = mysql.connector.connect(
+            host ="farmaclick00.mysql.pythonanywhere-services.com",
+            user ="farmaclick00",
+            password ="qwerty123@",
+            db = "farmaclick00$default"
+    )
+
+    return mydb

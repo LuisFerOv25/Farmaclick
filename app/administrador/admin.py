@@ -12,7 +12,7 @@ import controller
 from flask import Flask, url_for, redirect
 import hashlib
 import os
-from app import app
+from flask_app import app
 from datetime import date
 from os import listdir
 from flask import redirect
