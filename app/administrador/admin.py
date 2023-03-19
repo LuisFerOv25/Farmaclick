@@ -910,6 +910,26 @@ def editar_usuario(id):
 
 @administrador.route("/actualizar_producto", methods=["POST"])
 def actualizar_producto():
+    translations = {
+        'usrreg': gettext('Usuarios Registrados'),
+        'titadm': gettext('Administradores'),
+        'reg': gettext('Registrados'),
+        'panel': gettext('Panel de control'),
+        'gesp': gettext('Gestion producto'),
+        'cuidp': gettext('Cuidado personal'),
+        'dermaco': gettext('Dermacosmeticos'),
+        'pnutri': gettext('Nutricionales'),
+        'pbebe': gettext('Bebé'),
+        'medip': gettext('Medicamentos'),
+        'gesusu': gettext('Gestion usuarios'),
+        'adminp': gettext('Administrador'),
+        'clientep': gettext('Cliente'),
+        'txthelp': gettext('Ayuda'),
+        'pedidosp': gettext('Pedidos'),
+        'revisarp': gettext('Revisar pedidos'),
+        'infogen': gettext('A traves de esta seccion el administrador tiene los permisos para visualizar la cantidad de clientes y administradores registrados, asi como realizar operaciones de registro, modificacion y eliminacion de los productos ofrecidos por la farmacia, adicionalmente es capaz de generar reportes de ventas'),
+
+    }
     id_producto = request.form["id_producto"]
     nombre = request.form["nombre"]
     cantidad = request.form["cantidad"]
@@ -917,12 +937,37 @@ def actualizar_producto():
     precio = request.form["precio"]
     fecha_vencimiento = request.form["fecha_vencimiento"]
     imagen = request.files["imagen"]
-    controller.actualizar_producto(nombre, descripcion,cantidad ,precio,fecha_vencimiento,imagen,id_producto )
-    return render_template("home.html",dataLogin= dataLoginSesion())
+    if imagen and allowed_file(imagen.filename):
+        filename = secure_filename(imagen.filename)
+        
+        imagen.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        imagename = filename    
+    controller.actualizar_producto(nombre, descripcion,cantidad ,precio,fecha_vencimiento,imagename,id_producto )
+    return render_template("home.html",dataLogin= dataLoginSesion(),**dict(translations.items()))
 
 
 @administrador.route("/actualizar_usuario", methods=["POST"])
 def actualizar_usuario():
+    translations = {
+        'usrreg': gettext('Usuarios Registrados'),
+        'titadm': gettext('Administradores'),
+        'reg': gettext('Registrados'),
+        'panel': gettext('Panel de control'),
+        'gesp': gettext('Gestion producto'),
+        'cuidp': gettext('Cuidado personal'),
+        'dermaco': gettext('Dermacosmeticos'),
+        'pnutri': gettext('Nutricionales'),
+        'pbebe': gettext('Bebé'),
+        'medip': gettext('Medicamentos'),
+        'gesusu': gettext('Gestion usuarios'),
+        'adminp': gettext('Administrador'),
+        'clientep': gettext('Cliente'),
+        'txthelp': gettext('Ayuda'),
+        'pedidosp': gettext('Pedidos'),
+        'revisarp': gettext('Revisar pedidos'),
+        'infogen': gettext('A traves de esta seccion el administrador tiene los permisos para visualizar la cantidad de clientes y administradores registrados, asi como realizar operaciones de registro, modificacion y eliminacion de los productos ofrecidos por la farmacia, adicionalmente es capaz de generar reportes de ventas'),
+
+    }
     translations = {
         'usrreg': gettext('Usuarios Registrados'),
         'titadm': gettext('Administradores'),

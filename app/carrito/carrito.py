@@ -29,8 +29,6 @@ def agregar():
                 # Si el producto no está en el carrito, agregarlo con cantidad 1
                 cursor.fetchall()
                 cursor.execute("INSERT INTO carrito (id, id_producto, cantidad) VALUES (%s, %s, %s)", (usuario, productId, 1))
- 
-
             conexion.commit() 
             msg = "Added successfully"
             # Reducir el stock del producto en la base de datos

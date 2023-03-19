@@ -294,3 +294,5 @@ def buscar():
     
     # Si la solicitud es GET, mostrar la página de búsqueda
     return render_template('base_cliente_registrado.html')
+
+

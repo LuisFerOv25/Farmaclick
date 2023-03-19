@@ -18,7 +18,7 @@ from os import listdir
 from babel import numbers, dates
 from datetime import date, datetime, time
 from flask_babel import Babel, gettext, refresh; refresh()
-from flask_mail import Mail, Message
+
 app = Flask(__name__)
 app.secret_key = '97110c78ae51a45af397be6534caef90ebb9b1dcb3380af008f90b23a5d1616bf19bc29098105da20fe'
 import os
@@ -43,14 +43,6 @@ sentry_sdk.init(
 )
 
 
-#Conexion
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'db_farmaclic'
-
-
-mysql = MySQL(app)
 
 app.register_blueprint(administrador)
 app.register_blueprint(cliente)
@@ -68,19 +60,6 @@ for code in error_codes:
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5203)
+    app.run(debug=True, port=5703)
 
 
-from flask import render_template,abort
-import mysql.connector
-
-def obtener_conexion():
-
-    mydb = mysql.connector.connect(
-            host ="farmaclick00.mysql.pythonanywhere-services.com",
-            user ="farmaclick00",
-            password ="qwerty123@",
-            db = "farmaclick00$default"
-    )
-
-    return mydb
