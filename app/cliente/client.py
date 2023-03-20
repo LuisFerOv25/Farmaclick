@@ -74,11 +74,12 @@ def comprarproducto():
     noOfItems = cursor.fetchone()[0] 
 
     productId = request.args.get('id_producto')
+
     with conexion.cursor() as cursor:
-        cursor.execute('SELECT id_producto, nombre, descripcion,cantidad, precio, proveedor,fecha_vencimiento, imagen, categoria stock FROM producto WHERE id_producto = %s', (productId, ))
-        productData = cursor.fetchone() 
-    conexion.close()
+        cursor.execute('SELECT id_producto, nombre, descripcion,cantidad, precio FROM producto WHERE id_producto = %s', (productId,))
+        productData = cursor.fetchall()
     return render_template("comprarproducto.html",noOfItems=noOfItems,productData=productData,productId=productId)
+
 
 # Cuidado personal
 @cliente.route('/cuidadopersonalclient/')

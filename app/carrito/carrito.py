@@ -58,7 +58,7 @@ def carrito():
         cursor.execute("SELECT id FROM usuario WHERE correo = %s", (correo, ))
         usuario = cursor.fetchone()[0]
         cursor.fetchall()
-        cursor.execute("SELECT carrito.id,producto.id_producto, producto.nombre, producto.precio, producto.imagen, carrito.cantidad FROM producto, carrito WHERE producto.id_producto = carrito.id_producto AND carrito.id = %s", (usuario, ))
+        cursor.execute("SELECT carrito.id, producto.id_producto, producto.nombre, producto.precio, producto.imagen, carrito.cantidad FROM producto, carrito WHERE producto.id_producto = carrito.id_producto AND carrito.id = %s", (usuario, ))
         
         productos = cursor.fetchall()
         
@@ -66,6 +66,8 @@ def carrito():
     for row in productos:
         totalPrice += row[3] * row[5]
     return render_template("cart.html", productos = productos, totalPrice=totalPrice, noOfItems=noOfItems)
+
+
 
 @carro.route("/eliminar")
 def eliminar():
@@ -90,7 +92,6 @@ def eliminar():
                 cursor.execute('''UPDATE producto SET cantidad = cantidad + 1 WHERE id_producto = %s''', (productId,))  
                 cursor.fetchall()
                 conexion.commit()
-                msg = "removed successfully"              
             else:
                  cursor.execute("DELETE FROM carrito WHERE id = %s AND id_producto = %s", (id, productId))
                  conexion.commit()

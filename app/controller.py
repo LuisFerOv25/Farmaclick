@@ -185,6 +185,20 @@ def dataLoginSesion():
     }
     return inforLogin
 
+
+# def productData():
+#     datosProductos = {
+#         "id_producto"                  :session['id_producto'],
+#         "nombre"           :session['nombre'],
+#         "cantidad"              :session['cantidad'],
+#         "precio"            :session['precio'],
+#         "proveedor"          :session['proveedor'],
+#         "fecha_vencimiento"           :session['fecha_vencimiento'],
+#         "categoria"              :session['categoria'],
+#         "imagen"              :session['imagen']
+#     }
+#     return datosProductos
+
 def dataPerfilUsuario():
     conexion = obtener_conexion()
     mycursor       = conexion.cursor()
